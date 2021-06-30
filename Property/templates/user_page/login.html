@@ -1,0 +1,37 @@
+{% include 'layout/header.html' %}
+<!-- Start Login Form
+	====================================================-->
+<div class="conatiner mt-5">
+    <div class="login-form position-relative">
+        <div class="login-form-area shadow p-50 lg-px-15 bg-white position-relative">
+            <form class="position-relative">
+
+                <div class="form-group validate-input w-100 position-relative wow slideInRight animated"
+                    data-validate="Valid email is: a@b.c">
+                    <input class="form-control" type="text" name="email">
+                    <span class="data-placeholder" data-placeholder="Email or Username"></span>
+                </div>
+
+                <div class="form-group validate-input w-100 position-relative wow slideInLeft animated"
+                    data-validate="Enter password">
+                    <span class="btn-show-pass">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </span>
+
+                    <input class="form-control" type="password" name="password">
+                    <span class="data-placeholder" data-placeholder="Password"></span>
+                </div>
+                <a class="mb-30 color-primary" href="#">Forgot Password?</a>
+
+                <button class="btn btn-primary d-table mx-auto w-100 wow slideInDown animated">Sign In</button>
+
+                <div class="text-center mt-30 wow slideInUp animated">
+                    <span>Don’t have an account?</span>
+                    <a class="color-primary" href="register.html">Sign Up!</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Login Form ====================================================-->
+{% include 'layout/footer.html' %}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from themetrading.com/html/fresher/demo/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 27 Jun 2021 07:23:17 GMT -->
+
+<head>
+  {% load static %}
+  <!--===== Meta Tag =====-->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="Fresher - Real Estate Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords"
+    content="business, property, directory, listing, real estate, Real estate template, realtor, developer, apartment, broker, real estate agency, map, company, agent, rent house">
+  <meta name="author" content="root">
+  <!--CSs Links
+	==================================================================-->
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/color.css' %}" id="color-change">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/layerslider.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/flaticon/flaticon.css' %}">
+  <!--====================================================
+	Typography links 
+	Import Google Fonts
+	======================================================-->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+
+  <!-- Title -->
+  <title>Fresher - Real Estate Template</title>
+
+  <!-- Favicon Icon -->
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+
+</head>
+
+<body oncontextmenu="return false;">
+  <!-- Start Back to top
+=========================================================================-->
+  <div id="scroll" style="display: none;"><i class="fa fa-angle-up"></i></div>
+  <!-- End Back to top
+=========================================================================-->
+  <!-- Color Settings Start
+==================================================-->
+  <div class="color-panel">
+    <div class="on-panel color-white bg-primary">
+      <div class="text-center icon-spinner">
+        <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+      </div>
+    </div>
+    <div class="panel-box shadow">
+      <span class="panel-title">Theme Colors</span>
+      <ul class="color-box">
+        <li class="default" data-name="default" data-path="{% static 'css/color.css' %}"
+          data-image="{% static 'images/logo/logo-white.png' %}" data-target="{% static 'images/logo/logo.png' %}"></li>
+        <li class="color-1" data-name="color-1" data-path="css/color/color-1.css' %}"
+          data-image="{% static 'images/logo/logo-white-light-green.png' %}"
+          data-target="{% static 'images/logo/logo-black-light-green.png' %}"></li>
+        <li class="color-2" data-name="color-2" data-path="{% static 'css/color/color-2.css' %}"
+          data-image="{% static 'images/logo/logo-white-light-yellow.png' %}"
+          data-target="{% static 'images/logo/logo-black-light-yellow.png' %}"></li>
+        <li class="color-3" data-name="color-3" data-path="{% static 'css/color/color-3.css' %}"
+          data-image="{% static 'images/logo/logo-white-green.png' %}"
+          data-target="{% static 'images/logo/logo-black-green.png' %}"></li>
+        <li class="color-4" data-name="color-4" data-path="css/color/color-4.css' %}"
+          data-image="{% static 'images/logo/logo-white-sky.png' %}"
+          data-target="{% static 'images/logo/logo-blue-sky.png' %}"></li>
+      </ul>
+    </div>
+  </div>
+  <!--  Color Settings End
+	==============================================-->
+  <!-- Start Header
+=========================================================================-->
+  <header class="nav-on-banner">
+    <div id="header" class="nav-header header-four py-10">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg navbar-light px-0">
+              <a class="navbar-brand" href="index.html"><img class="nav-logo"
+                  src="{% static 'images/logo/logo-white.png' %}" alt="logo"></a>
+              <button class="toggle-btn" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                  <li class="nav-item dropdown mega-menu">
+                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">Home</a>
+                    <!-- <ul class="dropdown-menu mega-menu-dropdown">
+                                            <li class="mega-menu-area">
+                                                <div class="row">
+                                                    <div class="col-xl-3 col-lg-3">
+                                                        <ul>
+                                                            <li><a class="dropdown-item" href="index.html">Default</a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xl-3 col-lg-3">
+                                                        <ul>
+                                                            <li><a class="dropdown-item" href="index-5.html">Map Search
+                                                                    Box</a></li>
+
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xl-3 col-lg-3">
+                                                        <ul>
+                                                            <li><a class="dropdown-item" href="index-9.html">Header
+                                                                    Search Map</a></li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </li>
+                                        </ul> -->
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">Category</a>
+                    <ul class="dropdown-menu shadow">
+                      <li class="dropdown">
+                        <a class="dropdown-toggle dropdown-item" href="#">Industrial</a>
+                        <ul class="dropdown-menu shadow">
+                          <li><a class="dropdown-item" href="property-grid-full-width.html">Shop</a></li>
+                        </ul>
+                      </li>
+                      <li><a class="dropdown-item" href="single-property.html">Single Property</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">Agency</a>
+                    <ul class="dropdown-menu shadow">
+                      <li class="dropdown">
+                        <a class="dropdown-toggle dropdown-item" href="#">Agency</a>
+                        <ul class="dropdown-menu shadow">
+                          <li><a class="dropdown-item" href="agent-style-1-grid-left-sidebar.html">Name</a></li>
+
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">Pages</a>
+                    <ul class="dropdown-menu shadow">
+                      <li class="mega-menu-area">
+                        <div class="row">
+                          <div class="col-xl-3 col-lg-3">
+                            <ul>
+                              <li><a class="dropdown-item" href="about-us.html">About
+                              <li><a class="dropdown-item" href="about-us.html">Services
+                              <li><a class="dropdown-item" href="about-us.html">Pricing
+                              <li><a class="dropdown-item" href="about-us.html">FAq
+                              <li><a class="dropdown-item" href="about-us.html">Invoice
+                              <li><a class="dropdown-item" href="about-us.html">Property
+                                  Tax
+                              <li><a class="dropdown-item" href="about-us.html">Profile
+                              <li><a class="dropdown-item" href="about-us.html">Favourite
+                                  Property
+                              <li><a class="dropdown-item" href="about-us.html">Error
+                              <li><a class="dropdown-item" href="about-us.html">Change
+                                  Password</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                  <li class="nav-item">
+                    <form class="search-field">
+                      <input type="search" class="search form-control" placeholder="Search Here" />
+                      <span>
+                        <i class="fa fa-search"></i>
+                        <i class="fa fa-times"></i>
+                      </span>
+                    </form>
+                  </li>
+                </ul>
+                <ul class="admin-info color-white-a">
+                  <li><a href="{% url 'login' %}">Sign In</a></li>
+                  <li><a href="register">Sign Up</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- End Header
+=========================================================================-->
