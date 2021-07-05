@@ -15,3 +15,20 @@ from django.db import models
 
 #     def __str__(self):
 #         return self.fname
+
+
+
+
+class BrokerCategory(models.Model):
+    name = models.CharField(max_length=255)
+    # status = models.CharField(max_length=255)
+    def __str__(self):
+        return self.name
+
+
+
+class BrokerSubCategory(models.Model):
+    category_id = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    def __str__(self):
+        return self.name
