@@ -746,13 +746,13 @@ textarea.form-control{
 /* 03.  Background Image CSS
 =======================================================*/
 .bg-img-1{
-  background: url(../images/background/2.jpg) no-repeat center left/cover
+  background: url('../images/background/2.jpg') no-repeat center left/cover
 }
 .bg-img-2{
-  background: url(../images/background/main-banner.html) no-repeat center center/cover
+  background: url('../images/background/main-banner.html') no-repeat center center/cover
 }
 .bg-img-3{
-  background: url(../images/background/5.jpg) no-repeat center center/cover
+  background: url('../images/background/5.jpg') no-repeat center center/cover
 }
 /* 04.	Position CSS
 =======================================================*/
@@ -1315,12 +1315,12 @@ transform:translateY(7px) rotate(45deg);
 /* Background Image css
 ----------------------*/
 .property-type{
-	background: url("../images/background/1.jpg") no-repeat center center / cover;
+	background: url('../images/background/1.jpg') no-repeat center center / cover;
 }
 .main-banner-slider:before{
   content: "";
   position: absolute;
-  background: url("../images/background/12.jpg") center center / cover;
+  background: url('../images/background/12.jpg') center center / cover;
   top: 0;
   right: 0;
   height: 100%;
@@ -1730,7 +1730,7 @@ transform:translateY(7px) rotate(45deg);
   min-width: 600px;
   height: auto;
   text-align: center;
-  background-image: url("../images/property/1.jpg");
+  background-image: url('../images/property/1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1943,7 +1943,7 @@ transform:translateY(7px) rotate(45deg);
 =======================================================*/
 .banner-1{
   position: relative;
-  background: url(../images/background/2.jpg) no-repeat center left/cover;
+  background: url('../images/background/2.jpg') no-repeat center left/cover;
 }
 .banner-1:before{
   content: "";
@@ -2228,7 +2228,7 @@ Map Thumbnail
 .our-achievements:before{
   content: "";
   position: absolute;
-  background: url(../images/background/8.html) no-repeat center left;
+  background: url("{% static '../images/background/8.html' %}") no-repeat center left;
   width: 35%;
   height: 100%;
   top: 0;
@@ -2276,7 +2276,7 @@ Map Thumbnail
 .personal-video{
     width: 100%;
     height: 100%;
-    background: url(../images/background/3.html) no-repeat center center / cover;
+    background: url('../images/background/3.html') no-repeat center center / cover;
     border: 7px solid transparent
 }
 a.video-popup{
@@ -2360,7 +2360,7 @@ a.video-popup i:before{
   z-index: 99999
 }
 .YouTubePopUp-Content {
-  background: rgba(0, 0, 0, 0) url("../images/fancybox/fancybox_loading.gif") no-repeat scroll center center;
+  background: rgba(0, 0, 0, 0) url('../images/fancybox/fancybox_loading.gif') no-repeat scroll center center;
   display: block;
   height: 100%;
   margin: 0 auto;
@@ -2412,7 +2412,7 @@ a.video-popup i:before{
 /* 34. Home Page 3 Css
 =======================================================*/
 .main-banner-3{
-  background: url(../images/background/main-banner.html) no-repeat center center / cover;
+  background: url('../images/background/main-banner.html') no-repeat center center / cover;
   width: auto;
 }
 .navbar-light .btn-primary{
@@ -2423,7 +2423,7 @@ a.video-popup i:before{
   position: absolute;
   bottom: 0;
   left: 0;
-  background: url(../images/others/building.html) no-repeat center bottom / 100%;
+  background: url('../images/others/building.html') no-repeat center bottom / 100%;
   width: 100%;
   height: 100%;
   opacity: .04
@@ -2433,7 +2433,7 @@ a.video-popup i:before{
   position: absolute;
   bottom: 0;
   left: 0;
-  background: url(../images/background/4.html) no-repeat center bottom / cover;
+  background: url('../images/background/4.html') no-repeat center bottom / cover;
   width: 100%;
   height: 100%;
   opacity: .04
@@ -2441,7 +2441,7 @@ a.video-popup i:before{
 /* 35. Page Banner Css
 =======================================================*/
 .page-banner{
-  background: url(../images/background/page-banner.jpg) no-repeat center center / cover;
+  background: url('../images/background/page-banner.jpg') no-repeat center center / cover;
   width: 100%;
 }
 .breadcrumb, .breadcrumb li,
@@ -2544,7 +2544,7 @@ blockquote i.fa{
     height: 100%;
     left: 0%;
     top: 0;
-    background: url(../images/background/6.jpg) no-repeat right center / cover;
+    background: url('../images/background/6.jpg') no-repeat right center / cover;
 }
 .login-form-area {
     width: 30%;

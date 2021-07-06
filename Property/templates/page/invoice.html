@@ -1,0 +1,81 @@
+{% include 'layout/header.html' %}
+{% load static %}
+<!-- Page Banner Start
+==================================================================-->
+<div class="page-banner overlay-black" style="padding: 150px 0">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-lg-12">
+                <h1 class="page-banner-title color-primary">Invoice</h1>
+                <div class="text-area w-50 mt-15 color-white">
+                    <p>Porttitor luctus est sit lacinia non praesent aptent hymenaeos taciti tortor. Sociosq platea
+                        porta facilisis vitae dictum bibendun tellus ante fusce vulputate dolor lorem vulputate hac
+                        quisque diam etiam.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb m-0 py-15 px-0 bg-transparent hover-white-primary">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Invoice</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner End
+==================================================================-->
+<!-- Invoice List Start
+==================================================-->
+<section class="invoice-list bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="invoice-list-table w-100">
+                    <h3 class="mb-30 text-center color-secondary wow slideInDown animated">All Payments And Invoices
+                        List</h3>
+                    <table class="w-100">
+                        <thead class="wow slideInUp animated">
+                            <tr class="color-white">
+                                <th>Date</th>
+                                <th>Invoice ID</th>
+                                <th>Type</th>
+                                <th>Details</th>
+                                <th>Receivable</th>
+                                <th>Paid</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1st Jun, 2020</td>
+                                <td>UKJ81712</td>
+                                <td>Rent</td>
+                                <td>Paid Office Rent from Unicoder at City Trade Center</td>
+                                <td>$5000</td>
+                                <td>- $5000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mx-auto d-table">
+                        <ul class="pagination mt-50">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'layout/footer.html' %}

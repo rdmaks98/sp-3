@@ -1,0 +1,193 @@
+{% include 'layout/header.html' %}
+{% load static %}
+<!-- Page Banner Start
+==================================================================-->
+<div class="page-banner overlay-black" style="padding: 150px 0">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-lg-12">
+                <h1 class="page-banner-title color-primary">Agency</h1>
+                <div class="text-area w-50 mt-15 color-white">
+                    <p>Porttitor luctus est sit lacinia non praesent aptent hymenaeos taciti tortor. Sociosq platea
+                        porta facilisis vitae dictum bibendun tellus ante fusce vulputate dolor lorem vulputate hac
+                        quisque diam etiam.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb m-0 py-15 px-0 bg-transparent hover-white-primary">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Agency</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner End
+==================================================================-->
+<!-- Property Grid Start
+==================================================================-->
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 wow slideInDown animated">
+                <div class="top-filter pb-15 border-bottom-1-gray">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-6 col-xl-7">
+                            <label>Top Agency</label>
+                        </div>
+                        <div class="col-md-9 col-lg-6 col-xl-5">
+                            <div class="row">
+                                <div class="col-md-9 col-lg-7">
+                                    <form>
+                                        <div class="form-group d-flex mb-0">
+                                            <label class="w-50">Short By :</label>
+                                            <div class="select-wrapper position-relative w-100">
+                                                <select class="select form-control">
+                                                    <option>Default</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-3 col-lg-5">
+                                    <ul class="nav nav-tabs border-0 float-right navbar-tab-view mt-sm-15" id="myTab"
+                                        role="tablist" style="line-height: 20px;">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
+                                                role="tab" aria-controls="home" aria-selected="true"><i
+                                                    class="fa fa-th-large" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile"
+                                                role="tab" aria-controls="profile" aria-selected="false"><i
+                                                    class="fa fa-list" aria-hidden="true"></i></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <form class="adbanced-form-two amenities-list bg-white py-40 px-30 mt-30 wow slideInUp animated">
+                    <h3 class="color-secondary line-bottom pb-15 mb-20">Find Agency</h3>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <input type="text" class="form-control bg-gray" placeholder="Write Agent Name">
+                        </div>
+                        <div class="form-group col-lg-12 pt-15">
+                            <div class="select-wrapper position-relative">
+                                <select class="select form-control">
+                                    <option>All Category</option>
+                                    <option>Apartment</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12 mt-15">
+                            <input type="text" class="form-control bg-gray" placeholder="Country">
+                        </div>
+                        <div class="form-group col-md-12 mt-15">
+                            <input type="text" class="form-control bg-gray" placeholder="Location">
+                        </div>
+                        <div class="col-lg-12 mt-15"><button type="submit" class="btn btn-primary w-100">Search
+                                Agencies</button></div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-12 col-lg-8">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6 wow slideInDown animated">
+                                <div class="agencies mt-30 py-40 px-30 bg-white hover-secondery-primary">
+                                    <a href="#"><img src="{% static 'images/partner/1.png' %}" alt="image"></a>
+                                    <div class="agencies-content mt-10">
+                                        <a href="#">
+                                            <h4>Homelax Builders</h4>
+                                        </a>
+                                        <span class="mt-5 mb-30 d-block">11-13 Whitehall, London SW1A 2DD, UK</span>
+                                        <ul class="d-table">
+                                            <li>
+                                                <div
+                                                    class="position-relative bg-secondary color-white py-5 px-10 d-inline-block">
+                                                    Properties <span class="number">57</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div
+                                                    class="position-relative bg-secondary color-white py-5 px-10 d-inline-block">
+                                                    Featured <span class="number">36</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div
+                                                    class="position-relative bg-secondary color-white py-5 px-10 d-inline-block">
+                                                    Agents <span class="number">18</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 wow slideInUp animated">
+                                <div class="agencies mt-30 py-40 px-30 bg-white hover-secondery-primary">
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-4 d-flex align-items-center">
+                                            <a href="#"><img src="{% static 'images/partner/1.png' %}" alt="image"></a>
+                                        </div>
+                                        <div class="col-md-12 col-lg-8">
+                                            <div class="agencies-content">
+                                                <a href="#">
+                                                    <h4>Homelax Builders</h4>
+                                                </a>
+                                                <span class="mt-5 mb-30 d-block">11-13 Whitehall, London SW1A 2DD,
+                                                    UK</span>
+                                                <ul>
+                                                    <li>
+                                                        <div
+                                                            class="position-relative bg-secondary color-white py-5 px-10 d-inline-block">
+                                                            Properties <span class="number">57</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div
+                                                            class="position-relative bg-secondary color-white py-5 px-10 d-inline-block">
+                                                            Featured <span class="number">36</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div
+                                                            class="position-relative bg-secondary color-white py-5 px-10 d-inline-block">
+                                                            Agents <span class="number">18</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Property Grid End
+==================================================================-->
+{% include 'layout/footer.html' %}

@@ -83,7 +83,7 @@
 		globalBGAttachment: 'fixed',
 		globalBGSize: 'contain',
 		width: 1280,
-		skinsPath: 'images/slider/skins/'
+		skinsPath: '{% static "images/slider/skins/" %}'
 	});
 	// Navbar scrolling Header Fixed
 	//----------------------------------------------------------------------------------

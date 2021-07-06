@@ -26,20 +26,43 @@ def logoutUser(request):
     django_logout(request)
     return redirect("login")
 
+def category(request):
+    return render(request,"page/category.html")
+
+def p_single(request):
+    return render(request,"page/p_single.html")
+
+def p_lists(request):
+    return render(request,"page/p_lists.html")
+
+def agency(request):
+    return render(request,"page/agency.html")
+     
+def broker(request):
+    return render(request,"page/broker.html")
+
+def about(request):
+    return render(request,"page/about-us.html")
+
+def services(request):
+    return render(request,"page/services.html")
+
+def pricing(request):
+    return render(request,"page/pricing.html")
+
+def faq(request):
+    return render(request,"page/faq.html")
+
+def invoice(request):
+    return render(request,"page/invoice.html")
+
+def error404(request):
+    return render(request,"page/error404.html")
+
+def profile(request):
+    return render(request,"user_page/profile.html")
+
 def register(request):
-    # sample code
-    # if request.method == 'POST':
-    #     form  = UserForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         user = form.cleaned_data.get('username')
-    #         messages.success(request, 'Account was created for ' + user)
-    #         return redirect('login')
-    # else:
-    #     print('Form is not valid')
-    #     messages.error(request, 'Error Processing Your Request')
-    #     context = {'form': form}
-    #     return render(request, 'user_page/register.html', context)
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():

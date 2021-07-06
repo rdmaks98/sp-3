@@ -275,12 +275,12 @@
 	}
 
 	.ls-icon-muted {
-		background-image: url(../images/slider/skins/icon-muted-white.png);
+		background-image: url("{% static '../images/slider/skins/icon-muted-white.png' %}");
 		opacity: 1;
 	}
 
 	.ls-icon-unmuted {
-		background-image: url(../images/slider/skins/icon-unmuted-white.png);
+		background-image: url("{% static '../images/slider/skins/icon-unmuted-white.png' %}");
 		opacity: 0;
 	}
 
