@@ -1,0 +1,20 @@
+{% include 'layout/header.html' %}
+<!-- Start register Form
+	====================================================-->
+<section class="booking-form bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bg-white px-30 py-40 shadow w-75 mx-auto">
+                    <form method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+
+                        {% csrf_token %}
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End register Form ====================================================-->
+{% include 'layout/footer.html' %}

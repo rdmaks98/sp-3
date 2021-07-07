@@ -6,126 +6,34 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="bg-white px-30 py-40 shadow w-75 mx-auto">
+                    <!-- alerts message -->
+                    {% include 'layout/message.html' %}
                     <form method="post" action="{% url 'register' %}" enctype="multipart/form-data">
-
                         {% csrf_token %}
-
-                        <!-- {{form.as_p}} -->
-
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group position-relative">
-                                    <label>Name <span class="text-danger">*</span></label>
-                                    {{form.name}}
-                                </div>
-                                {% if form.name.errors %}
-                                {% for error in form.name.errors %}
-                                <div class="alert alert-danger">
-                                    <strong>{{ error|escape }}</strong>
-                                </div>
-                                {% endfor %}
-                                {% endif %}
+                            <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
+                                <input type="text" name="name" class="form-control bg-gray" placeholder="Name*">
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group position-relative">
-                                    <label>Email <span class="text-danger">*</span></label>
-                                    {{form.email}}
-                                </div>
-                                {% if form.email.errors %}
-                                {% for error in form.email.errors %}
-                                <div class="alert alert-danger">
-                                    <strong>{{ error|escape }}</strong>
-                                </div>
-                                {% endfor %}
-                                {% endif %}
+                            <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
+                                <input type="email" name="email" class="form-control bg-gray"
+                                    placeholder="Email Address*">
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group position-relative">
-                                    <label>Your mobile number <span class="text-danger">*</span></label>
-                                    {{form.mobile}}
-                                </div>
-                                {% if form.mobile.errors %}
-                                {% for error in form.mobile.errors %}
-                                <div class="alert alert-danger">
-                                    <strong>{{ error|escape }}</strong>
-                                </div>
-                                {% endfor %}
-                                {% endif %}
+                            <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
+                                <input type="text" name="mobile" class="form-control bg-gray"
+                                    placeholder="Phone Number*">
                             </div>
-                            <!-- <div class="col-md-6">
-                                <div class="form-group position-relative">
-                                    <label>Your usertype <span class="text-danger">*</span></label>
-                                    {{form.User_type}}
-                                </div>
-                                {% if form.User_type.errors %}
-                                {% for error in form.User_type.errors %}
-                                <div class="alert alert-danger">
-                                    <strong>{{ error|escape }}</strong>
-                                </div>
-                                {% endfor %}
-                                {% endif %}
-                            </div> -->
-                            <div class="col-md-6">
-                                <div class="form-group position-relative">
-                                    <label>Username <span class="text-danger">*</span></label>
-                                    {{form.username}}
-                                </div>
-                                {% if form.username.errors %}
-                                {% for error in form.username.errors %}
-                                <div class="alert alert-danger">
-                                    <strong>{{ error|escape }}</strong>
-                                </div>
-                                {% endfor %}
-                                {% endif %}
+                            <div class="form-group col-md-12 col-lg-6 wow slideInLeft animated">
+                                <input type="text" name="username" class="form-control bg-gray" placeholder="user name">
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group position-relative">
-                                    <label>Password <span class="text-danger">*</span></label>
-                                    {{form.password1}}
-                                </div>
-                                {% if form.password1.errors %}
-                                {% for error in form.password1.errors %}
-                                <div class="alert alert-danger">
-                                    <strong>{{ error|escape }}</strong>
-                                </div>
-                                {% endfor %}
-                                {% endif %}
+                            <div class="form-group col-md-12 col-lg-6 wow slideInLeft animated">
+                                <input type="password" name="password" class="form-control bg-gray"
+                                    placeholder="password*">
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group position-relative">
-                                    <label>Confirm Password <span class="text-danger">*</span></label>
-                                    {{form.password2}}
-                                </div>
-                                {% if form.password2.errors %}
-                                {% for error in form.password2.errors %}
-                                <div class="alert alert-danger">
-                                    <strong>{{ error|escape }}</strong>
-                                </div>
-                                {% endfor %}
-                                {% endif %}
+                            <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
+                                <input type="password" name="c_password" class="form-control bg-gray"
+                                    placeholder="Confirm password">
                             </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <div class="custom-control">
-                                        {{form.check}}
-                                        <label>I Accept <a href="" class="text-primary">Terms And
-                                                Condition</a></label>
-                                    </div>
-                                    {% if form.check.errors %}
-                                    {% for error in form.check.errors %}
-                                    <div class="alert alert-danger">
-                                        <strong>{{ error|escape }}</strong>
-                                    </div>
-                                    {% endfor %}
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <button class="btn btn-primary w-100" type="submit">Register</button>
-                            </div>
-                            <div class="mx-auto">
-                                <p class="mb-0 mt-3"><small class="text-dark mr-2">Already have an account ?</small> <a
-                                        href="{% url 'login' %}" class="text-dark font-weight-bold">Sign in</a></p>
+                            <div class="col-lg-12"><button type="submit" class="btn btn-secondary">Register</button>
                             </div>
                         </div>
                     </form>

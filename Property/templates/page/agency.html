@@ -188,6 +188,26 @@
         </div>
     </div>
 </section>
+
+<form method="post" action="/agency" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
+            <input type="text" name="name" class="form-control bg-gray" placeholder="Name*">
+        </div>
+        <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
+            <input type="email" name="email" class="form-control bg-gray" placeholder="Email Address*">
+        </div>
+        <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
+            <input type="text" name="mobile" class="form-control bg-gray" placeholder="Phone Number*">
+        </div>
+        <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
+            <input type="file" name="image" class="form-control">
+        </div>
+        <div class="col-lg-12"><button type="submit" class="btn btn-secondary">Register</button>
+        </div>
+    </div>
+</form>
 <!-- Property Grid End
 ==================================================================-->
 {% include 'layout/footer.html' %}
