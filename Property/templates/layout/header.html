@@ -167,12 +167,16 @@
                                     </li>
                                 </ul>
                                 <ul class="admin-info color-white-a">
-                                    <li><a href="{% url 'login' %}">Sign In</a></li>
-                                    <li><a href="register">Sign Up</a></li>
+                                    {% if user.is_authenticated %}
                                     <li>
                                         <a href="/logout">Logout</a>
-                                        <!-- Welcome {{request.user}}we are welcomes you -->
+                                        Welcome {{ user.username }}
                                     </li>
+                                    {% else %}
+
+                                    <li><a href="{% url 'login' %}">Sign In</a></li>
+                                    <li><a href="register">Sign Up</a></li>
+                                    {% endif %}
                                 </ul>
                             </div>
                         </nav>
