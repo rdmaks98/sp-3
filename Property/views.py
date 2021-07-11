@@ -5,10 +5,13 @@ from .forms import UserForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout as django_logout
 from django.contrib import messages
-
+from Property.models import BrokerCategory,BrokerSubCategory
 # Create your views here.
 def index(request):
-    return render(request,"Property/index.html")
+    cat = BrokerCategory.objects.all()
+    subcat = BrokerSubCategory.objects.all()
+    # return render (request,'header.html',{'cat':cat})
+    return render(request,"Property/index.html",{'cat':cat,'subcat':subcat})
 
 def loginUser(request):
     if request.method == "POST":
@@ -51,4 +54,5 @@ def register(request):
      
     return render(request,"user_page/register.html",{'form':form})
 
-
+# def categoryData(request):
+    

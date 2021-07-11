@@ -28,7 +28,7 @@ class BrokerCategory(models.Model):
 
 
 class BrokerSubCategory(models.Model):
-    category_id = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
+    sub_category = models.ForeignKey(BrokerCategory, on_delete= models.CASCADE)
+    sub_name = models.CharField(max_length=255)
     def __str__(self):
-        return self.name
+        return self.sub_name
