@@ -1,6 +1,6 @@
-{% include 'layout/header.html' %}
+{% extends 'Property/base.html' %}
 {% load static %}
-
+{% block content %}
 <!-- Page Banner Start
 ==================================================================-->
 <div class="page-banner overlay-black" style="padding: 150px 0">
@@ -347,21 +347,6 @@
                                         <a class="float-right md-d-n" href="#">Contact Us</a>
                                     </div>
                                 </div>
-                                <div class="faq-item hover-gray wow slideInUp animated">
-                                    <span class="faq-icon color-white"><i class="fa fa-question"></i></span>
-                                    <div class="faq-ans d-table">
-                                        <h5 class="color-secondary mb-20">Fully Responsive Design ?</h5>
-                                        <div class="text-area">
-                                            <p>Faucibus gravida sem interdum Urna proin senectus nullam netus Conge
-                                                litoral platea Lacus, non platea sodales feugiat hendrerit accumsan. Sap
-                                                consectetuer auctor facilisi habitant felis enim rutrum Nullam.</p>
-                                        </div>
-                                        <hr class="my-20">
-                                        <aside class="float-left">Was this answer helpful ?<a class="ml-20"
-                                                href="#">Yes</a><a class="ml-10" href="#">No</a></aside>
-                                        <a class="float-right md-d-n" href="#">Contact Us</a>
-                                    </div>
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 col-lg-12 wow slideInDown animated">
@@ -387,4 +372,4 @@
 ====================================================-->
 <!--  Partners and Subscribe Form Start
 ==================================================================-->
-{% include 'layout/footer.html' %}
+{% endblock %}

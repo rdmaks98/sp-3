@@ -1,11 +1,11 @@
-{% include 'layout/header.html' %}
+{% extends './base.html' %}
+{% block content %}
+
 {% include 'layout/slider.html' %}
 {% include 'layout/filter.html' %}
 {% include 'layout/properties.html' %}
 {% include 'layout/process.html' %}
-{% include 'layout/agencies.html' %}
 {% include 'layout/features.html' %}
 {% include 'layout/counts.html' %}
-{% include 'layout/service.html' %}
-{% include 'layout/header.html' %}
-{% include 'layout/footer.html' %}
+{% include 'layout/agencies.html' %}
+{% endblock %}
