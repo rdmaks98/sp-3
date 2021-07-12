@@ -2,49 +2,71 @@
 <html lang="en">
 
 <head>
+  {% load static %}
+  <!--===== Meta Tag =====-->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="Fresher - Real Estate Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords"
+    content="business, property, directory, listing, real estate, Real estate template, realtor, developer, apartment, broker, real estate agency, map, company, agent, rent house">
+  <meta name="author" content="root">
+  <!--CSs Links ==================================================================-->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/color.css' %}" id="color-change">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/layerslider.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/flaticon/flaticon.css' %}">
+
+  <head>
     {% load static %}
     <!--===== Meta Tag =====-->
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="Fresher - Real Estate Template">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="Fresher - Real Estate Template" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="keywords"
-        content="business, property, directory, listing, real estate, Real estate template, realtor, developer, apartment, broker, real estate agency, map, company, agent, rent house">
-    <meta name="author" content="root">
+      content="business, property, directory, listing, real estate, Real estate template, realtor, developer, apartment, broker, real estate agency, map, company, agent, rent house" />
+    <meta name="author" content="root" />
     <!--CSs Links
 	==================================================================-->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/color.css' %}" id="color-change">
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/layerslider.css' %}">
-    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/flaticon/flaticon.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/color.css' %}" id="color-change" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/layerslider.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'fonts/flaticon/flaticon.css' %}" />
     <!--====================================================
 	Typography links 
 	Import Google Fonts
 	======================================================-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet">
+      rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
     <!-- Title -->
     <title>Real Estate</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
-</head>
+  </head>
 
 <body oncontextmenu="return false;">
-    <!-- Start Back to top
+  <!-- Start Back to top
 =========================================================================-->
-    <div id="scroll" style="display: none;"><i class="fa fa-angle-up"></i></div>
-    <!-- End Back to top
+  <div id="scroll" style="display: none;"><i class="fa fa-angle-up"></i></div>
+  <!-- End Back to top
 =========================================================================-->
-    <!-- Start Header
+  <!-- Start Header
 =========================================================================-->
-    <header class="nav-on-top">
-        <!-- <div class="top-header bg-secondary" style="line-height: 60px;">
+  <header class="nav-on-top">
+    <!-- <div class="top-header bg-secondary" style="line-height: 60px;">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-lg-5">
@@ -68,122 +90,189 @@
         </div>
       </div>
     </div> -->
-        <div id="header" class="nav-header header-four bg-secondary py-10 border-bottom-1-dark">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <nav class="navbar navbar-expand-lg navbar-light px-0">
-                            <a class="navbar-brand" href="index.html">
-                                <img class="" src="{% static 'images/logo/logo-white.png' %}" alt="logo" height="90px"
-                                    width="80px">
+    <div id="header" class="nav-header header-four bg-secondary py-10 border-bottom-1-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg navbar-light px-0">
+              <a class="navbar-brand" href="index.html">
+                <img class="" src="{% static 'images/logo/logo-white.png' %}" alt="logo" height="90px" width="80px">
+              </a>
+              <button class="toggle-btn" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}" role="button">Home</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">Category</a>
+                    <ul class="navbar-nav mx-auto">
+                      {% for i in cat %}
+                      <li class="nav-item dropdown mega-menu">
+                        <div>
+                          <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            {{i.name}}
+                          </a>
+
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {% for j in subcat %}
+                            <a class="dropdown-item" href="#">
+                              {% if j.sub_category_id == i.id %} {{j.sub_name }}
+                              {% endif %}
                             </a>
-                            <button class="toggle-btn" data-toggle="collapse" data-target="#navbarSupportedContent"
-                                aria-controls="navbarSupportedContent" aria-expanded="false"
-                                aria-label="Toggle navigation">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                    <ul class="dropdown-menu shadow">
+                      <li class="dropdown">
+                        <a class="dropdown-toggle dropdown-item" href="{% url 'category' %}">Industrial</a>
+                        <ul class="dropdown-menu shadow">
+                          <li><a class="dropdown-item" href="{% url 'p_lists' %}">Shop</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="dropdown-item" href="{% url 'p_single' %}">Single Property</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">Agency</a>
+                    <ul class="dropdown-menu shadow">
+                      <div class="row">
+                        <div class="col-xl-3 col-lg-3">
+                          <li>
+                            <a class="dropdown-item" href="{% url 'agency' %}">Agency</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="{% url 'broker' %}">Broker</a>
+                          </li>
+                        </div>
+                      </div>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">Pages</a>
+                    <ul class="dropdown-menu shadow">
 
-                                <ul class="navbar-nav mx-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'index' %}" role="button">Home</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">Category</a>
-                                        <ul class="dropdown-menu shadow">
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle dropdown-item"
-                                                    href="{% url 'category' %}">Industrial</a>
-                                                <ul class="dropdown-menu shadow">
-                                                    <li><a class="dropdown-item" href="{% url 'p_lists' %}">Shop</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a class="dropdown-item" href="{% url 'p_single' %}">Single Property</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Agency</a>
-                                        <ul class="dropdown-menu shadow">
-                                            <div class="row">
-                                                <div class="col-xl-3 col-lg-3">
-                                                    <li>
-                                                        <a class="dropdown-item" href="{% url 'agency' %}">Agency</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="{% url 'broker' %}">Broker</a>
-                                                    </li>
-                                                </div>
-                                            </div>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                                        <ul class="dropdown-menu shadow">
+                      <div class="row">
+                        <div class="col-xl-3 col-lg-3">
 
-                                            <div class="row">
-                                                <div class="col-xl-3 col-lg-3">
+                          <li><a class="dropdown-item" href="{% url 'about-us' %}">About</a>
+                          </li>
+                          <li><a class="dropdown-item" href="{% url 'services' %}">Services</a></li>
+                          <li><a class="dropdown-item" href="{% url 'pricing' %}">Pricing</a>
+                          </li>
+                          <li><a class="dropdown-item" href="{% url 'faq' %}">FAq</a></li>
+                          <li><a class="dropdown-item" href="{% url 'invoice' %}">Invoice</a>
+                          </li>
+                          <li><a class="dropdown-item" href="about-us.html">Property Tax</a>
+                          </li>
+                          <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                          </li>
+                          <li><a class="dropdown-item" href="about-us.html">Favourite
+                              Property</a></li>
+                          <li><a class="dropdown-item" href="{% url 'error404' %}">Error</a>
+                          </li>
+                        </div>
+                      </div>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link" href="" role="button">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                    <form class="search-field">
+                      <input type="search" class="search form-control" placeholder="Search Here" />
+                      <span>
+                        <i class="fa fa-search"></i>
+                        <i class="fa fa-times"></i>
+                      </span>
+                    </form>
+                  </li>
+                </ul>
+                <ul class="admin-info color-white-a">
+                  {% if user.is_authenticated %}
+                  <li>
+                    <a href="/logout">Logout</a>
+                    Welcome {{ user.username }}
+                  </li>
+                  {% else %}
 
-                                                    <li><a class="dropdown-item" href="{% url 'about-us' %}">About</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item"
-                                                            href="{% url 'services' %}">Services</a></li>
-                                                    <li><a class="dropdown-item" href="{% url 'pricing' %}">Pricing</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="{% url 'faq' %}">FAq</a></li>
-                                                    <li><a class="dropdown-item" href="{% url 'invoice' %}">Invoice</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="about-us.html">Property Tax</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="about-us.html">Favourite
-                                                            Property</a></li>
-                                                    <li><a class="dropdown-item" href="{% url 'error404' %}">Error</a>
-                                                    </li>
-                                                </div>
-                                            </div>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link" href="" role="button">Contact</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <form class="search-field">
-                                            <input type="search" class="search form-control"
-                                                placeholder="Search Here" />
-                                            <span>
-                                                <i class="fa fa-search"></i>
-                                                <i class="fa fa-times"></i>
-                                            </span>
-                                        </form>
-                                    </li>
-                                </ul>
-                                <ul class="admin-info color-white-a">
-                                    {% if user.is_authenticated %}
-                                    <li>
-                                        <a href="/logout">Logout</a>
-                                        Welcome {{ user.username }}
-                                    </li>
-                                    {% else %}
-
-                                    <li><a href="{% url 'login' %}">Sign In</a></li>
-                                    <li><a href="register">Sign Up</a></li>
-                                    {% endif %}
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+                  <li><a href="{% url 'login' %}">Sign In</a></li>
+                  <li><a href="register">Sign Up</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            </nav>
+          </div>
         </div>
-    </header>
-    <!-- End Header
+      </div>
+    </div>
+  </header>
+  <!-- End Header
 =========================================================================-->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
+
+  <!-- Title -->
+  <title>Real Estate</title>
+
+  <!-- Favicon Icon -->
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
+  </head>
+
+  <body oncontextmenu="return false;">
+    <!-- Start Back to top
+=========================================================================-->
+    <div id="scroll" style="display: none"><i class="fa fa-angle-up"></i></div>
+    <!-- End Back to top
+=========================================================================-->
+    <!-- Color Settings Start
+==================================================-->
+    <div class="color-panel">
+      <div class="on-panel color-white bg-primary">
+        <div class="text-center icon-spinner">
+          <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+        </div>
+      </div>
+      <div class="panel-box shadow">
+        <span class="panel-title">Theme Colors</span>
+        <ul class="color-box">
+          <li class="default" data-name="default" data-path="{% static 'css/color.css' %}"
+            data-image="{% static 'images/logo/logo-white.png' %}" data-target="{% static 'images/logo/logo.png' %}">
+          </li>
+          <li class="color-1" data-name="color-1" data-path="css/color/color-1.css' %}"
+            data-image="{% static 'images/logo/logo-white-light-green.png' %}"
+            data-target="{% static 'images/logo/logo-black-light-green.png' %}"></li>
+          <li class="color-2" data-name="color-2" data-path="{% static 'css/color/color-2.css' %}"
+            data-image="{% static 'images/logo/logo-white-light-yellow.png' %}"
+            data-target="{% static 'images/logo/logo-black-light-yellow.png' %}"></li>
+          <li class="color-3" data-name="color-3" data-path="{% static 'css/color/color-3.css' %}"
+            data-image="{% static 'images/logo/logo-white-green.png' %}"
+            data-target="{% static 'images/logo/logo-black-green.png' %}"></li>
+          <li class="color-4" data-name="color-4" data-path="css/color/color-4.css' %}"
+            data-image="{% static 'images/logo/logo-white-sky.png' %}"
+            data-target="{% static 'images/logo/logo-blue-sky.png' %}"></li>
+        </ul>
+      </div>
+    </div>
+    <!--  Color Settings End
+	==============================================-->
+
+  </body>
+
+</html>

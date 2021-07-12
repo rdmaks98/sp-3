@@ -19,10 +19,9 @@ urlpatterns = [
     path('faq',views.faq,name="faq"),
     path('invoice',views.invoice,name="invoice"),
     path('error404',views.error404,name="error404"),
-
-
-    
     path('register',views.register,name="register"),
+    # path('logout', views.logoutUser, name='logout'),
+    # path('category', views.categoryData, name='header'),
 ]
 
 if settings.DEBUG:

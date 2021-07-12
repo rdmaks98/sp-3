@@ -10,10 +10,14 @@ from .models import Agency
 # new 
 # from django.contrib import messages, auth
 from django.contrib.auth.models import User
+from Property.models import BrokerCategory,BrokerSubCategory
 
 # Create your views here.
 def index(request):
-    return render(request,"Property/index.html")
+    cat = BrokerCategory.objects.all()
+    subcat = BrokerSubCategory.objects.all()
+    # return render (request,'header.html',{'cat':cat})
+    return render(request,"Property/index.html",{'cat':cat,'subcat':subcat})
 
 def loginUser(request):
     if request.method == "POST":
@@ -111,3 +115,5 @@ def register(request):
     else:
         return render(request, 'user_page/register.html')
 
+# def categoryData(request):
+    
