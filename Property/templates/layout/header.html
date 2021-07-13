@@ -113,7 +113,7 @@
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="false">Category</a>
-                    <ul class="navbar-nav mx-auto">
+                    <!-- <ul class="navbar-nav mx-auto">
                       {% for i in cat %}
                       <li class="nav-item dropdown mega-menu">
                         <div>
@@ -125,7 +125,8 @@
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             {% for j in subcat %}
                             <a class="dropdown-item" href="#">
-                              {% if j.sub_category_id == i.id %} {{j.sub_name }}
+                              {% if j.sub_category_id == i.id %}
+                              {{j.sub_name }}
                               {% endif %}
                             </a>
                             {% endfor %}
@@ -133,15 +134,23 @@
                         </div>
                       </li>
                       {% endfor %}
-                    </ul>
+                    </ul> -->
                     <ul class="dropdown-menu shadow">
+                      {% for i in cat %}
                       <li class="dropdown">
-                        <a class="dropdown-toggle dropdown-item" href="{% url 'category' %}">Industrial</a>
+                        <a class="dropdown-toggle dropdown-item" href="{% url 'category' %}">{{i.name}}</a>
+
                         <ul class="dropdown-menu shadow">
-                          <li><a class="dropdown-item" href="{% url 'p_lists' %}">Shop</a>
+                          {% for j in subcat %}
+                          <li><a class="dropdown-item" href="{% url 'p_lists' %}">
+                              {% if j.sub_category_id == i.id %}
+                              {{j.sub_name }}
+                              {% endif %}</a>
                           </li>
+                          {% endfor %}
                         </ul>
                       </li>
+                      {% endfor %}
                       <li><a class="dropdown-item" href="{% url 'p_single' %}">Single Property</a>
                       </li>
                     </ul>
@@ -163,8 +172,7 @@
                     </ul>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">Pages</a>
+                    <a class="nav-link" href="#">Pages</a>
                     <ul class="dropdown-menu shadow">
 
                       <div class="row">
@@ -176,14 +184,11 @@
                           <li><a class="dropdown-item" href="{% url 'pricing' %}">Pricing</a>
                           </li>
                           <li><a class="dropdown-item" href="{% url 'faq' %}">FAq</a></li>
-                          <li><a class="dropdown-item" href="{% url 'invoice' %}">Invoice</a>
-                          </li>
+
                           <li><a class="dropdown-item" href="about-us.html">Property Tax</a>
                           </li>
-                          <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                          </li>
-                          <li><a class="dropdown-item" href="about-us.html">Favourite
-                              Property</a></li>
+
+
                           <li><a class="dropdown-item" href="{% url 'error404' %}">Error</a>
                           </li>
                         </div>
@@ -203,16 +208,30 @@
                     </form>
                   </li>
                 </ul>
-                <ul class="admin-info color-white-a">
+                <ul class="navbar-nav">
                   {% if user.is_authenticated %}
-                  <li>
-                    <a href="/logout">Logout</a>
+                  <li class=" nav-item dropdown">
                     Welcome {{ user.username }}
+                    <ul class="dropdown-menu"> 
+
+                      <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                      </li>
+                      <li><a class="dropdown-item" href="change password">change password</a>
+                      </li>
+                      <li><a class="dropdown-item" href="{% url 'invoice' %}">Invoice</a>
+                      </li>
+                      <li><a class="dropdown-item" href="about-us.html">Favourite
+                          Property</a></li>
+                      <li><a class="dropdown-item" href="about-us.html">Add
+                          Property</a></li>
+                      <li><a class="dropdown-item" href="/logout">Logout</a>
+                      </li>
+                    </ul>
                   </li>
                   {% else %}
-
-                  <li><a href="{% url 'login' %}">Sign In</a></li>
-                  <li><a href="register">Sign Up</a></li>
+                  <li class="admin-info color-white-a"><a href="{% url 'login' %}">Sign In</a></li>&nbsp;&nbsp;|
+                  &nbsp;&nbsp;
+                  <li class="admin-info color-white-a"><a href="register">Sign Up</a></li>
                   {% endif %}
                 </ul>
               </div>

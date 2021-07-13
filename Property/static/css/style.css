@@ -69,6 +69,20 @@
 ================================================================*/
 /*	01. Default Css
 ================================================================*/
+/* if you want add extra css so you can put here */
+.profile-setting-body
+{
+  display:block;
+  margin-top:110px;
+}
+
+/* img display  */
+.profile-img
+{
+  height:110px;
+  width:110px;
+}
+
 body{
 	font-family: 'Roboto', sans-serif;
 	font-size:16px;
@@ -4066,3 +4080,4 @@ price-range #debt-amount-slider::before,
     height: 100vh
   }
 }
+

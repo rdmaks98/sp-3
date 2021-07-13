@@ -5,7 +5,7 @@ from .forms import UserForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout as django_logout
 from django.contrib import messages,auth
-from .models import Agency
+from .models import Agency,Profile
 
 # new 
 # from django.contrib import messages, auth
@@ -78,10 +78,39 @@ def invoice(request):
 def error404(request):
     return render(request,"page/error404.html")
 
+# user profile
 def profile(request):
-    return render(request,"user_page/profile.html")
+    # check user is login then display email 
+    user = request.user
 
-# website user
+    # if profile is already submited then check in database
+    data = Profile.objects.filter(u_id=user.id).count()
+    if data > 0:
+        data = Profile.objects.get(u_id=user.id)
+        if data:
+            return render(request,'user_page/profile.html',{'user':user,'data':data})
+    # if this user data is not in the database then insert here
+    elif request.method == 'POST':
+        profile = Profile()
+        # if profile.is_valid():
+        profile.u_id = request.POST.get('u_id')
+        profile.name=request.POST.get('name')
+        profile.email=request.POST.get('email')
+        profile.mobile=request.POST.get('mobile')
+        profile.user_type=request.POST.get('user_type')
+        profile.profile = request.FILES.get('profile')
+        profile.dob = request.POST.get('dob')
+        profile.details = request.POST.get('details')
+        profile.save()
+        messages.success(request,"your profile is done")
+        return render(request,'user_page/profile.html',{'user':user})
+    else:
+        messages.error(request, 'Fill out all details')
+        return render(request,'user_page/profile.html',{'user':user})
+
+    return render(request,"user_page/profile.html",{'user':user})
+
+# common user register here
 def register(request):
     if request.method == 'POST':
         #Get form values

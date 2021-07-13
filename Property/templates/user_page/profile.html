@@ -1,236 +1,72 @@
-{% include 'layout/header.html' %}
-{% load static %}
-<!-- Page Content  -->
-<div id="content" class="bg-light">
-    <!-- Top Nav Start
-		=========================================================================-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-        <div class="container-fluid">
-
-            <button type="button" id="sidebarCollapse" class="py-5 px-15 color-white bg-primary">
-                <i class="fas fa-align-left"></i>
-            </button>
-            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <i class="fas fa-align-justify"></i>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="nav navbar-nav mobile ml-auto icon-white">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">More <i class="fa fa-angle-down"></i></a>
-                        <ul class="dropdown-menu shadow">
-                            <li><a class="dropdown-item" href="#">Option One</a></li>
-                            <li><a class="dropdown-item" href="#">Option Two</a></li>
-                            <li><a class="dropdown-item" href="#">Option Three</a></li>
-                            <li><a class="dropdown-item" href="#">Option Four</a></li>
-                            <li><a class="dropdown-item" href="#">Option Five</a></li>
+{% extends 'Property/base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8 col-xl-8">
+            <div class="profile-setting-body">
+                <form class="update-information" id="prospects_form" method="POST" action="/profile"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <ul class="user-img p-30 mb-30 bg-gray d-table w-100">
+                            <li><img src="{{data.profile.url}}" class="profile-img fa fa-camera"></li>
+                            <li class="mt-15 ml-15">
+                                <h5 class="inner-title color-secondary">Upload a New Photo</h5>
+                                <input name="profile" class="form-control col-xl-6" type="file">
+                            </li>
                         </ul>
-                    </li>
-                    <li><button class="btn btn-primary h-100">Submit Property</button></li>
-                    <li><a href="#"><i class="fa fa-bell"></i> <sup class="color-primary">(9)</sup></a></li>
-                    <li><a href="#"><i class="fa fa-comments"></i> <sup class="color-primary">(18)</sup></a></li>
-                </ul>
-                <div class="dashboard-admin py-10">
-                    <ul class="nav navbar-nav ml-auto position-relative">
-                        <li class="nav-item dropdown">
-                            <div class="admin-nav">
-                                <div class="d-table float-left text-right pr-15">
-                                    <h6 class="admin color-white">George Jr.</h6>
-                                    <span class="color-primary">Admin</span>
-                                </div>
-                                <div class="float-left"><img src="images/admin.jpg" alt="admin-image"></div>
-                            </div>
-                            <ul class="admin-dropdown shadow bg-white py-5 icon-primary">
-                                <li><a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Inbox</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fa fa-cog"></i> Setting</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Top Nav End
-		=========================================================================-->
-
-    <!-- Dashboard Content Start
-		=========================================================================-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-7">
-                <div class="dashboard-title mt-15 mb-30">
-                    <h2 class="title color-secondary">Personal Information</h2>
-                    <p>Manage Personal Information</p>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-5">
-                <div class="admin-setting mt-40">
-                    <ul>
-                        <li><a class="ml-5" href="#"><i class="fa fa-cog"></i></a></li>
-                        <li><a href="#"><i class="fa fa-refresh"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Personal Information Start
-				==================================================-->
-            <div class="col-md-5 col-lg-5 col-xl-3">
-                <div class="personal-info-img">
-                    <img src="images/admin.jpg" alt="image">
-                    <div class="d-table btn-group mt-20">
-                        <button class="btn btn-primary mr-5" value="upload">Upload</button>
-                        <button class="btn btn-primary">Delete</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-7 col-lg-7 col-xl-2">
-                <div class="personal-details">
-                    <h4 class="inner-title color-secondary">Karl Luis Fernandies</h4>
-                    <span class="color-gray-light mt-5 d-table">Category: Agent</span>
-                    <span class="color-gray-light d-table">User ID: #6826</span>
-                    <ul class="my-15">
-                        <li><label>Phone:</label> (+032) 123 456 789</li>
-                        <li><label>Email:</label> info@yourdomain.com</li>
-                        <li><label>DOB:</label> 12/07/1985</li>
-                        <li class="mb-15 d-table">
-                            <label class="mr-10">Reviews:</label> <span>(78)</span>
-                            <ul class="review color-primary">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star-o"></i></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="work-experience position-relative bg-secondary color-white d-table p-30">
-                        <div class="position-relative text-center">
-                            <h3 class="experience color-primary">20<sup>+</sup></h3>
-                            <span class="tag">Years of<br>Experience</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-7">
-                <div class="description">
-                    <p>Aliquet leo lacinia nam At est placerat tortor interdum sodales nulla vehicula primis inceptos et
-                        vitae sit. Hymenaeos Ru vulputate ut eleifend facilisi, egestas del congue, blandit ipsum mus
-                        sagittis molestie arcu. Placerat lobortis hendrerit auctor ant; Phasellus, et neque sem nascetur
-                        vehicula lacus torquent ligula. Urna praesent eros gravida montes cum ullamcorper.</p>
-                    <p class="my-15">Cras aliquam consectetuer hac. Amet odio, hac interdum sed ultricies molestie
-                        libero pede tortor habitasse, curabitur pulvinar etiam odio blandit proin, eu. Auctor leo
-                        consequat urna dictumst vestibulum cras facilisi dictum sagittis. Urna praesent eros gravida
-                        montes aliquam ante egestas rutrum euismod sapien egestas aeneanal pede. Senectus dapibus quis
-                        ipsum dui augue Habitant mi ultrices nonummy nisl Interdum purus egestas diam inceptos conubia
-                        tortor.</p>
-                    <div class="feedback-area bg-gray px-30 mt-30">
-                        <h3 class="inner-title color-secondary mb-15">Give a Feedback of My Work</h3>
-                        <form class="row" action="#" method="post">
-                            <div class="form-group col-xl-6">
-                                <input class="form-control" type="text" name="name" placeholder="Name*">
-                            </div>
-                            <div class="form-group col-xl-6">
-                                <input class="form-control" type="email" name="email" placeholder="Email*">
-                            </div>
-                            <div class="form-group col-xl-12">
-                                <textarea class="form-control" rows="4" placeholder="Comment"></textarea>
-                            </div>
-                            <div class="form-group col-xl-6">
-                                <h5 class="inner-title color-secondary float-left mr-10">Give a Rating:</h5>
-                                <ul class="review color-primary">
-                                    <li><i class="fa fa-star-o"></i></li>
-                                    <li><i class="fa fa-star-o"></i></li>
-                                    <li><i class="fa fa-star-o"></i></li>
-                                    <li><i class="fa fa-star-o"></i></li>
-                                    <li><i class="fa fa-star-o"></i></li>
-                                </ul>
-                            </div>
-                            <div class="form-group col-xl-6">
-                                <button class="btn btn-primary w-100">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-12">
-                <div class="row">
-                    <div class="bg-gray py-80 px-30 w-100">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <h4 class="inner-title color-secondary mb-30">Account Information</h4>
-                            </div>
-                        </div>
-                        <form class="update-information">
+                        <div class="bg-gray py-80 px-30 w-100">
                             <div class="row">
-                                <div class="form-group col-xl-4">
-                                    <input class="form-control" type="text" name="text" placeholder="User ID">
-                                </div>
-                                <div class="form-group col-xl-4">
-                                    <input class="form-control" type="text" name="text" placeholder="Name">
-                                </div>
-                                <div class="form-group col-xl-4">
-                                    <input class="form-control" type="text" name="text" placeholder="Category">
-                                </div>
-                                <div class="form-group col-xl-4">
-                                    <input class="form-control" type="email" name="email" placeholder="Email">
-                                </div>
-                                <div class="form-group col-xl-4">
-                                    <input class="form-control" type="text" name="text" placeholder="Phone (+023)">
-                                </div>
-                                <div class="form-group col-xl-4">
-                                    <input class="form-control" type="date" name="text" placeholder="Date of Birth">
-                                </div>
-                                <div class="form-group col-xl-12">
-                                    <textarea class="form-control" rows="7"
-                                        placeholder="Write About Yourself"></textarea>
-                                </div>
                                 <div class="col-xl-12">
-                                    <h4 class="inner-title color-secondary my-30">Location Info</h4>
-                                </div>
-                                <div class="form-group col-xl-4">
-                                    <input class="form-control" type="text" name="text" placeholder="Address Line">
-                                </div>
-                                <div class="form-group col-xl-4">
-                                    <input class="form-control" type="text" name="text"
-                                        placeholder="Address Line (Optional)">
-                                </div>
-                                <div class="form-group col-xl-4">
-                                    <select class="form-control">
-                                        <option>Select Country</option>
-                                        <option>USA</option>
-                                        <option>UK</option>
-                                        <option>CAN</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-xl-4">
-                                    <input class="form-control" type="text" name="text" placeholder="City/State">
-                                </div>
-                                <div class="form-group col-xl-4">
-                                    <input class="form-control" type="text" name="text" placeholder="Zip Code">
-                                </div>
-                                <div class="form-group col-xl-4">
-                                    <button class="btn btn-primary w-100">Save Change</button>
-                                </div>
-                                <div class="col-xl-12">
-                                    <span class="mt-30 d-inline-block"><strong class="color-primary">Note:</strong>
-                                        Senectus malesuada gravida sit torquent hendrerit porta iaculis mattis.
-                                        Hendrerit nunc taciti placerat turpis praesent consectetuer natoque habitant
-                                        posuere eleifend hac ligula sodales. Porta Vulputate tincidunt donec a fames
-                                        consectetuer aliquet. Dolor fringilla odio ipsum ac porttitor id, non
-                                        cras.</span>
+                                    <h4 class="inner-title color-secondary mb-30">Account Information</h4>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                </div>
+                            {% include 'layout/message.html' %}
+                            <div class="row">
+
+                                <input class="form-control" type="hidden" name="u_id" value="{{user.id}}"
+                                    placeholder="User ID">
+                                <div class="form-group col-xl-6">
+                                    <input class="form-control" type=" text" value="{{data.name}}" name="name"
+                                        placeholder="Name">
+                                </div>
+                                <div class="form-group col-xl-6">
+                                    <input class="form-control" value="{{user.email}}" type="email" name="email"
+                                        placeholder="Email" readonly>
+                                </div>
+                                <div class="form-check col-xl-6">
+                                    <input class="form-check-input" type="radio" name="user_type"
+                                        value="broker">Broker<br>
+                                    <input class="form-check-input" type="radio" name="user_type"
+                                        value="data.user_type">User
+                                </div>
+                                <div class="form-group col-xl-6">
+                                    <input class="form-control" type="text" name="mobile" value="{{data.mobile}}"
+                                        placeholder="Mobile number">
+                                </div>
+
+                                <div class="form-group col-xl-6">
+                                    <input class="form-control" type="date" name="dob" value="{{data.dob}}"
+                                        placeholder="Date of Birth">
+                                </div>
+                                <div class="form-group col-xl-6">
+                                    <textarea class="form-control" name="details" rows="4"
+                                        placeholder="Write About Yourself">{{data.details}}</textarea>
+                                </div>
+                                <button class="form-control btn btn-lg btn-info" type="submit">Submit</button>
+                            </div>
+                </form>
             </div>
-            <!-- Submit Property End
-				=========================================================================-->
         </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
     </div>
 </div>
-{% include 'layout/footer.html' %}
+</div>
+</div>
+{% endblock %}
+<script>
+    $("#prospects_form").submit(function (e) {
+        e.preventDefault();
+    });
+</script>
