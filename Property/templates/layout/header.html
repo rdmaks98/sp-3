@@ -107,12 +107,12 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <ul class="navbar-nav mx-auto">
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a class="nav-link" href="{% url 'index' %}" role="button">Home</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">Category</a>
+                      aria-haspopup="true" aria-expanded="false">Category</a> -->
                     <ul class="navbar-nav mx-auto">
                       {% for i in cat %}
                       <li class="nav-item dropdown mega-menu">
@@ -123,10 +123,11 @@
                           </a>
 
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            {% for j in subcat %}
-                            <a class="dropdown-item" href="#">
-                              {% if j.sub_category_id == i.id %} {{j.sub_name }}
-                              {% endif %}
+                            {% for j in i.brokersubcategory_set.all %}
+                            <a class="dropdown-item" href="">
+                              
+                              {{j.sub_name }}
+                              
                             </a>
                             {% endfor %}
                           </div>
@@ -134,7 +135,7 @@
                       </li>
                       {% endfor %}
                     </ul>
-                    <ul class="dropdown-menu shadow">
+                    <!-- <ul class="dropdown-menu shadow">
                       <li class="dropdown">
                         <a class="dropdown-toggle dropdown-item" href="{% url 'category' %}">Industrial</a>
                         <ul class="dropdown-menu shadow">
@@ -201,7 +202,7 @@
                         <i class="fa fa-times"></i>
                       </span>
                     </form>
-                  </li>
+                  </li> -->
                 </ul>
                 <ul class="admin-info color-white-a">
                   {% if user.is_authenticated %}
