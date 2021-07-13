@@ -107,13 +107,18 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <ul class="navbar-nav mx-auto">
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a class="nav-link" href="{% url 'index' %}" role="button">Home</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+<<<<<<< HEAD
                       aria-haspopup="true" aria-expanded="false">Category</a>
                     <!-- <ul class="navbar-nav mx-auto">
+=======
+                      aria-haspopup="true" aria-expanded="false">Category</a> -->
+                    <ul class="navbar-nav mx-auto">
+>>>>>>> origin/aakash
                       {% for i in cat %}
                       <li class="nav-item dropdown mega-menu">
                         <div>
@@ -123,20 +128,33 @@
                           </a>
 
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<<<<<<< HEAD
                             {% for j in subcat %}
                             <a class="dropdown-item" href="#">
                               {% if j.sub_category_id == i.id %}
                               {{j.sub_name }}
                               {% endif %}
+=======
+                            {% for j in i.brokersubcategory_set.all %}
+                            <a class="dropdown-item" href="">
+                              
+                              {{j.sub_name }}
+                              
+>>>>>>> origin/aakash
                             </a>
                             {% endfor %}
                           </div>
                         </div>
                       </li>
                       {% endfor %}
+<<<<<<< HEAD
                     </ul> -->
                     <ul class="dropdown-menu shadow">
                       {% for i in cat %}
+=======
+                    </ul>
+                    <!-- <ul class="dropdown-menu shadow">
+>>>>>>> origin/aakash
                       <li class="dropdown">
                         <a class="dropdown-toggle dropdown-item" href="{% url 'category' %}">{{i.name}}</a>
 
@@ -206,7 +224,7 @@
                         <i class="fa fa-times"></i>
                       </span>
                     </form>
-                  </li>
+                  </li> -->
                 </ul>
                 <ul class="navbar-nav">
                   {% if user.is_authenticated %}
