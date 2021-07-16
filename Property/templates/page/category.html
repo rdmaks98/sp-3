@@ -1,5 +1,4 @@
 {% extends 'Property/base.html' %}
-{% load static%}
 {% block content %}
 <!-- Page Banner Start
 ==================================================================-->
@@ -7,7 +6,7 @@
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-lg-12">
-                <h1 class="page-banner-title color-primary">Property List</h1>
+                <h1 class="page-banner-title color-primary">{{ catdata.name }}</h1>
                 <div class="text-area w-50 mt-15 color-white">
                     <p>Porttitor luctus est sit lacinia non praesent aptent hymenaeos taciti tortor. Sociosq platea
                         porta facilisis vitae dictum bibendun tellus ante fusce vulputate dolor lorem vulputate hac
@@ -17,6 +16,7 @@
         </div>
     </div>
 </div>
+
 <div class="bg-secondary">
     <div class="container">
         <div class="row">
@@ -24,7 +24,8 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb m-0 py-15 px-0 bg-transparent hover-white-primary">
                         <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{% url 'category' %}">category</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'category' catdata.id %}">category</a></li>
+
                     </ol>
                 </nav>
             </div>
@@ -33,6 +34,7 @@
 </div>
 <!-- Page Banner End
 ==================================================================-->
+{% load static %}
 <!-- Property Grid Start
 ==================================================================-->
 <section class="bg-light">
@@ -92,9 +94,9 @@
                             <div class="select-wrapper position-relative mt-5">
                                 <select class="select form-control">
                                     <option>Select Category</option>
-                                    <option>Buy</option>
-                                    <option>Rent</option>
-                                    <option>Sale</option>
+                                    {% for c in catall %}
+                                    <option>{{c.name}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -102,9 +104,10 @@
                             <label>Country</label>
                             <div class="select-wrapper position-relative">
                                 <select class="select form-control">
-                                    <option>Select Country</option>
-                                    <option>USA</option>
-
+                                    <option>Select subcategory</option>
+                                    {% for subcat in subcatall %}
+                                    <option>{{subcat.sub_name}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -155,14 +158,13 @@
                                         </ul>
                                         <div class="meta-property icon-primary color-white z-index-1">
                                             <ul>
-                                                <li><i class="fa fa-calendar"></i> 06/27/2020</li>
-                                                <li><i class="fa fa-user"></i> James Bond</li>
+                                                <li><i class="fa fa-user"></i>admin</li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="property-content bg-white pt-30 pb-50 px-30">
                                         <a class="color-secondary mb-5" href="single-property.html">
-                                            <h4>park Avanue Apartment.</h4>
+                                            <h4></h4>
                                         </a>
                                         <span class="address icon-primary f-14"><i class="fa fa-map-marker"></i>366
                                             Glenmore Ave, Brooklyn, USA.</span>

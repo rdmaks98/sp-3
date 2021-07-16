@@ -7,7 +7,7 @@
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-lg-12">
-                <h1 class="page-banner-title color-primary">Property Thumbnail</h1>
+                <h1 class="page-banner-title color-primary">{{subcat.sub_name}}</h1>
                 <div class="text-area w-50 mt-15 color-white">
                     <p>Porttitor luctus est sit lacinia non praesent aptent hymenaeos taciti tortor. Sociosq platea
                         porta facilisis vitae dictum bibendun tellus ante fusce vulputate dolor lorem vulputate hac
@@ -24,9 +24,10 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb m-0 py-15 px-0 bg-transparent hover-white-primary">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">category</a></li>
-                        <li class="breadcrumb-item"><a href="#">sub category</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">list property</li>
+                        <li class="breadcrumb-item"><a href="{% url 'category' subcat.sub_category_id %}">category</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="{% url 'p_lists' subcat.id %}">sub category</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{subcat.sub_name}}</li>
                     </ol>
                 </nav>
             </div>

@@ -95,7 +95,7 @@
         <div class="row">
           <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg navbar-light px-0">
-              <a class="navbar-brand" href="index.html">
+              <a class="navbar-brand" href="{% url 'index' %}">
                 <img class="" src="{% static 'images/logo/logo-white.png' %}" alt="logo" height="90px" width="80px">
               </a>
               <button class="toggle-btn" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -105,65 +105,21 @@
                 <span></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                 <ul class="navbar-nav mx-auto">
-                  <!-- <li class="nav-item">
+                  <li class="nav-item">
                     <a class="nav-link" href="{% url 'index' %}" role="button">Home</a>
                   </li>
+                  <!-- show category and subcategory -->
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-<<<<<<< HEAD
                       aria-haspopup="true" aria-expanded="false">Category</a>
-                    <!-- <ul class="navbar-nav mx-auto">
-=======
-                      aria-haspopup="true" aria-expanded="false">Category</a> -->
-                    <ul class="navbar-nav mx-auto">
->>>>>>> origin/aakash
-                      {% for i in cat %}
-                      <li class="nav-item dropdown mega-menu">
-                        <div>
-                          <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            {{i.name}}
-                          </a>
-
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<<<<<<< HEAD
-                            {% for j in subcat %}
-                            <a class="dropdown-item" href="#">
-                              {% if j.sub_category_id == i.id %}
-                              {{j.sub_name }}
-                              {% endif %}
-=======
-                            {% for j in i.brokersubcategory_set.all %}
-                            <a class="dropdown-item" href="">
-                              
-                              {{j.sub_name }}
-                              
->>>>>>> origin/aakash
-                            </a>
-                            {% endfor %}
-                          </div>
-                        </div>
-                      </li>
-                      {% endfor %}
-<<<<<<< HEAD
-                    </ul> -->
                     <ul class="dropdown-menu shadow">
                       {% for i in cat %}
-=======
-                    </ul>
-                    <!-- <ul class="dropdown-menu shadow">
->>>>>>> origin/aakash
                       <li class="dropdown">
-                        <a class="dropdown-toggle dropdown-item" href="{% url 'category' %}">{{i.name}}</a>
-
+                        <a class="dropdown-toggle dropdown-item" href="{% url 'category' i.id %}">{{i.name}}</a>
                         <ul class="dropdown-menu shadow">
-                          {% for j in subcat %}
-                          <li><a class="dropdown-item" href="{% url 'p_lists' %}">
-                              {% if j.sub_category_id == i.id %}
-                              {{j.sub_name }}
-                              {% endif %}</a>
+                          {% for j in i.brokersubcategory_set.all %}
+                          <li><a class="dropdown-item" href="{% url 'p_lists' j.id %}">{{j.sub_name }}</a>
                           </li>
                           {% endfor %}
                         </ul>
@@ -190,23 +146,25 @@
                     </ul>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link" href="#">Pages</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">Pages</a>
                     <ul class="dropdown-menu shadow">
-
                       <div class="row">
                         <div class="col-xl-3 col-lg-3">
-
                           <li><a class="dropdown-item" href="{% url 'about-us' %}">About</a>
                           </li>
                           <li><a class="dropdown-item" href="{% url 'services' %}">Services</a></li>
                           <li><a class="dropdown-item" href="{% url 'pricing' %}">Pricing</a>
                           </li>
                           <li><a class="dropdown-item" href="{% url 'faq' %}">FAq</a></li>
-
+                          <li><a class="dropdown-item" href="{% url 'invoice' %}">Invoice</a>
+                          </li>
                           <li><a class="dropdown-item" href="about-us.html">Property Tax</a>
                           </li>
-
-
+                          <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                          </li>
+                          <li><a class="dropdown-item" href="about-us.html">Favourite
+                              Property</a></li>
                           <li><a class="dropdown-item" href="{% url 'error404' %}">Error</a>
                           </li>
                         </div>
@@ -224,17 +182,17 @@
                         <i class="fa fa-times"></i>
                       </span>
                     </form>
-                  </li> -->
+                  </li>
                 </ul>
                 <ul class="navbar-nav">
                   {% if user.is_authenticated %}
                   <li class=" nav-item dropdown">
                     Welcome {{ user.username }}
-                    <ul class="dropdown-menu"> 
+                    <ul class="dropdown-menu">
 
                       <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                       </li>
-                      <li><a class="dropdown-item" href="change password">change password</a>
+                      <li><a class="dropdown-item" href="{% url 'passwordchange' %}">change password</a>
                       </li>
                       <li><a class="dropdown-item" href="{% url 'invoice' %}">Invoice</a>
                       </li>

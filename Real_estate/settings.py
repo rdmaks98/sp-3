@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'phone_field'
 ]
 
-# AUTH_USER_MODEL = 'Property.Myuser' 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,7 +127,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# STATIC_URL = '/static/'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 # for file uploading use
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
