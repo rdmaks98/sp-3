@@ -189,25 +189,29 @@
                   <li class=" nav-item dropdown">
                     Welcome {{ user.username }}
                     <ul class="dropdown-menu">
-
-                      <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                      </li>
-                      <li><a class="dropdown-item" href="{% url 'passwordchange' %}">change password</a>
-                      </li>
+                      {% if profile.user_type == "broker" %}
+                      <li> <h4>you are {{profile.user_type}}</h4></li>
+                      <li><a class="dropdown-item" href={% url 'addAgency' %}>Add agency</a></li>
+                      <li><a class="dropdown-item" href="">Add Property</a></li>
+                      {% elif profile.user_type == "user" %}
                       <li><a class="dropdown-item" href="{% url 'invoice' %}">Invoice</a>
                       </li>
                       <li><a class="dropdown-item" href="about-us.html">Favourite
                           Property</a></li>
-                      <li><a class="dropdown-item" href="about-us.html">Add
-                          Property</a></li>
+                      {% endif %}
+                      <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                      </li>
+                      <li><a class="dropdown-item" href="{% url 'passwordchange' %}">change password</a>
+                      </li>
                       <li><a class="dropdown-item" href="/logout">Logout</a>
                       </li>
+                     
                     </ul>
                   </li>
                   {% else %}
                   <li class="admin-info color-white-a"><a href="{% url 'login' %}">Sign In</a></li>&nbsp;&nbsp;|
                   &nbsp;&nbsp;
-                  <li class="admin-info color-white-a"><a href="register">Sign Up</a></li>
+                  <li class="admin-info color-white-a"><a href="{% url 'register' %}">Sign Up</a></li>
                   {% endif %}
                 </ul>
               </div>

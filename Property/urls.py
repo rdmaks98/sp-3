@@ -12,15 +12,16 @@ urlpatterns = [
     path('logout',views.logoutUser,name="logout"),
     path('profile',views.profile,name="profile"),
     # path('changepassword',views.Changepassword,name="changepassword"),
-    path('passwordchange/', auth_views.PasswordChangeView.as_view(template_name='user_page/passwordchange.html',
-                                                                  form_class=MyPasswordChangeForm, success_url='/passwordchangedone/'), name='passwordchange'),
+    path('passwordchange/', auth_views.PasswordChangeView.as_view(template_name='user_page/passwordchange.html',form_class=MyPasswordChangeForm, success_url='/passwordchangedone/'), name='passwordchange'),
 
     # path('passwordchangedone/', auth_views.PasswordChangeDoneView.as_view(
     #     template_name='user_page/password_change_done.html'), name="passwordchangedone"),
 
+
     path('category/<int:id>',views.category,name="category"),
     path('p_lists/<int:id>',views.p_lists,name="p_lists"),
     path('p_single',views.p_single,name="p_single"),
+    path('addAgency',views.addAgency,name="addAgency"),
     path('agency',views.agency,name="agency"),
     path('broker',views.broker,name="broker"),
     path('about-us',views.about,name="about-us"),

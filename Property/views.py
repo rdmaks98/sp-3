@@ -14,14 +14,19 @@ from django.contrib import messages,auth
 from django.contrib.auth.models import User
 
 # import models 
-from .models import Agency,Profile,BrokerCategory,BrokerSubCategory
+from .models import Profile,BrokerCategory,BrokerSubCategory
 
 # Create your views here.
 
 # index page 
 def index(request):
+    user = request.user
     cat = BrokerCategory.objects.all()
     subcat = BrokerSubCategory.objects.all()
+    userid = Profile.objects.filter(u_id=user.id).count()
+    if userid > 0:
+        profile = Profile.objects.get(u_id=user.id)
+        return render(request,"Property/index.html",{'cat':cat,'subcat':subcat,'profile':profile})
     # return render (request,'header.html',{'cat':cat})
     return render(request,"Property/index.html",{'cat':cat,'subcat':subcat})
 
@@ -104,12 +109,11 @@ def profile(request):
         profile.details = request.POST.get('details')
         profile.save()
         messages.success(request,"your profile is done")
-        return render(request,'user_page/profile.html',{'user':user})
+        return render(request,'user_page/profile.html')
     else:
         messages.error(request, 'Fill out all details')
         return render(request,'user_page/profile.html',{'user':user})
-
-    return render(request,"user_page/profile.html",{'user':user})
+    return redirect('user_page/profile.html',{'user':user})
 
 def category(request,id):
     # show particular id wise property
@@ -130,16 +134,11 @@ def p_single(request):
 
 
 def agency(request):
-    if request.method == 'POST':
-        name = request.POST['name']
-        email = request.POST['email']
-        mobile = request.POST['mobile']
-        image = request.FILES['image']
-        data = Agency(name=name,email=email,mobile=mobile,image=image)
-        data.save()
-        
     return render(request,"page/agency.html")
-     
+
+def addAgency(request):
+    return render(request,"page/addAgency.html")
+
 def broker(request):
     return render(request,"page/broker.html")
 

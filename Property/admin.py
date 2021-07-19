@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.conf import settings
-from .models import Agency,Profile,BrokerCategory,BrokerSubCategory
+from .models import Profile,BrokerCategory,BrokerSubCategory,Agency
 
 # Register your models here.
 admin.site.register(Agency)
