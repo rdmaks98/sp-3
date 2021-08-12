@@ -5,17 +5,17 @@ from django.contrib.auth.models import User
 
 
 # user profile 
-class Profile(models.Model):
-    u_id = models.IntegerField(primary_key=True)
+class UserProfile(models.Model):
+    id = models.IntegerField(primary_key=True)
+    userid = models.ForeignKey(User, on_delete=models.CASCADE,default=None)
     name = models.CharField(max_length=40)
     email = models.CharField(max_length=40)
     mobile = PhoneField(blank=True, help_text='Contact phone number')
-    profile = models.ImageField(upload_to="Property/images/profile",default="")
+    profile = models.ImageField(upload_to="Property/images/profile")
     user = (('user','user'),
             ('broker','broker'))
     user_type = models.CharField(max_length=10,choices=user,default="user")
     details = models.CharField(max_length=200)
-    dob = models.DateField(("Date"),default=datetime.date.today)
     
     def __str__(self):
         return self.name + " " + self.user_type 
@@ -35,11 +35,11 @@ class BrokerSubCategory(models.Model):
 
 
 class Agency(models.Model):
-    id = models.IntegerField(primary_key=True,default="")
-    u_id = models.ForeignKey(User, on_delete=models.CASCADE,default="")
+    id = models.IntegerField(primary_key=True,default=0)
+    u_id = models.ForeignKey(User, on_delete=models.CASCADE,default=0)
     a_name = models.CharField(max_length=200,default="")
     a_image = models.ImageField(upload_to="Property/images/agency/",default="")
     a_address = models.CharField(max_length=200,default="")
 
     def __str__(self): 
-        return self.all
+        return self.a_name 

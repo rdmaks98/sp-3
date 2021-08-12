@@ -14,21 +14,25 @@ from django.contrib import messages,auth
 from django.contrib.auth.models import User
 
 # import models 
-from .models import Profile,BrokerCategory,BrokerSubCategory
+from .models import UserProfile,BrokerCategory,BrokerSubCategory,Agency
+
+# import form
+from .forms import AddAgency 
 
 # Create your views here.
-
 # index page 
 def index(request):
-    user = request.user
+    
     cat = BrokerCategory.objects.all()
     subcat = BrokerSubCategory.objects.all()
-    userid = Profile.objects.filter(u_id=user.id).count()
-    if userid > 0:
-        profile = Profile.objects.get(u_id=user.id)
-        return render(request,"Property/index.html",{'cat':cat,'subcat':subcat,'profile':profile})
-    # return render (request,'header.html',{'cat':cat})
-    return render(request,"Property/index.html",{'cat':cat,'subcat':subcat})
+    agency = Agency.objects.all().order_by('-id')[0:4]
+    company = Agency.objects.count()
+    brokers = UserProfile.objects.filter(user_type='broker').count()
+    data = UserProfile.objects.filter(userid_id=request.user.id).count()
+    if data > 0:
+        profile = UserProfile.objects.get(userid_id=request.user.id)
+        return render(request,"Property/index.html",{'cat':cat,'subcat':subcat,'agency':agency,'profile':profile,'company':company,'brokers':brokers})
+    return render(request,"Property/index.html",{'cat':cat,'subcat':subcat,'agency':agency,'company':company,'brokers':brokers})
 
 # common user register here
 def register(request):
@@ -72,7 +76,7 @@ def loginUser(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request,user)
-            return redirect('index')
+            return redirect('profile')
         else:
             messages.error(request, 'Invalid credentials')
             return render(request,'user_page/login.html')
@@ -86,39 +90,30 @@ def logoutUser(request):
 
 # user profile
 def profile(request):
-    # check user is login then display email 
     user = request.user
-
-    # if profile is already submited then check in database
-    data = Profile.objects.filter(u_id=user.id).count()
-    if data > 0:
-        data = Profile.objects.get(u_id=user.id)
-        if data:
-            return render(request,'user_page/profile.html',{'user':user,'data':data})
     # if this user data is not in the database then insert here
-    elif request.method == 'POST':
-        profile = Profile()
+    if request.method == 'POST':
+        add = UserProfile()
         # if profile.is_valid():
-        profile.u_id = request.POST.get('u_id')
-        profile.name=request.POST.get('name')
-        profile.email=request.POST.get('email')
-        profile.mobile=request.POST.get('mobile')
-        profile.user_type=request.POST.get('user_type')
-        profile.profile = request.FILES.get('profile')
-        profile.dob = request.POST.get('dob')
-        profile.details = request.POST.get('details')
-        profile.save()
+        add.userid_id = request.user.id
+        add.name=request.POST.get('name')
+        add.email=request.POST.get('email')
+        add.mobile=request.POST.get('mobile')
+        add.user_type=request.POST.get('user_type')
+        add.profile = request.FILES.get('profile')
+        add.dob = request.POST.get('dob')
+        add.details = request.POST.get('details')
+        add.save()
         messages.success(request,"your profile is done")
-        return render(request,'user_page/profile.html')
+        return render(request,'user_page/profile.html',{'user':user})
     else:
-        messages.error(request, 'Fill out all details')
+        # messages.error(request, 'Fill out all details')
         return render(request,'user_page/profile.html',{'user':user})
     return redirect('user_page/profile.html',{'user':user})
 
 def category(request,id):
     # show particular id wise property
     catdata = BrokerCategory.objects.get(id=id)
-
     # using this we can show selectbox catgory
     catall = BrokerCategory.objects.all()
     subcatall = BrokerSubCategory.objects.all()
@@ -127,38 +122,81 @@ def category(request,id):
 
 def p_lists(request,id):
     subcat = get_object_or_404(BrokerSubCategory,id=id)
-    return render(request,"page/p_lists.html",{'subcat':subcat})
+    cat = BrokerCategory.objects.all()
+    return render(request,"page/p_lists.html",{'subcat':subcat,'cat':cat})
 
 def p_single(request):
-    return render(request,"page/p_single.html")
-
+    cat = BrokerCategory.objects.all()
+    subcat = BrokerSubCategory.objects.all()
+    return render(request,"page/p_single.html",{'cat':cat,'subcat':subcat})
 
 def agency(request):
-    return render(request,"page/agency.html")
+    # fetch cat,user and subcat data 
+    cat = BrokerCategory.objects.all()
+    subcat = BrokerSubCategory.objects.all()
+    agency = Agency.objects.all().order_by('-id')[0:4]
+    return render(request,"page/agency.html",{'cat':cat,'subcat':subcat,'agency':agency})
 
 def addAgency(request):
-    return render(request,"page/addAgency.html")
+    # fetched data from database
+    cat = BrokerCategory.objects.all()
+    subcat = BrokerSubCategory.objects.all()
+    agency = Agency.objects.all().filter(u_id_id=request.user.id)
+    # add agency data in the database with form
+    if request.method == 'POST':
+        form = AddAgency(request.POST,request.FILES)
+        if form.is_valid():
+            # save the form data to model
+            user = request.user.id
+            a_name = form.cleaned_data['a_name']
+            a_image = form.cleaned_data['a_image']
+            a_address = form.cleaned_data['a_address']
+            agency = Agency(u_id_id=user, a_name=a_name, a_image=a_image, a_address=a_address)
+            agency.save()
+            messages.success(request, 'Your agency add successfully')
+            return render(request,"page/Agency.html",{'cat':cat,'subcat':subcat,'form':form})
+        else:
+            messages.error(request, 'Fill all detail and enter valid value')
+            return redirect('addAgency') 
+    else:
+        form = AddAgency()
+        return render(request,"page/addAgency.html",{'cat':cat,'subcat':subcat,'form':form,'agency':agency})
+
+    return render(request,"page/addAgency.html",{'cat':cat,'subcat':subcat,'agency':agency})
 
 def broker(request):
-    return render(request,"page/broker.html")
+    brokers = UserProfile.objects.filter(user_type="broker").all()
+    return render(request,"page/broker.html",{'brokers':brokers})
 
 def about(request):
-    return render(request,"page/about-us.html")
+    cat = BrokerCategory.objects.all()
+    subcat = BrokerSubCategory.objects.all()
+    return render(request,"page/about-us.html",{'cat':cat,'subcat':subcat})
 
 def services(request):
-    return render(request,"page/services.html")
+    cat = BrokerCategory.objects.all()
+    subcat = BrokerSubCategory.objects.all()
+    return render(request,"page/services.html",{'cat':cat,'subcat':subcat})
 
 def pricing(request):
-    return render(request,"page/pricing.html")
+    cat = BrokerCategory.objects.all()
+    subcat = BrokerSubCategory.objects.all()
+    return render(request,"page/pricing.html",{'cat':cat,'subcat':subcat})
 
 def faq(request):
-    return render(request,"page/faq.html")
+    cat = BrokerCategory.objects.all()
+    subcat = BrokerSubCategory.objects.all()
+    return render(request,"page/faq.html",{'cat':cat,'subcat':subcat})
 
 def invoice(request):
-    return render(request,"page/invoice.html")
+    cat = BrokerCategory.objects.all()
+    subcat = BrokerSubCategory.objects.all()
+    return render(request,"page/invoice.html",{'cat':cat,'subcat':subcat})
 
 def error404(request):
-    return render(request,"page/error404.html")
+    cat = BrokerCategory.objects.all()
+    subcat = BrokerSubCategory.objects.all()
+    return render(request,"page/error404.html",{'cat':cat,'subcat':subcat})
 
 
 # def categoryData(request):

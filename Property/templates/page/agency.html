@@ -109,14 +109,15 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
+                        {% for showagency in agency %}
                             <div class="col-md-12 col-lg-6 wow slideInDown animated">
                                 <div class="agencies mt-30 py-40 px-30 bg-white hover-secondery-primary">
-                                    <a href="#"><img src="{% static 'images/partner/1.png' %}" alt="image"></a>
+                                    <a href="#"><img src="{{showagency.a_image.url}}" alt="image"></a>
                                     <div class="agencies-content mt-10">
                                         <a href="#">
-                                            <h4>Homelax Builders</h4>
+                                            <h4>{{showagency.a_name}}</h4>
                                         </a>
-                                        <span class="mt-5 mb-30 d-block">11-13 Whitehall, London SW1A 2DD, UK</span>
+                                        <span class="mt-5 mb-30 d-block">{{showagency.a_address}}</span>
                                         <ul class="d-table">
                                             <li>
                                                 <div
@@ -140,22 +141,24 @@
                                     </div>
                                 </div>
                             </div>
+                        {% endfor %}
                         </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="row">
+                        {% for showagency in agency %}
                             <div class="col-md-12 col-lg-12 wow slideInUp animated">
                                 <div class="agencies mt-30 py-40 px-30 bg-white hover-secondery-primary">
                                     <div class="row">
                                         <div class="col-md-12 col-lg-4 d-flex align-items-center">
-                                            <a href="#"><img src="{% static 'images/partner/1.png' %}" alt="image"></a>
+                                            <a href="#"><img src="{{showagency.a_image.url}}" alt="image"></a>
                                         </div>
                                         <div class="col-md-12 col-lg-8">
                                             <div class="agencies-content">
                                                 <a href="#">
-                                                    <h4>Homelax Builders</h4>
+                                                    <h4>{{showagency.a_name}}</h4>
                                                 </a>
-                                                <span class="mt-5 mb-30 d-block">11-13 Whitehall, London SW1A 2DD,
+                                                <span class="mt-5 mb-30 d-block">{{showagency.a_address}}
                                                     UK</span>
                                                 <ul>
                                                     <li>
@@ -182,6 +185,7 @@
                                     </div>
                                 </div>
                             </div>
+                        {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -190,25 +194,6 @@
     </div>
 </section>
 
-<form method="post" action="/agency" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="row">
-        <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
-            <input type="text" name="name" class="form-control bg-gray" placeholder="Name*">
-        </div>
-        <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
-            <input type="email" name="email" class="form-control bg-gray" placeholder="Email Address*">
-        </div>
-        <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
-            <input type="text" name="mobile" class="form-control bg-gray" placeholder="Phone Number*">
-        </div>
-        <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
-            <input type="file" name="image" class="form-control">
-        </div>
-        <div class="col-lg-12"><button type="submit" class="btn btn-secondary">Register</button>
-        </div>
-    </div>
-</form>
 <!-- Property Grid End
 ==================================================================-->
 {% endblock %}

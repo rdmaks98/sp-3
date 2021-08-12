@@ -36,3 +36,8 @@ class UserForm(UserCreationForm):
         'username', 'email', 'name','mobile', 'password1', 'password2', 'check',
         ]
 
+
+
+
+# https://www.bizencyclopedia.com/articles/sub_category/12/157
+# https://www.reonomy.com/blog/post/types-of-commercial-real-estate

@@ -8,11 +8,6 @@
         <div class="row h-100 align-items-center">
             <div class="col-lg-12">
                 <h1 class="page-banner-title color-primary">Agents</h1>
-                <div class="text-area w-50 mt-15 color-white">
-                    <p>Porttitor luctus est sit lacinia non praesent aptent hymenaeos taciti tortor. Sociosq platea
-                        porta facilisis vitae dictum bibendun tellus ante fusce vulputate dolor lorem vulputate hac
-                        quisque diam etiam.</p>
-                </div>
             </div>
         </div>
     </div>
@@ -117,32 +112,38 @@
                 </div> -->
 
             </div>
+            {% comment %} {% if not broker %}
+            <span>No broker avilabel right now</span>
+            {% else %} {% endcomment %}
             <div class="col-md-12 col-lg-8">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
+                        {% for show in brokers %}
                             <div class="col-md-12 col-lg-6 wow slideInDown animated">
                                 <div class="agents-profile mt-30">
                                     <div class="agent-image position-relative overflow-hidden">
                                         <span
                                             class="thum-category category-1 bg-secondary color-white z-index-1 px-15">32
                                             Properties</span>
-                                        <img src="{% static 'images/team/1.jpg' %}" alt="image">
+                                        <img src="{{show.profile.url}}" alt="image">
                                         <span class="agent-agency position-absolute bg-primary color-white px-15">Real
                                             Properties</span>
                                     </div>
                                     <div class="d-table mt-20 hover-secondery-primary">
                                         <a class="mb-5 d-block" href="#">
-                                            <h4>Andrew Gunservice</h4>
+                                            <h4>{{show.name}}</h4>
                                         </a>
-                                        <span class="color-gray">Urbis Building, UK</span>
+                                        {% comment %} <span class="color-gray">{{}}</span> {% endcomment %}
                                     </div>
                                 </div>
                             </div>
+                        {% endfor %}
                         </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="row">
+                        {% for show in brokers %}
                             <div class="col-md-12 col-lg-12 wow slideInLeft animated">
                                 <div class="agent-list bg-white">
                                     <div class="agents-profile mt-30 d-flex">
@@ -150,7 +151,7 @@
                                             <span
                                                 class="thum-category category-1 bg-secondary color-white z-index-1 px-15">32
                                                 Properties</span>
-                                            <img src="{% static 'images/team/1.jpg' %}" alt="image">
+                                            <img src="{{show.profile.url}}" alt="image">
                                             <span
                                                 class="agent-agency position-absolute bg-primary color-white px-15">Real
                                                 Properties</span>
@@ -158,21 +159,21 @@
                                         <div
                                             class="contact-agent-info hover-secondery-primary position-relative py-40 px-30">
                                             <a class="mb-5 d-block" href="#">
-                                                <h4>Andrew Gunservice</h4>
+                                                <h4>{{show.name}}</h4>
                                             </a>
-                                            <span class="color-gray">Urbis Building, UK</span>
+                                            {% comment %} <span class="color-gray">Urbis Building, UK</span> {% endcomment %}
                                             <ul class="agent-info icon-primary mt-20">
                                                 <li><span class="mr-10"><i class="fa fa-flag"
                                                             aria-hidden="true"></i></span> Buying Agent</li>
                                                 <li><span class="mr-10"><i class="fa fa-envelope"
-                                                            aria-hidden="true"></i></span> fresher@info.com</li>
+                                                            aria-hidden="true"></i></span> {{show.email}}</li>
                                                 <li><span class="mr-10"><i class="fa fa-phone"
-                                                            aria-hidden="true"></i></span> (012) 234 567 890</li>
+                                                            aria-hidden="true"></i></span> {{show.mobile}}</li>
                                             </ul>
                                             <ul class="social-media-3 mt-20">
                                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                               
                                                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                             </ul>
@@ -181,9 +182,11 @@
                                 </div>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
+            {% comment %} {% endif %} {% endcomment %}
         </div>
     </div>
 </section>

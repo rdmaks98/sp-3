@@ -7,26 +7,24 @@
             <div class="col-md-12 col-lg-6 wow animated slideInUp">
                 <div class="side-title pb-30">
                     <span class="small-title color-primary position-relative line-primary">Hot</span>
-                    <h2 class="title mb-20 color-secondary">Top Agencies</h2>
-                    <p>Luctus posuere facilisi eros auctor lacinia litora. Convall aptent nisy parturient scelerisq.
-                        Nullam fringil condimen integer mauris lacus aliquam, quam massa lobortis commod proin
-                        magna.</p>
+                    <h2 class="title color-secondary">Top Agencies</h2>
                 </div>
             </div>
             <div class="col-md-12 col-lg-12">
                 <div class="row">
+                {% for show in agency %}
                     <div class="col-md-12 col-lg-6 wow animated slideInUp">
                         <div class="agencies mt-30 py-40 px-30 bg-gray hover-secondery-primary">
                             <div class="row">
                                 <div class="col-md-12 col-lg-12 col-xl-4 d-flex align-items-center">
-                                    <a href="#"><img src="{% static 'images/partner/1.png' %}" alt="image"></a>
+                                    <a href="#"><img src="{{show.a_image.url}}" alt="image"></a>
                                 </div>
                                 <div class="col-md-12 col-lg-12 col-xl-8">
                                     <div class="agencies-content">
                                         <a href="#">
-                                            <h4>Homelax Builders</h4>
+                                            <h4>{{show.a_name}}</h4>
                                         </a>
-                                        <span class="mt-5 mb-30 d-block">11-13 Whitehall, London SW1A 2DD, UK</span>
+                                        <span class="mt-5 mb-30 d-block">{{show.a_address}}</span>
                                         <ul>
                                             <li>
                                                 <div
@@ -52,43 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 col-lg-6 wow animated slideInRight">
-                        <div class="agencies mt-30 py-40 px-30 bg-gray hover-secondery-primary">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-12 col-xl-4 d-flex align-items-center">
-                                    <a href="#"><img src="{% static 'images/partner/2.png' %}" alt="image"></a>
-                                </div>
-                                <div class="col-md-12 col-lg-12 col-xl-8">
-                                    <div class="agencies-content">
-                                        <a href="#">
-                                            <h4>Landex Builders</h4>
-                                        </a>
-                                        <span class="mt-5 mb-30 d-block">366 Glenmore Ave, Brooklyn, USA.</span>
-                                        <ul>
-                                            <li>
-                                                <div
-                                                    class="position-relative bg-secondary color-white py-5 px-10 d-inline-block">
-                                                    Properties <span class="number">89</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div
-                                                    class="position-relative bg-secondary color-white py-5 px-10 d-inline-block">
-                                                    Featured <span class="number">43</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div
-                                                    class="position-relative bg-secondary color-white py-5 px-10 d-inline-block">
-                                                    Agents <span class="number">24</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                {% endfor %}
                 </div>
             </div>
         </div>
