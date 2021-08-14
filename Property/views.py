@@ -12,12 +12,16 @@ from django.contrib.auth import logout as django_logout
 from django.contrib import messages,auth
 
 from django.contrib.auth.models import User
+# <<<<<<< HEAD
 
 # import models 
 from .models import UserProfile,BrokerCategory,BrokerSubCategory,Agency
 
 # import form
 from .forms import AddAgency 
+# =======
+from Property.models import BrokerCategory,BrokerSubCategory,AddPropertyForm
+# >>>>>>> aakash
 
 # Create your views here.
 # index page 
@@ -25,6 +29,7 @@ def index(request):
     
     cat = BrokerCategory.objects.all()
     subcat = BrokerSubCategory.objects.all()
+# <<<<<<< HEAD
     agency = Agency.objects.all().order_by('-id')[0:4]
     company = Agency.objects.count()
     brokers = UserProfile.objects.filter(user_type='broker').count()
@@ -33,6 +38,11 @@ def index(request):
         profile = UserProfile.objects.get(userid_id=request.user.id)
         return render(request,"Property/index.html",{'cat':cat,'subcat':subcat,'agency':agency,'profile':profile,'company':company,'brokers':brokers})
     return render(request,"Property/index.html",{'cat':cat,'subcat':subcat,'agency':agency,'company':company,'brokers':brokers})
+# =======
+    propertyData = AddPropertyForm.objects.all()
+    # return render (request,'header.html',{'cat':cat})
+    return render(request,"Property/index.html",{'cat':cat,'subcat':subcat,'propertyData':propertyData})
+# >>>>>>> aakash
 
 # common user register here
 def register(request):
@@ -88,6 +98,7 @@ def logoutUser(request):
     django_logout(request)
     return redirect("login")
 
+# <<<<<<< HEAD
 # user profile
 def profile(request):
     user = request.user
@@ -118,6 +129,8 @@ def profile(request):
         return render(request,'user_page/profile.html',{'user':user})
 
     return redirect('user_page/profile.html',{'user':user,'data':data})
+# =======
+# >>>>>>> aakash
 
 def category(request,id):
     # show particular id wise property
@@ -176,6 +189,10 @@ def broker(request):
     brokers = UserProfile.objects.filter(user_type="broker").all()
     return render(request,"page/broker.html",{'brokers':brokers})
 
+
+# def addPropertyForm(request):
+#     return render(request,'page/addproperty.html')
+
 def about(request):
     cat = BrokerCategory.objects.all()
     subcat = BrokerSubCategory.objects.all()
@@ -202,10 +219,91 @@ def invoice(request):
     return render(request,"page/invoice.html",{'cat':cat,'subcat':subcat})
 
 def error404(request):
+# <<<<<<< HEAD
     cat = BrokerCategory.objects.all()
     subcat = BrokerSubCategory.objects.all()
     return render(request,"page/error404.html",{'cat':cat,'subcat':subcat})
+# =======
+    return render(request,"page/error404.html")
+
+# user profile
+def profile(request):
+    # check user is login then display email 
+    user = request.user
+
+    # if profile is already submited then check in database
+    data = Profile.objects.filter(u_id=user.id).count()
+    if data > 0:
+        data = Profile.objects.get(u_id=user.id)
+        if data:
+            return render(request,'user_page/profile.html',{'user':user,'data':data})
+    # if this user data is not in the database then insert here
+    elif request.method == 'POST':
+        profile = Profile()
+        # if profile.is_valid():
+        profile.u_id = request.POST.get('u_id')
+        profile.name=request.POST.get('name')
+        profile.email=request.POST.get('email')
+        profile.mobile=request.POST.get('mobile')
+        profile.user_type=request.POST.get('user_type')
+        profile.profile = request.FILES.get('profile')
+        profile.dob = request.POST.get('dob')
+        profile.details = request.POST.get('details')
+        profile.save()
+        messages.success(request,"your profile is done")
+        return render(request,'user_page/profile.html',{'user':user})
+    else:
+        messages.error(request, 'Fill out all details')
+        return render(request,'user_page/profile.html',{'user':user})
+
+    return render(request,"user_page/profile.html",{'user':user})
 
 
-# def categoryData(request):
+def addProperty(request):
+   
+    if request.method == 'POST':
+        addProperty = AddPropertyForm()
+
+        addProperty.propertyTitle = request.POST['propertyTitle']
+        addProperty.propertyType = request.POST['propertyType']#DropDown
+        addProperty.price = request.POST['price']
+        addProperty.address = request.POST['address']
+        addProperty.state = request.POST['state']
+        addProperty.city = request.POST['city']
+        addProperty.zip = request.POST['zip']
+        addProperty.Country = request.POST['Country']
+        addProperty.areasize = request.POST['areasize']
+        addProperty.sizeprefix = request.POST['sizeprefix']
+        addProperty.landarea = request.POST['landarea']
+        addProperty.landareapostfix = request.POST['landareapostfix']
+        addProperty.bedrooms = request.POST['bedrooms']
+        addProperty.bathrooms = request.POST['bathrooms']
+        addProperty.builtyear = request.POST['builtyear']
+        addProperty.propertyimage = request.FILES['uploadpath']
+        print("hdajfh",addProperty.propertyimage)
+        addProperty.save()
+        messages.success(request,"your property added successfully")
+        # addProperty.print(propertyTitle,price)
+    return render(request,'page/addproperty.html')
     
+# common user register here
+def register(request):
+    if request.method == 'POST':
+        #Get form values
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        password2 = request.POST['password2']
+# >>>>>>> aakash
+
+
+def category(request):
+    propertyData = AddPropertyForm.objects.all()
+    return render(request,"page/category.html",{'propertyData':propertyData})
+
+def features(request):
+  
+    propertyData = AddPropertyForm.objects.all()
+    return render(request,'layout/features.html',{'propertyData':propertyData})    

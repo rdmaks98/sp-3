@@ -1,8 +1,11 @@
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+# <<<<<<< HEAD
 from django.contrib.auth import views as auth_views
 from .forms import MyPasswordChangeForm
+# =======
+# >>>>>>> aakash
 from . import views
 
 urlpatterns = [
@@ -24,12 +27,19 @@ urlpatterns = [
     path('addAgency',views.addAgency,name="addAgency"),
     path('agency',views.agency,name="agency"),
     path('broker',views.broker,name="broker"),
+    path('addproperty',views.addProperty,name="addproperty"),
     path('about-us',views.about,name="about-us"),
     path('services',views.services,name="services"),
     path('pricing',views.pricing,name="pricing"),
     path('faq',views.faq,name="faq"),
     path('invoice',views.invoice,name="invoice"),
     path('error404',views.error404,name="error404"),
+    path('register',views.register,name="register"),
+    path('features',views.features,name="features"),
+  
+
+    # path('logout', views.logoutUser, name='logout'),
+    # path('category', views.categoryData, name='header'),
 ]
 
 # for image require default setting and also set media url in setting file

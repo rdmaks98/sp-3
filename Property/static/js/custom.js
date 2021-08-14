@@ -201,7 +201,7 @@
   	// Owl Carousal Slider Style Three
 	//----------------------------------------------------------------------------------
 	$('.slide-3').owlCarousel({
-		 loop: true,
+		 loop: false,
 		 autoplay:false,
 	     smartSpeed:1500,
 	     autoplayTimeout:5000,
