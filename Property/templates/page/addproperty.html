@@ -1,0 +1,494 @@
+{% include 'layout/header.html' %} {% block content %} {% load static %}
+
+<div class="page-banner overlay-black" style="padding: 150px 0">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-lg-12">
+        <h1 class="page-banner-title color-primary">Submit Property</h1>
+        <div class="text-area w-50 mt-15 color-white">
+          <p>
+            Porttitor luctus est sit lacinia non praesent aptent hymenaeos
+            taciti tortor. Sociosq platea porta facilisis vitae dictum bibendun
+            tellus ante fusce vulputate dolor lorem vulputate hac quisque diam
+            etiam.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg-secondary">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <nav aria-label="breadcrumb">
+          <ol
+            class="breadcrumb m-0 py-15 px-0 bg-transparent hover-white-primary"
+          >
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Property</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Submit Property
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="submit-property bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <form class="property-submit-form" action="#" method="post" enctype="multipart/form-data" >
+
+          {% csrf_token %}
+          <div
+            class="property-info bg-white py-40 px-30 wow slideInDown animated"
+          >
+            <h3 class="mb-3">Property Details</h3>
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <label>Property Title</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="propertyTitle"
+                  id="propertyTitle"
+                />
+              </div>
+              <div class="form-group col-lg-6">
+                <label>Property Type</label>
+                <div class="select-wrapper position-relative">
+                  <select class="select form-control bg-gray" id="propertyType" name="propertyType">
+                    <option>Select Property Type</option>
+                    <option>ALL Residential</option>
+                    <option>Flat/Apartment</option>
+                    <option>Residential House</option>
+                    <option>Villa</option>
+                    <option>Builder Floor Apartment</option>
+                    <option>Residential Land/Plot</option>
+                    <option>Penthouse</option>
+                    <option>Studio Apartment</option>
+                    <option>All Commercial</option>
+                    <option>Commercial Office Space</option>
+                    <option>Office in IT Park/ SEZ</option>
+                    <option>Commercial Shop</option>
+                    <option>Commercial Showroom</option>
+                    <option>Commercial Land Warehouse/ Godown</option>
+                    <option>Industrial Land</option>
+                    <option>Industrial Building</option>
+                  </select>
+                </div>
+              </div>
+              <!-- <div class="form-group col-lg-6">
+                <label>Status</label>
+                <div class="select-wrapper position-relative">
+                  <select class="select form-control bg-gray">
+                    <option>Status 1</option>
+                    <option>Status 2</option>
+                    <option>Status 3</option>
+                    <option>Status 4</option>
+                    <option>Status 5</option>
+                  </select>
+                </div>
+              </div> -->
+              <div class="form-group col-lg-6">
+                <label>Price</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="price"
+                  id="price"
+                />
+              </div>
+              <!-- <div class="form-group col-lg-6">
+                <label>Area</label>
+                <input class="form-control bg-gray" type="text" name="area" />
+              </div> -->
+              <!-- <div class="form-group col-lg-6">
+                <label>Rooms</label>
+                <div class="select-wrapper position-relative">
+                  <select class="select form-control bg-gray">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </div> -->
+              <div class="form-group col-lg-12">
+                <label>Property Description</label>
+                <textarea class="form-control bg-gray" id="summernote" name="editordata" style="margin: 0 !important; padding: 0 !important;"></textarea>
+              </div>
+              <!-- <div class="col-lg-12">
+                <button class="btn btn-primary">Back</button>
+                <button class="btn btn-primary float-right">Next</button>
+              </div> -->
+            </div>
+          </div>
+
+          <div
+            class="
+              property-location
+              mt-30
+              bg-white
+              py-40
+              px-30
+              wow
+              slideInUp
+              animated
+            "
+          >
+            <h3 class="mb-3">Property Location</h3>
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <label>Address</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="address"
+                  id="address"
+                />
+              </div>
+              <div class="form-group col-lg-6">
+                <label>County/State</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="state"
+                  id="state"
+                />
+              </div>
+              <div class="form-group col-lg-6">
+                <label>City</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="city"
+                  id="city"
+                />
+              </div>
+              <div class="form-group col-lg-6">
+                <label>Zip</label>
+                <input
+                  class="form-control bg-gray"
+                  type="number"
+                  name="zip"
+                  id="zip"
+                />
+              </div>
+
+              <div class="form-group col-lg-6">
+                <label>Country</label>
+                <div class="select-wrapper position-relative">
+                  <select class="select form-control bg-gray" id="Country" name="Country">
+                    <option>Australia</option>
+                    <option>Usa</option>
+                    <option>UK</option>
+                    <option>Canada</option>
+                    <option>Russia</option>
+                    <option>Spain</option>
+                    <option>Africa</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group col-lg-12">
+                <label>Location in Map</label>
+                <div id="map" class="canvas" style="height: 400px"></div>
+              </div>
+              <div class="form-group col-lg-4">
+                <label>Latitude (for Google Maps)</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="latitude"
+                />
+              </div>
+              <div class="form-group col-lg-4">
+                <label>Longitude (for Google Maps)</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="longitude"
+                />
+              </div>
+              <div class="form-group col-lg-4">
+                <label>Google Map Street View</label>
+                <div class="select-wrapper position-relative">
+                  <select class="select form-control bg-gray">
+                    <option>Street View 1</option>
+                    <option>Street View 2</option>
+                    <option>Street View 3</option>
+                    <option>Street View 4</option>
+                    <option>Street View 5</option>
+                    <option>Street View 6</option>
+                    <option>Street View 7</option>
+                  </select>
+                </div>
+              </div>
+              <!-- <div class="col-lg-12">
+                <button class="btn btn-primary">Back</button>
+                <button class="btn btn-primary float-right">Next</button>
+              </div> -->
+            </div>
+          </div>
+
+          <div
+            class="
+              property-info
+              mt-30
+              bg-white
+              py-40
+              px-30
+              wow
+              slideInDown
+              animated
+            "
+          >
+            <h3 class="mb-3">Property Features</h3>
+            <div class="row">
+              <div class="form-group col-lg-4">
+                <label>Area Size</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="areasize"
+                  id="areasize"
+                />
+              </div>
+              <div class="form-group col-lg-4">
+                <label>Size Prefix</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="sizeprefix"
+                  id="sizeprefix"
+                />
+              </div>
+              <div class="form-group col-lg-4">
+                <label>Land Area</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="landarea"
+                  id="landarea"
+                />
+              </div>
+              <div class="form-group col-lg-4">
+                <label>Land Area Size Postfix</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="landareapostfix"
+                  id="landareapostfix"
+                />
+              </div>
+              <div class="form-group col-lg-4">
+                <label>Bedrooms</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="bedrooms"
+                  id="bedrooms"
+                />
+              </div>
+              <div class="form-group col-lg-4">
+                <label>Bathrooms</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="bathrooms"
+                  id="bathrooms"
+                />
+              </div>
+              <!-- <div class="form-group col-lg-4">
+                <label>Garages</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="garages"
+                />
+              </div>
+              <div class="form-group col-lg-4">
+                <label>Garages Size</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="garages-size"
+                />
+              </div> -->
+              <div class="form-group col-lg-4">
+                <label>Built Year</label>
+                <input
+                  class="form-control bg-gray"
+                  type="text"
+                  name="builtyear"
+                  id="builtyear"
+                />
+              </div>
+
+              <!-- <div class="form-group col-lg-12">
+                <label>Amenities</label>
+                <ul class="list-bottom amenities select-option p-0">
+                  <li>
+                    <input id="feature-1" class="d-none" type="checkbox" />
+                    <label for="feature-1">Air Condition</label>
+                  </li>
+                  <li>
+                    <input id="feature-2" class="d-none" type="checkbox" />
+                    <label for="feature-2">Refrigerator</label>
+                  </li>
+                  <li>
+                    <input id="feature-3" class="d-none" type="checkbox" />
+                    <label for="feature-3">TV Cable</label>
+                  </li>
+                  <li>
+                    <input id="feature-4" class="d-none" type="checkbox" />
+                    <label for="feature-4">Dryer</label>
+                  </li>
+                  <li>
+                    <input id="feature-5" class="d-none" type="checkbox" />
+                    <label for="feature-5">Wifi</label>
+                  </li>
+                  <li>
+                    <input id="feature-6" class="d-none" type="checkbox" />
+                    <label for="feature-6">Laundry</label>
+                  </li>
+                  <li>
+                    <input id="feature-7" class="d-none" type="checkbox" />
+                    <label for="feature-7">Swimming Pool</label>
+                  </li>
+                  <li>
+                    <input id="feature-8" class="d-none" type="checkbox" />
+                    <label for="feature-8">Outdoor Shower</label>
+                  </li>
+                  <li>
+                    <input id="feature-9" class="d-none" type="checkbox" />
+                    <label for="feature-9">Barbeque</label>
+                  </li>
+                  <li>
+                    <input id="feature-10" class="d-none" type="checkbox" />
+                    <label for="feature-10">Washer</label>
+                  </li>
+                  <li>
+                    <input id="feature-11" class="d-none" type="checkbox" />
+                    <label for="feature-11">Sauna</label>
+                  </li>
+                  <li>
+                    <input id="feature-12" class="d-none" type="checkbox" />
+                    <label for="feature-12">Microwave</label>
+                  </li>
+                  <li>
+                    <input id="feature-13" class="d-none" type="checkbox" />
+                    <label for="feature-13">Gym</label>
+                  </li>
+                  <li>
+                    <input id="feature-14" class="d-none" type="checkbox" />
+                    <label for="feature-14">Lawn</label>
+                  </li>
+                  <li>
+                    <input id="feature-15" class="d-none" type="checkbox" />
+                    <label for="feature-15">Window Covering</label>
+                  </li>
+                  <li>
+                    <input id="feature-16" class="d-none" type="checkbox" />
+                    <label for="feature-16">Home Theater</label>
+                  </li>
+                  <li>
+                    <input id="feature-17" class="d-none" type="checkbox" />
+                    <label for="feature-17">Garden</label>
+                  </li>
+                  <li>
+                    <input id="feature-18" class="d-none" type="checkbox" />
+                    <label for="feature-18">Fire Protection</label>
+                  </li>
+                  <li>
+                    <input id="feature-19" class="d-none" type="checkbox" />
+                    <label for="feature-19">Emergency Exit</label>
+                  </li>
+                  <li>
+                    <input id="feature-20" class="d-none" type="checkbox" />
+                    <label for="feature-20">Security System</label>
+                  </li>
+                </ul>
+              </div> -->
+              <!-- <div class="col-lg-12">
+                <button class="btn btn-primary">Back</button>
+                <button class="btn btn-primary float-right">Next</button>
+              </div> -->
+            </div>
+          </div>
+
+          <div
+            class="
+              property-info property-media
+              mt-30
+              bg-white
+              py-40
+              px-30
+              wow
+              slideInUp
+              animated
+            "
+          >
+            <h3 class="mb-3">Add Photos</h3>
+            <div class="row">
+              <div class="form-group col-lg-12">
+                <!-- <label>Browse Here</label> -->
+                <div class="d-flex">
+                  <!-- <input
+                    class="form-control upload-path bg-gray mr-30"
+                    type="text"
+                    name="uploadpath"
+                    id="uploadpath"
+                  /> -->
+                  <input  name="uploadpath"
+                    id="uploadpath" type="file" />
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <!-- <ul class="attached-photos p-30 bg-gray d-table">
+                  <li class="attached-photo">
+                    <img src="images/property/1.jpg" alt="image" />
+                    <span class="color-white"><i class="fa fa-trash"></i></span>
+                  </li>
+                  <li class="attached-photo mt-sm-30">
+                    <img src="images/property/2.jpg" alt="image" />
+                    <span class="color-white"><i class="fa fa-trash"></i></span>
+                  </li>
+                  <li class="attached-photo mt-md-30">
+                    <img src="images/property/3.jpg" alt="image" />
+                    <span class="color-white"><i class="fa fa-trash"></i></span>
+                  </li>
+                  <li class="attached-photo mt-md-30">
+                    <img src="images/property/4.jpg" alt="image" />
+                    <span class="color-white"><i class="fa fa-trash"></i></span>
+                  </li>
+                </ul> -->
+              </div>
+              <div class="form-group col-lg-12">
+                <div class="drag-drop bg-gray px-30 py-40 text-center mt-15">
+                  <span class="fa fa-upload color-primary"></span>
+                  <h4 class="inner-title mt-15">Drag & Drop Images Here</h4>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <button class="btn btn-primary">Back</button>
+                <button type="submit" class="btn btn-primary float-right">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+    $(document).ready(function() {
+  $('#summernote').summernote();
+});
+</script>
+{% endblock%} {% include 'layout/footer.html' %}
+

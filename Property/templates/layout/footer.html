@@ -85,8 +85,9 @@
 <!-- Footer End
 ==================================================================-->
 <!-- jquery Links
-==================================================================-->
-<script src="{% static 'js/jquery-v3.4.1.js' %}"></script>
+    ==================================================================-->
+
+<!-- <script src="{% static 'js/jquery-v3.4.1.js' %}"></script> -->
 <script src="{% static 'js/greensock.js' %}"></script>
 <script src="{% static 'js/layerslider.transitions.js' %}"></script>
 <script src="{% static 'js/layerslider.kreaturamedia.jquery.js' %}"></script>
@@ -102,6 +103,12 @@
 <script src="{% static 'js/jquery.cookie.js' %}"></script>
 <script src="{% static 'js/color-settings.js' %}"></script>
 <script src="{% static 'js/custom.js' %}"></script>
+<script>
+    $(document).ready(function() {
+  $('#summernote').summernote();
+});
+</script>
+
 <!-- Initializing the slider -->
 <script>
     // Layer Slider

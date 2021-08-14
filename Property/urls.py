@@ -1,8 +1,8 @@
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-
 from . import views
+
 urlpatterns = [
     path('',views.index,name="index"),
     path('login',views.loginUser,name="login"),
@@ -13,6 +13,7 @@ urlpatterns = [
     path('p_lists',views.p_lists,name="p_lists"),
     path('agency',views.agency,name="agency"),
     path('broker',views.broker,name="broker"),
+    path('addproperty',views.addProperty,name="addproperty"),
     path('about-us',views.about,name="about-us"),
     path('services',views.services,name="services"),
     path('pricing',views.pricing,name="pricing"),
@@ -20,6 +21,9 @@ urlpatterns = [
     path('invoice',views.invoice,name="invoice"),
     path('error404',views.error404,name="error404"),
     path('register',views.register,name="register"),
+    path('features',views.features,name="features"),
+  
+
     # path('logout', views.logoutUser, name='logout'),
     # path('category', views.categoryData, name='header'),
 ]

@@ -10,14 +10,15 @@ from .models import Agency,Profile
 # new 
 # from django.contrib import messages, auth
 from django.contrib.auth.models import User
-from Property.models import BrokerCategory,BrokerSubCategory
+from Property.models import BrokerCategory,BrokerSubCategory,AddPropertyForm
 
 # Create your views here.
 def index(request):
     cat = BrokerCategory.objects.all()
     subcat = BrokerSubCategory.objects.all()
+    propertyData = AddPropertyForm.objects.all()
     # return render (request,'header.html',{'cat':cat})
-    return render(request,"Property/index.html",{'cat':cat,'subcat':subcat})
+    return render(request,"Property/index.html",{'cat':cat,'subcat':subcat,'propertyData':propertyData})
 
 def loginUser(request):
     if request.method == "POST":
@@ -37,8 +38,6 @@ def logoutUser(request):
     django_logout(request)
     return redirect("login")
 
-def category(request):
-    return render(request,"page/category.html")
 
 def p_single(request):
     return render(request,"page/p_single.html")
@@ -59,6 +58,10 @@ def agency(request):
      
 def broker(request):
     return render(request,"page/broker.html")
+
+
+# def addPropertyForm(request):
+#     return render(request,'page/addproperty.html')
 
 def about(request):
     return render(request,"page/about-us.html")
@@ -110,6 +113,34 @@ def profile(request):
 
     return render(request,"user_page/profile.html",{'user':user})
 
+
+def addProperty(request):
+   
+    if request.method == 'POST':
+        addProperty = AddPropertyForm()
+
+        addProperty.propertyTitle = request.POST['propertyTitle']
+        addProperty.propertyType = request.POST['propertyType']#DropDown
+        addProperty.price = request.POST['price']
+        addProperty.address = request.POST['address']
+        addProperty.state = request.POST['state']
+        addProperty.city = request.POST['city']
+        addProperty.zip = request.POST['zip']
+        addProperty.Country = request.POST['Country']
+        addProperty.areasize = request.POST['areasize']
+        addProperty.sizeprefix = request.POST['sizeprefix']
+        addProperty.landarea = request.POST['landarea']
+        addProperty.landareapostfix = request.POST['landareapostfix']
+        addProperty.bedrooms = request.POST['bedrooms']
+        addProperty.bathrooms = request.POST['bathrooms']
+        addProperty.builtyear = request.POST['builtyear']
+        addProperty.propertyimage = request.FILES['uploadpath']
+        print("hdajfh",addProperty.propertyimage)
+        addProperty.save()
+        messages.success(request,"your property added successfully")
+        # addProperty.print(propertyTitle,price)
+    return render(request,'page/addproperty.html')
+    
 # common user register here
 def register(request):
     if request.method == 'POST':
@@ -144,5 +175,11 @@ def register(request):
     else:
         return render(request, 'user_page/register.html')
 
-# def categoryData(request):
-    
+def category(request):
+    propertyData = AddPropertyForm.objects.all()
+    return render(request,"page/category.html",{'propertyData':propertyData})
+
+def features(request):
+  
+    propertyData = AddPropertyForm.objects.all()
+    return render(request,'layout/features.html',{'propertyData':propertyData})    

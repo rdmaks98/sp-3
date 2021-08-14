@@ -160,17 +160,18 @@
                                             </ul>
                                         </div>
                                     </div>
+                                     {% for data in propertyData %}
                                     <div class="property-content bg-white pt-30 pb-50 px-30">
                                         <a class="color-secondary mb-5" href="single-property.html">
-                                            <h4>park Avanue Apartment.</h4>
+                                            <h4>{{data.propertyTitle}}</h4>
                                         </a>
                                         <span class="address icon-primary f-14"><i class="fa fa-map-marker"></i>366
                                             Glenmore Ave, Brooklyn, USA.</span>
                                         <ul class="about-property list-half icon-primary d-table f-14 mb-30 mt-20">
                                             <li><i class="flaticon-fit-screen"></i>200 sqft</li>
-                                            <li><i class="flaticon-hotel"></i>3 Bedrooms</li>
-                                            <li><i class="flaticon-bathtub"></i>2 Bathrooms</li>
-                                            <li><i class="flaticon-garage"></i>1 Garage</li>
+                                 <li><i class="flaticon-fit-screen"></i>{{data.sizeprefix}}</li>
+                                <li><i class="flaticon-hotel"></i>{{data.bedrooms}}</li>
+                                <li><i class="flaticon-bathtub"></i>{{data.bathrooms}}</li>
                                         </ul>
                                         <div class="property-cost color-white list-half w-100">
                                             <ul>
@@ -179,6 +180,7 @@
                                             </ul>
                                         </div>
                                     </div>
+                                     {% endfor %}
                                 </div>
                             </div>
                         </div>
