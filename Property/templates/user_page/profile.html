@@ -4,8 +4,7 @@
     <div class="row">
         <div class="col-lg-8 col-xl-8">
             <div class="profile-setting-body">
-                
-                <form class="update-information" method="POST" action="/profile"
+                <form class="update-information" method="POST"
                     enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -19,7 +18,7 @@
                         <div class="bg-gray py-80 px-30 w-100">
                             <div class="row">
                                 <div class="col-xl-12">
-                                    <h4 class="inner-title color-secondary mb-30">Account Information</h4>
+                                    <h4 class="inner-title color-secondary mb-30">Profile Information</h4>
                                 </div>
                             </div>
                             {% include 'layout/message.html' %}
@@ -34,18 +33,13 @@
                                 </div>
                                 <div class="form-check col-xl-6">
                                     <input class="form-check-input" type="radio" name="user_type"
-                                        value="broker">Broker<br>
+                                        value="broker" {% if profile.user_type == "broker" %}checked{% endif %}>Broker<br>
                                     <input class="form-check-input" type="radio" name="user_type"
-                                        value="user">User
+                                        value="user" {% if profile.user_type == "user" %}checked{% endif %}>User
                                 </div>
                                 <div class="form-group col-xl-6">
                                     <input class="form-control" type="text" name="mobile" value="{{profile.mobile}}"
                                         placeholder="Mobile number">
-                                </div>
-
-                                <div class="form-group col-xl-6">
-                                    <input class="form-control" type="date" name="dob" value="{{profile.dob}}"
-                                        placeholder="Date of Birth">
                                 </div>
                                 <div class="form-group col-xl-6">
                                     <textarea class="form-control" name="details" rows="4"

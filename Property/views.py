@@ -106,10 +106,18 @@ def profile(request):
         add.save()
         messages.success(request,"your profile is done")
         return render(request,'user_page/profile.html',{'user':user})
+
+    # user is already exist then display information
+    elif UserProfile.objects.filter(userid_id=request.user.id).exists():
+        profile = UserProfile.objects.get(userid_id=request.user.id)
+        # print(profile)
+        return render(request,'user_page/profile.html',{'user':user,'profile':profile})
+    
     else:
         # messages.error(request, 'Fill out all details')
         return render(request,'user_page/profile.html',{'user':user})
-    return redirect('user_page/profile.html',{'user':user})
+
+    return redirect('user_page/profile.html',{'user':user,'data':data})
 
 def category(request,id):
     # show particular id wise property
