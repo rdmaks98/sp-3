@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.conf import settings
-from .models import Agency,Profile,BrokerCategory,BrokerSubCategory,AddPropertyForm
+from .models import Agency,UserProfile,BrokerCategory,BrokerSubCategory,AddPropertyForm
 from django.contrib import admin
 
 # default: "Django Administration"
@@ -18,7 +18,7 @@ admin.site.register(BrokerSubCategory)
 
 admin.site.register(UserProfile)
 
-admin.site.register(Profile)
+# admin.site.register(Profile)
 admin.site.register(AddPropertyForm)
 
 

@@ -25,6 +25,7 @@ urlpatterns = [
     path('p_lists/<int:id>',views.p_lists,name="p_lists"),
     path('p_single',views.p_single,name="p_single"),
     path('addAgency',views.addAgency,name="addAgency"),
+    path('Update',views.Update,name="Update"),
     path('agency',views.agency,name="agency"),
     path('broker',views.broker,name="broker"),
     path('addproperty',views.addProperty,name="addproperty"),

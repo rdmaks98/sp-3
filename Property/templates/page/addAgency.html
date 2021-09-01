@@ -7,9 +7,9 @@
 		<div class="row h-100 align-items-center">
 			<div class="col-lg-12">
 				<h1 class="page-banner-title color-primary">Add Agency</h1>
-				<div class="text-area w-50 mt-15 color-white">
+				{% comment %} <div class="text-area w-50 mt-15 color-white">
 					<p>Porttitor luctus est sit lacinia non praesent aptent hymenaeos taciti tortor. Sociosq platea porta facilisis vitae dictum bibendun tellus ante fusce vulputate dolor lorem vulputate hac quisque diam etiam.</p>
-				</div>
+				</div> {% endcomment %}
 			</div>
 		</div>
 	</div>
@@ -61,10 +61,46 @@
 									<td>{{showagency.a_address}}</td>
 									<td><img class="profile-img" src={{showagency.a_image.url}} /></td>
 									<td>
-										<button type="button" class="btn btn-outline-danger">delete</button>
-										<button type="button" class="btn btn-outline-info">📝Edit</button>
+										<button type="button" class="btn btn-outline-danger fa fa-trash">delete</button>
+										<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#EditModel{{showagency.id}}">📝Edit</button>
 									</td>
 								</tr>
+								{% comment %} edit model {% endcomment %}
+								<div class="modal fade" id="EditModel{{showagency.id}}" tabindex="-1" role=""aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Edit agency</h5>
+												<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												<form method="post" enctype="multipart/form-data" >
+													{% csrf_token %}
+													<input type="hidden" name="id" value={{showagency.id}} id="a_id">
+													{% include 'layout/message.html' %}
+													<div class="form-group">
+														<input class="form-control bg-gray" type="text" value="{{showagency.a_name}}" name="a_name" required placeholder="Name">
+													</div>
+													<div class="form-group">
+														<input class="form-control bg-gray" type="text" value="{{showagency.a_address}}" name="a_address" required placeholder="Enter Address">
+													</div>
+													<div class="row">
+														<div class="form-group col-lg-4 col-md-4 col-xl-4">
+															<img class="form-control bg-gray" src="{{showagency.a_image.url}}">
+														</div>
+														<div class="form-group  col-lg-4 col-md-4 col-xl-6">
+															<input class="form-control bg-gray" type="file" name="a_image" value="{{showagency.a_iamge.url}}">
+														</div>
+													</div>
+												</form>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-outline-info" id="editform">Update</button>
+											</div>
+										</div>
+									</div>
+								</div>
 							{% endfor %}
 						{% endif %}
 						</tbody>
@@ -89,4 +125,30 @@
 		</div>
 	</div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$("#editform").click(function(){
+		let id = $("#a_id").val();
+		alert(id);
+		var a_name = $('input[name="a_name"]').val().trim();
+		var a_address = $('input[name="a_address"]').val();
+		var a_image = $('input[name="a_image"]').val();
+		let csrf_token = '{{ csrf_token }}';
+		$.ajax({
+            url: '{% url "Update" %}',
+			type:"POST",
+			headers:{'X-CSRFToken':csrf_token},
+            data: {
+                'id': id,
+                'a_name': a_name,
+                'a_address': a_address,
+                'a_image': a_image
+            },
+            dataType: 'json',
+            success: function (data) {
+                alert("success");
+            }
+        });
+	});
+</script>
 {% endblock %}

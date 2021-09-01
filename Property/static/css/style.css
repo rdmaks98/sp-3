@@ -77,10 +77,15 @@
 }
 
 /* img display  */
-.profile-img
+.profile
 {
   height:110px;
   width:110px;
+}
+
+.property{
+  height:400px;
+  width:600px;
 }
 
 body{

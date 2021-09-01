@@ -116,7 +116,6 @@
                   <!-- show category and subcategory -->
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-<<<<<<< HEAD
                       aria-haspopup="true" aria-expanded="false">Category</a>
                     <ul class="dropdown-menu shadow">
                       {% for i in cat %}
@@ -130,33 +129,6 @@
                         </ul>
                       </li>
                       {% endfor %}
-=======
-                      aria-haspopup="true" aria-expanded="false">Category</a> -->
-                    <ul class="navbar-nav mx-auto">
-                      {% for i in cat %}
-                      <li class="nav-item dropdown mega-menu">
-                        <div>
-                          <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            {{i.name}}
-                          </a>
-
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            {% for j in i.brokersubcategory_set.all %}
-                            <a class="dropdown-item" href="">
-                              
-                              {{j.sub_name }}
-                              
-                            </a>
-                            {% endfor %}
-                          </div>
-                        </div>
-                      </li>
-                      {% endfor %}
-                    </ul>
-                   
-<!--                        
->>>>>>> aakash
                       <li><a class="dropdown-item" href="{% url 'p_single' %}">Single Property</a>
                       </li>
                     </ul>
@@ -214,11 +186,7 @@
                         <i class="fa fa-times"></i>
                       </span>
                     </form>
-<<<<<<< HEAD
                   </li>
-=======
-                  </li>  -->
->>>>>>> aakash
                 </ul>
                 <ul class="navbar-nav">
                   {% if user.is_authenticated %}
@@ -228,22 +196,18 @@
                       {% if profile.user_type == "broker" %}
                       <li> <h4>you are {{profile.user_type}}</h4></li>
                       <li><a class="dropdown-item" href={% url 'addAgency' %}>Add agency</a></li>
-                      <li><a class="dropdown-item" href="">Add Property</a></li>
+                      <li><a class="dropdown-item" href="{% url 'addproperty' %}">Add
+                          Property</a></li>
                       {% elif profile.user_type == "user" %}
                       <li><a class="dropdown-item" href="{% url 'invoice' %}">Invoice</a>
                       </li>
                       <li><a class="dropdown-item" href="about-us.html">Favourite
                           Property</a></li>
-<<<<<<< HEAD
                       {% endif %}
                       <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                       </li>
                       <li><a class="dropdown-item" href="{% url 'passwordchange' %}">change password</a>
                       </li>
-=======
-                      <li><a class="dropdown-item" href="{% url 'addproperty' %}">Add
-                          Property</a></li>
->>>>>>> aakash
                       <li><a class="dropdown-item" href="/logout">Logout</a>
                       </li>
                     </ul>

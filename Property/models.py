@@ -60,11 +60,9 @@ class AddPropertyForm(models.Model):
 
     #property_location
     address = models.CharField(max_length=255)
-    county = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     zip = models.CharField(max_length=255)
     Neighborhood = models.CharField(max_length=255)
-    Country = models.CharField(max_length=255) #Dropdown
     
     #Property Features
     areasize = models.CharField(max_length=255)
@@ -76,6 +74,11 @@ class AddPropertyForm(models.Model):
     builtyear = models.CharField(max_length=255)
     propertyimage = models.ImageField(upload_to="Property/images/property",default="")
 
+    # foreign key
+    cate_id = models.ForeignKey(BrokerCategory, on_delete= models.CASCADE,default="")
+    subcate_id = models.ForeignKey(BrokerSubCategory, on_delete= models.CASCADE,default="")
+
     def __str__(self):
         return self.propertyTitle
+
 # >>>>>>> aakash

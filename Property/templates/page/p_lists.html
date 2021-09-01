@@ -85,10 +85,11 @@
                 <div class="tab-content  border-top-1-gray" id="myTabContent">
                     <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <div class="row">
+                            {% for show in property %}
                             <div class="col-md-12 col-lg-6 col-xl-4 wow slideInRight animated">
                                 <div class="property-thumbnail mt-30">
                                     <div class="property-img position-relative overflow-hidden overlay-secondary-4">
-                                        <img src="{% static 'images/property/7.jpg' %}" alt="image">
+                                        <img src="{{show.propertyimage.url}}" alt="image">
                                         <div class="thumbnail-content z-index-1 color-white-a color-white">
                                             <span
                                                 class="thum-category category-1 bg-secondary color-white z-index-1 px-15">For
@@ -106,14 +107,13 @@
                                             <div class="hover-content py-30 px-20 overlay-hover-gradient">
                                                 <div class="thumbnail-title z-index-1 position-relative">
                                                     <span
-                                                        class="thumbnail-price bg-white color-secondary px-15 mb-10 d-table">$
-                                                        12000</span>
+                                                        class="thumbnail-price bg-white color-secondary px-15 mb-10 d-table">{{show.price}}</span>
                                                     <a class="color-secondary mb-5" href="single-property.html">
-                                                        <h4>Villa on Grand Avenue</h4>
+                                                        <h4>{{show.propertyTitle}}</h4>
                                                     </a>
                                                     <span class="address icon-primary f-14"><i
-                                                            class="fa fa-map-marker"></i>11-13 Whitehall, London SW1A
-                                                        2DD, UK</span>
+                                                            class="fa fa-map-marker"></i>{{show.address}}
+                                                    </span>
                                                 </div>
                                                 <ul
                                                     class="about-property icon-primary d-table f-14 z-index-1 position-relative">
@@ -127,15 +127,17 @@
                                     </div>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="row">
+                        {% for show in property %}
                             <div class="col-md-12 col-lg-12 wow slideInDown animated">
                                 <div class="property-list mt-30">
                                     <div class="property-item d-flex">
                                         <div class="property-img position-relative overflow-hidden overlay-secondary-4">
-                                            <img src="{% static 'images/property/1.jpg' %}" alt="image">
+                                            <img src="{{show.propertyimage.url}}" class="property" alt="image">
                                             <ul class="hover-option position-absolute icon-white z-index-1">
                                                 <li>
                                                     <a data-toggle="tooltip" data-placement="top" title="Wishlist"
@@ -155,28 +157,27 @@
                                         </div>
                                         <div class="property-content bg-white pt-30 pb-50 px-30 position-relative">
                                             <a class="color-secondary mb-5" href="single-property.html">
-                                                <h4>park Avanue Apartment.</h4>
+                                                <h4>{{show.propertyTitle}}</h4>
                                             </a>
-                                            <span class="address icon-primary f-14"><i class="fa fa-map-marker"></i>366
-                                                Glenmore Ave, Brooklyn, USA.</span>
+                                            <span class="address icon-primary f-14"><i class="fa fa-map-marker"></i>{{show.address}}</span>
                                             <ul class="about-property icon-primary d-table mt-20">
                                                 <li><i class="flaticon-fit-screen"></i>200 sqft</li>
                                                 <li><i class="flaticon-hotel"></i>3 Bedrooms</li>
                                                 <li><i class="flaticon-bathtub"></i>2 Bathrooms</li>
                                                 <li><i class="flaticon-garage"></i>1 Garage</li>
                                             </ul>
-                                            <span class="tags color-gray mb-30 d-block">Appartment, Bar, Hotel,
-                                                House</span>
+                                            <span class="tags color-gray mb-30 d-block">{{show.propertyType}}</span>
                                             <div class="property-cost color-white list-half w-100">
                                                 <ul>
                                                     <li>For Rent</li>
-                                                    <li>1.8k <sub>/Month</sub></li>
+                                                    <li>{{show.price}}</li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
