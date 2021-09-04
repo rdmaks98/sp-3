@@ -49,7 +49,7 @@
                                 <div class="col-md-8 col-lg-7">
                                     <form>
                                         <div class="form-group d-flex mb-0">
-                                            <label class="w-50">S ort By :</label>
+                                            <label class="w-50">Sort By :</label>
                                             <div class="select-wrapper position-relative w-100">
                                                 <select class="select form-control">
                                                     <option>Default</option>
@@ -124,6 +124,9 @@
                 <div class="tab-content mt-md-50" id="myTabContent">
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <div class="row">
+                        {% if not Property %}
+                        <h2>no data </h2>
+                        {% else %}
                             {% for show in Property %}
                             <div class="col-md-12 col-lg-6 wow slideInDown animated">
                                 <div class="property-thumbnail mt-30">
@@ -146,8 +149,8 @@
                                             <div class="hover-content py-30 px-20 overlay-hover-gradient">
                                                 <div class="thumbnail-title z-index-1 position-relative">
                                                     <span
-                                                        class="thumbnail-price bg-white color-secondary px-15 mb-10 d-table">{{show.price}}</span>
-                                                    <a class="color-secondary mb-5" href="single-property.html">
+                                                        class="thumbnail-price bg-white color-secondary px-15 mb-10 d-table">₹ {{show.price}}</span>
+                                                    <a class="color-secondary mb-5" href={% url 'p_single' show.id %}>
                                                         <h4>{{show.propertyTitle}}</h4>
                                                     </a>
                                                     <span class="address icon-primary f-14"><i
@@ -155,10 +158,8 @@
                                                 </div>
                                                 <ul
                                                     class="about-property icon-primary d-table f-14 z-index-1 position-relative">
-                                                    <li><span class="color-primary">400</span> sqft</li>
-                                                    <li><span class="color-primary">3</span> Bedrooms</li>
-                                                    <li><span class="color-primary">2</span> Bathrooms</li>
-                                                    <li><span class="color-primary">1</span> Garage</li>
+                                                    <li><span class="color-primary">{{show.areasize}}</span> sqft</li>
+                                                   
                                                 </ul>
                                             </div>
                                         </div>
@@ -177,6 +178,7 @@
                                     </ul>
                                 </div>
                             </div>
+                        {% endif %}
                         </div>
                     </div>
                     <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -205,21 +207,19 @@
                                             </div>
                                         </div>
                                         <div class="property-content bg-white pt-30 pb-50 px-30 position-relative">
-                                            <a class="color-secondary mb-5" href="single-property.html">
+                                            <a class="color-secondary mb-5" href={% url 'p_single' show.id %}>
                                                 <h4>{{show.propertyTitle}}</h4>
                                             </a>
                                             <span class="address icon-primary f-14"><i class="fa fa-map-marker"></i>{{show.address}}</span>
                                             <ul class="about-property icon-primary d-table mt-20">
-                                                <li><i class="flaticon-fit-screen"></i>200 sqft</li>
-                                                <li><i class="flaticon-hotel"></i>3 Bedrooms</li>
-                                                <li><i class="flaticon-bathtub"></i>2 Bathrooms</li>
-                                                <li><i class="flaticon-garage"></i>1 Garage</li>
+                                                <li><i class="flaticon-fit-screen"></i>{{show.areasize}} sqft</li>
+                                                
                                             </ul>
                                             <span class="tags color-gray mb-30 d-block">{{show.propertyType}}</span>
                                             <div class="property-cost color-white list-half w-100">
                                                 <ul>
                                                     <li>For Rent</li>
-                                                    <li>{{show.price}}</li>
+                                                    <li>₹ {{show.price}}</li>
                                                 </ul>
                                             </div>
                                         </div>

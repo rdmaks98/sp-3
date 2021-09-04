@@ -1,101 +1,66 @@
 <!-- filter Start
 ==================================================================-->
 <section>
-    <div class="container">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-md-12 col-lg-12 wow animated slideInUp animated"
-                    style="visibility: visible; animation-name: slideInUp;">
-                    <div class="banner-content y-middle color-dark z-index-1">
-                        <ul class="nav nav-tabs border-0 m-auto d-table" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="buy-tab" data-toggle="tab" href="#home" role="tab"
-                                    aria-controls="home" aria-selected="true">Buy</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="rent-tab" data-toggle="tab" href="#home" role="tab"
-                                    aria-controls="home" aria-selected="false">Rent</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="sale-tab" data-toggle="tab" href="#home" role="tab"
-                                    aria-controls="home" aria-selected="false">Sale</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel">
-                                <form
-                                    class="adbanced-form-two form-banner amenities-list bg-secondary color-white py-30 px-20">
-                                    <div class="row">
-                                        <div class="form-group col-lg-2 col-md-6 col-6">
-                                            <div class="select-wrapper position-relative">
-                                                <select class="select form-control">
-                                                    <option>All Type</option>
-                                                    <option>Appartment</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group col-lg-2 col-md-6 col-6">
-                                            <div class="select-wrapper position-relative">
-                                                <select class="select form-control">
-                                                    <option>Select Location</option>
-                                                    <option>Newyork</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="form-group mb-0 mt-md-15 col-lg-3  col-md-6">
-                                            <div class="price_range">
-                                                <div class="price-filter">
-                                                    <span><input id="filter_sqft" type="text" name="price"
-                                                            value="20000;80000" style="display: none;"><span
-                                                            class="jslider jslider_plastic">
-                                                            <table>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <div class="jslider-bg"><i class="l"></i><i
-                                                                                    class="f"></i><i class="r"></i><i
-                                                                                    class="v"
-                                                                                    style="left: 19.9%; width: 60.1%;"></i>
-                                                                            </div>
-                                                                            <div class="jslider-pointer"
-                                                                                style="left: 19.9%;"></div>
-                                                                            <div class="jslider-pointer jslider-pointer-to"
-                                                                                style="left: 80%;"></div>
-                                                                            <div class="jslider-label"
-                                                                                style="display: none;"><span>100</span>
-                                                                            </div>
-                                                                            <div class="jslider-label jslider-label-to"
-                                                                                style="display: none;">
-                                                                                <span>100000</span>&nbsp; sqft
-                                                                            </div>
-                                                                            <div class="jslider-value"
-                                                                                style="visibility: hidden; left: 19.9%; margin-left: -40.6457px; right: auto;">
-                                                                                <span>20000</span>&nbsp; sqft
-                                                                            </div>
-                                                                            <div class="jslider-value jslider-value-to"
-                                                                                style="visibility: visible; left: 49.95%; margin-left: -71.7085px; right: auto;">
-                                                                                <span>20000&nbsp;–&nbsp;80000</span>&nbsp;
-                                                                                sqft
-                                                                            </div>
-                                                                            <div class="jslider-scale"></div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </span></span>
-                                                </div>
-                                            </div>
-                                        </div> -->
-                                        <div class="form-group col-md-12 col-lg-2">
-                                            <input class="btn btn-primary w-100" type="submit" name="search"
-                                                value="Search">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-md-12 col-lg-12 wow animated slideInUp animated"
+                style="visibility: visible; animation-name: slideInUp;">
+                <div class="banner-content y-middle color-dark z-index-1">
+                    <ul class="nav nav-tabs border-0 m-auto d-table" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="buy-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="true">Buy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="rent-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="false">Rent</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel">
+                            <form
+                                class="adbanced-form-two form-banner amenities-list bg-secondary color-white py-30 px-20">
+                                <div class="row">
+                                    <div class="form-group col-lg-3 col-md-6 col-6">
+                                        <div class="select-wrapper position-relative">
+                                            <select class="select form-control">
+                                                <option>select category</option>
+                                                {% for category in cat %}
+                                                <option name="category" value={{category.name}}>
+                                                {{category.name}}
+                                                </option>
+                                                {% endfor %}
+                                            </select>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+
+                                    <div class="form-group col-lg-3 col-md-6 col-6">
+                                        <div class="select-wrapper position-relative">
+                                            <select class="select form-control">
+                                                <option>Select subcategory</option>
+                                                    {% for subcategory in subcat %}
+                                                <option name="category" value={{subcategory.sub_name}}>
+                                                {{subcategory.sub_name}}
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-0 mt-md-15 col-lg-3  col-md-6">
+                                        <div class="price_range">
+                                            <div class="price-filter">
+                                                <span class="price-slider">
+                                                    <input class="filter_price" type="text" name="price" value="100000;900000" />
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12 col-lg-3">
+                                        <input class="btn btn-primary w-100" type="submit" name="search"
+                                            value="Search">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -134,10 +134,12 @@ def p_lists(request,id):
     property = AddPropertyForm.objects.filter(subcate_id_id=id).all()
     return render(request,"page/p_lists.html",{'cat':cat,'subcat':subcat,'property':property})
 
-def p_single(request):
+def p_single(request,id):
     cat = BrokerCategory.objects.all()
     subcat = BrokerSubCategory.objects.all()
-    return render(request,"page/p_single.html",{'cat':cat,'subcat':subcat})
+    property_single = AddPropertyForm.objects.get(id=id)
+    property = AddPropertyForm.objects.all().order_by('id')[0:4]
+    return render(request,"page/p_single.html",{'cat':cat,'subcat':subcat,'property_single':property_single,'property':property})
 
 def agency(request):
     # fetch cat,user and subcat data 

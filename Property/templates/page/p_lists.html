@@ -8,11 +8,6 @@
         <div class="row h-100 align-items-center">
             <div class="col-lg-12">
                 <h1 class="page-banner-title color-primary">{{subcat.sub_name}}</h1>
-                <div class="text-area w-50 mt-15 color-white">
-                    <p>Porttitor luctus est sit lacinia non praesent aptent hymenaeos taciti tortor. Sociosq platea
-                        porta facilisis vitae dictum bibendun tellus ante fusce vulputate dolor lorem vulputate hac
-                        quisque diam etiam.</p>
-                </div>
             </div>
         </div>
     </div>
@@ -107,8 +102,8 @@
                                             <div class="hover-content py-30 px-20 overlay-hover-gradient">
                                                 <div class="thumbnail-title z-index-1 position-relative">
                                                     <span
-                                                        class="thumbnail-price bg-white color-secondary px-15 mb-10 d-table">{{show.price}}</span>
-                                                    <a class="color-secondary mb-5" href="single-property.html">
+                                                        class="thumbnail-price bg-white color-secondary px-15 mb-10 d-table">₹ {{show.price}}</span>
+                                                    <a class="color-secondary mb-5" href={% url 'p_single' show.id %}>
                                                         <h4>{{show.propertyTitle}}</h4>
                                                     </a>
                                                     <span class="address icon-primary f-14"><i
@@ -117,10 +112,7 @@
                                                 </div>
                                                 <ul
                                                     class="about-property icon-primary d-table f-14 z-index-1 position-relative">
-                                                    <li><span class="color-primary">400</span> sqft</li>
-                                                    <li><span class="color-primary">3</span> Bedrooms</li>
-                                                    <li><span class="color-primary">2</span> Bathrooms</li>
-                                                    <li><span class="color-primary">1</span> Garage</li>
+                                                    <li><span class="color-primary">{{show.areasize}}</span> sqft</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -132,6 +124,9 @@
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="row">
+                        {% comment %} {% if not Property %}
+                        <h2>no data </h2>
+                        {% else %} {% endcomment %}
                         {% for show in property %}
                             <div class="col-md-12 col-lg-12 wow slideInDown animated">
                                 <div class="property-list mt-30">
@@ -156,21 +151,19 @@
                                             </div>
                                         </div>
                                         <div class="property-content bg-white pt-30 pb-50 px-30 position-relative">
-                                            <a class="color-secondary mb-5" href="single-property.html">
+                                            <a class="color-secondary mb-5" href={% url 'p_single' show.id %}>
                                                 <h4>{{show.propertyTitle}}</h4>
                                             </a>
                                             <span class="address icon-primary f-14"><i class="fa fa-map-marker"></i>{{show.address}}</span>
                                             <ul class="about-property icon-primary d-table mt-20">
-                                                <li><i class="flaticon-fit-screen"></i>200 sqft</li>
-                                                <li><i class="flaticon-hotel"></i>3 Bedrooms</li>
-                                                <li><i class="flaticon-bathtub"></i>2 Bathrooms</li>
-                                                <li><i class="flaticon-garage"></i>1 Garage</li>
+                                                <li><i class="flaticon-fit-screen"></i>{{show.arearsize}} sqft</li>
+                                               
                                             </ul>
                                             <span class="tags color-gray mb-30 d-block">{{show.propertyType}}</span>
                                             <div class="property-cost color-white list-half w-100">
                                                 <ul>
                                                     <li>For Rent</li>
-                                                    <li>{{show.price}}</li>
+                                                    <li>₹ {{show.price}}</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -179,6 +172,7 @@
                             </div>
                             {% endfor %}
                         </div>
+                        {% comment %} {% endif %} {% endcomment %}
                     </div>
                 </div>
             </div>

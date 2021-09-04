@@ -9,9 +9,7 @@
             <div class="col-lg-12">
                 <h1 class="page-banner-title color-primary">Single Property</h1>
                 <div class="text-area w-50 mt-15 color-white">
-                    <p>Porttitor luctus est sit lacinia non praesent aptent hymenaeos taciti tortor. Sociosq platea
-                        porta facilisis vitae dictum bibendun tellus ante fusce vulputate dolor lorem vulputate hac
-                        quisque diam etiam.</p>
+                <p>{{property_single.propertyTitle}}</p>
                 </div>
             </div>
         </div>
@@ -23,8 +21,8 @@
             <div class="col-md-12 col-lg-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb m-0 py-15 px-0 bg-transparent hover-white-primary">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">category</a></li>
+                        <li class="breadcrumb-item"><a href={% url 'index' %}>Home</a></li>
+                        <li class="breadcrumb-item"><a href={% url 'category' property_single.cate_id_id %}>category</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Single Property</li>
                     </ol>
                 </nav>
@@ -45,15 +43,12 @@
                         <div class="col-md-12 col-lg-8 wow slideInRight animated">
                             <div class="single-property position-relative">
                                 <span class="bg-secondary color-white z-index-1 px-15 py-5 mr-20">For Sale</span>
-                                <strong class="color-primary f-20">$ 530,000</strong>
-                                <h3 class="color-secondary mt-15">Diamond Manor Apartment</h3>
-                                <span class="address icon-primary f-14 mt-5"><i class="fa fa-map-marker"></i>40 Tower
-                                    Avenue, Melbourne, Australia.</span>
+                                <strong class="color-primary f-20">{{property_single.price}}</strong>
+                                <h3 class="color-secondary mt-15">{{property_single.PropertyTitle}}</h3>
+                                <span class="address icon-primary f-14 mt-5"><i class="fa fa-map-marker"></i>
+                                {{property_single.address}}</span>
                                 <ul class="property-features icon-primary d-table f-14 mt-15">
-                                    <li><i class="flaticon-fit-screen"></i>300 sqft</li>
-                                    <li><i class="flaticon-hotel"></i>5 Bedrooms</li>
-                                    <li><i class="flaticon-bathtub"></i>4 Bathrooms</li>
-                                    <li><i class="flaticon-garage"></i>2 Garage</li>
+                                    <li><i class="flaticon-fit-screen"></i>Zipcode:{{property_single.zip}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -64,11 +59,6 @@
                                     <li>
                                         <a data-toggle="tooltip" data-placement="top" title="" href="#"
                                             data-original-title="Wishlist"><i class="fa fa-heart-o"
-                                                aria-hidden="true"></i></a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="" href="#"
-                                            data-original-title="Compare"><i class="fa fa-random"
                                                 aria-hidden="true"></i></a>
                                     </li>
                                     <li>
@@ -108,7 +98,7 @@
             </div>
         </div>
     </div>
-    <!-- <div class="container-fluid wow slideInUp animated">
+    <div class="container-fluid wow slideInUp animated">
         <div class="row d-flow-root">
             <div class="product-slider">
                 <div class="tab-content">
@@ -131,7 +121,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-lg-8">
@@ -144,17 +134,13 @@
                     <h3 class="color-secondary line-bottom pb-15 mb-20">Property Details</h3>
                     <div class="row">
                         <div class="col-md-12 col-lg-6">
-                            <ul class="list-by-tag">
-                                <li>Bedrooms : <span>5</span></li>
-                                <li>Orienten : <span>East</span></li>
-
-                            </ul>
-                        </div>
-                        <div class="col-md-12 col-lg-6">
                             <ul class="list-by-tag hover-secondery-primary">
-
-                                <li>Plot size : <span>300x200x300</span></li>
-                                <li>Kitchens : <span>2</span></li>
+                                <li>Plot size : <span>{{property_single.areasize}}</span></li>
+                                <li>Built year : <span>{{property_single.builtyear}}</span></li>
+                            </ul>
+                            <ul class="list-by-tag hover-secondery-primary">
+                                <li>Neighbourhood : <span>{{property_single.Neighbourhood}}</span></li>
+                                <li>city : <span>{{property_single.city}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -178,6 +164,20 @@
                     <h3 class="color-secondary line-bottom pb-15 mb-20">Floor Plan</h3>
                     <img src="{% static 'images/others/plan-1.png' %}" alt="">
 
+                </div>
+                <div class="border-top-1-gray py-30 wow slideInDown animated">
+                    <h3 class="color-secondary line-bottom pb-15 mb-20">Gallery</h3>
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 col-sm-6">
+                            <img src="{% static 'images/others/plan-1.png' %}" alt="">
+                        </div>
+                            <div class="col-md-4 col-lg-4 col-sm-6">
+                            <img src="{% static 'images/others/plan-1.png' %}" alt="">
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-sm-6">
+                            <img src="{% static 'images/others/plan-1.png' %}" alt="">
+                        </div>
+                    </div>
                 </div>
                 <div class="border-top-1-gray py-30 wow slideInDown animated">
                     <h3 class="color-secondary line-bottom pb-15 mb-20">Give Your Review</h3>
@@ -276,9 +276,10 @@
                 <div class="sidebar-widget bg-white mt-50 shadow py-40 px-30 wow slideInDown animated">
                     <h3 class="color-secondary line-bottom pb-15 mb-20">Latest Properties</h3>
                     <div class="owl-carousel slide-1 owl-dots-none">
+                    {% for allp in property %}
                         <div class="property-item">
                             <div class="property-img position-relative overflow-hidden overlay-secondary-4">
-                                <img src="images/property/5.jpg" alt="image">
+                                <img src={{ allp.propertyimage.url }} class="property" alt="image">
                                 <span
                                     class="thum-category category-1 bg-secondary color-white z-index-1 px-15">New</span>
                                 <ul class="hover-option position-absolute icon-white z-index-1">
@@ -300,73 +301,28 @@
                             </div>
                             <div class="property-content bg-white pt-30 pb-50">
                                 <a class="color-secondary mb-5" href="single-property.html">
-                                    <h5>Park Avanue Apartment.</h5>
+                                    <h5>{{allp.PropertyTitle}}</h5>
                                 </a>
-                                <span class="address icon-primary f-14"><i class="fa fa-map-marker"></i>Urbis Building
-                                    Cathedral Gardens, UK</span>
+                                <span class="address icon-primary f-14"><i class="fa fa-map-marker"></i>{{allp.address}}</span>
                                 <ul class="about-property list-half icon-primary d-table f-14 mb-30 mt-20">
-                                    <li><i class="flaticon-fit-screen"></i>200 sqft</li>
-                                    <li><i class="flaticon-hotel"></i>6 Bedrooms</li>
-                                    <li><i class="flaticon-bathtub"></i>4 Bathrooms</li>
-                                    <li><i class="flaticon-garage"></i>1 Garage</li>
+                                    <li><i class="flaticon-fit-screen"></i>plotSize:{{allp.areasize}}</li>
                                 </ul>
                                 <div class="property-cost color-white list-half w-100">
                                     <ul>
                                         <li>For Rent</li>
-                                        <li>1.2k <sub>/Month</sub></li>
+                                        <li>̥₹ {{allp.price}}</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="property-item">
-                            <div class="property-img position-relative overflow-hidden overlay-secondary-4">
-                                <img src="images/property/1.jpg" alt="image">
-                                <span
-                                    class="thum-category category-1 bg-secondary color-white z-index-1 px-15">New</span>
-                                <ul class="hover-option position-absolute icon-white z-index-1">
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Wishlist" href="#"><i
-                                                class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i
-                                                class="fa fa-random" aria-hidden="true"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="meta-property icon-primary color-white z-index-1">
-                                    <ul>
-                                        <li><i class="fa fa-calendar"></i> 06/27/2020</li>
-                                        <li><i class="fa fa-user"></i> James Bond</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="property-content bg-white pt-30 pb-50">
-                                <a class="color-secondary mb-5" href="single-property.html">
-                                    <h5>Villa on Grand Avenue</h5>
-                                </a>
-                                <span class="address icon-primary f-14"><i class="fa fa-map-marker"></i>366 Glenmore
-                                    Ave, Brooklyn, USA.</span>
-                                <ul class="about-property list-half icon-primary d-table f-14 mb-30 mt-20">
-                                    <li><i class="flaticon-fit-screen"></i>200 sqft</li>
-                                    <li><i class="flaticon-hotel"></i>3 Bedrooms</li>
-                                    <li><i class="flaticon-bathtub"></i>2 Bathrooms</li>
-                                    <li><i class="flaticon-garage"></i>1 Garage</li>
-                                </ul>
-                                <div class="property-cost color-white list-half w-100">
-                                    <ul>
-                                        <li>For Rent</li>
-                                        <li>1.8k <sub>/Month</sub></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    {% endfor %}
                     </div>
                 </div>
                 <div class="sidebar-widget bg-white mt-50 shadow py-40 px-30 wow slideInUp animated">
                     <h3 class="color-secondary line-bottom pb-15 mb-20">Mortgage Calculator</h3>
                     <ul class="list-by-tag">
                         <li>Total Amount <span>Your payment</span></li>
-                        <li><strong class="color-primary f-20">$ 530,000</strong> <span class="color-primary">$
+                        <li><strong class="color-primary f-20">̥₹ {{property_single.price}}</strong> <span class="color-primary">$
                                 1,458</span></li>
                     </ul>
                     <ul class="list-by-tag mt-20">

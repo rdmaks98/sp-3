@@ -14,16 +14,15 @@
             </div>
 
            {% for data in Propertyall %}
-            <div class="col-md-12 col-lg-6 wow animated slideInDown">
+            <div class="col-md-6 col-lg-3 wow animated slideInDown">
                 <div class="property-thumbnail mt-30">
                     <div class="property-img position-relative overflow-hidden overlay-secondary-4">
                         <img src="{{data.propertyimage.url}}" class="property" alt="image">
                         <div class="thumbnail-content z-index-1 color-white-a color-white">
                             <span class="thum-category category-1 bg-secondary color-white z-index-1 px-15">For
                                 Sale</span>
-                            <span
-                                class="thum-category category-2 bg-secondary color-white z-index-1 px-15">Featured</span>
-                            <ul class="hover-option position-absolute icon-white z-index-1">
+                            
+                            <ul class="hover-option position-absolute icon-white z-index-1 px-15">
                                 <li>
                                     <a data-toggle="tooltip" data-placement="top" title="Wishlist" href="#"><i
                                             class="fa fa-heart-o" aria-hidden="true"></i></a>
@@ -35,17 +34,15 @@
                             </ul>
                             <div class="hover-content py-30 px-20 overlay-hover-gradient">
                                 <div class="thumbnail-title pb-10 z-index-1 position-relative">
-                                    <span class="thumbnail-price bg-white color-secondary px-15 mb-10 d-table">{{data.price}}</span>
-                                    <a class="color-secondary mb-5" href="single-property.html">
+                                    <span class="thumbnail-price bg-white color-secondary px-15 mb-10 d-table">₹ {{data.price}}</span>
+                                    <a class="color-secondary mb-5" href={% url 'p_single' data.id %}>
                                         <h4>{{data.propertyTitle}}</h4>
                                     </a>
                                     <span class="address icon-primary f-14"><i class="fa fa-map-marker"></i>{{data.address}}</span>
                                 </div>
                                 <ul class="about-property icon-primary d-table f-14 z-index-1 position-relative">
-                                    <li><span class="color-primary">500</span> sqft</li>
-                                    <li><span class="color-primary">8</span> Bedrooms</li>
-                                    <li><span class="color-primary">4</span> Bathrooms</li>
-                                    <li><span class="color-primary">2</span> Garage</li>
+                                    <li><span class="color-primary">area size: {{data.areasize}}</span> sqft</li>
+                                  
                                 </ul>
                             </div>
                         </div>
