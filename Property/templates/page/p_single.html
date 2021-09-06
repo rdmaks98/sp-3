@@ -179,21 +179,23 @@
                         </div>
                     </div>
                 </div>
+              
                 <div class="border-top-1-gray py-30 wow slideInDown animated">
-                    <h3 class="color-secondary line-bottom pb-15 mb-20">Give Your Review</h3>
+
+                    <h3 class="color-secondary line-bottom pb-15 mb-20">Give Your ratings & Review</h3>
                     <form action="#" method="post" class="form-rating">
                         <div class="row">
+                        
                             <div class="form-group col-md-12 rating-animation">
-                                <span>Move Mouse for Rating</span>
-                                <div class="star-rating pt-10">
-                                    <select id="star-rating" name="rating" autocomplete="off">
-                                        <option value="Strongly Disagree">Very Bad Review</option>
-                                        <option value="Disagree">Bad Review</option>
-                                        <option value="Neither Agree or Disagree" selected="selected">Good Review
-                                        </option>
-                                        <option value="Agree">Very Good Quality</option>
-                                        <option value="Strongly Agree">Excellent Quality</option>
-                                    </select>
+                                <div>Move Mouse for Rating</div>
+                                <div class="stars">
+                                    <form action=""> 
+                                        <input class="star star-5" id="star-5" type="radio" name="star" /> <label class="star star-5" for="star-5"></label>
+                                        <input class="star star-4" id="star-4" type="radio" name="star" /> <label class="star star-4" for="star-4"></label> 
+                                        <input class="star star-3" id="star-3" type="radio" name="star" /> <label class="star star-3" for="star-3"></label> 
+                                        <input class="star star-2" id="star-2" type="radio" name="star" /> <label class="star star-2" for="star-2"></label> 
+                                        <input class="star star-1" id="star-1" type="radio" name="star" /> <label class="star star-1" for="star-1"></label> 
+                                    </form>
                                 </div>
                             </div>
                             <div class="form-group col-md-12 col-lg-6">
@@ -208,8 +210,11 @@
                             </div>
                             <div class="col-lg-12"><button type="submit" class="btn btn-secondary">Send</button></div>
                         </div>
+                        
                     </form>
                 </div>
+                
+                </form>
                 <div class="border-top-1-gray pt-30 wow slideInUp animated">
                     <div class="comments-area">
                         <h3 class="color-secondary line-bottom pb-15 mb-20">User Reviews</h3>

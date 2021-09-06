@@ -36,7 +36,7 @@ class BrokerSubCategory(models.Model):
 
 
 class Agency(models.Model):
-    id = models.IntegerField(primary_key=True,default=0)
+    id = models.IntegerField(primary_key=True)
     u_id = models.ForeignKey(User, on_delete=models.CASCADE,default=0)
     a_name = models.CharField(max_length=200,default="")
     a_image = models.ImageField(upload_to="Property/images/agency/",default="")
@@ -82,3 +82,27 @@ class AddPropertyForm(models.Model):
         return self.propertyTitle
 
 # >>>>>>> aakash
+
+
+# add rating and review in the rating
+
+class Rating(models.Model):
+    Rid = models.IntegerField(primary_key=True)
+    uid = models.ForeignKey(User, on_delete= models.CASCADE)
+    pid = models.ForeignKey(AddPropertyForm, on_delete= models.CASCADE)
+    name = models.CharField(max_length=40)
+    rate = models.IntegerField()
+    review = models.CharField(max_length=255)
+
+    def __str__(self):
+        return  self.name
+
+class Contact(models.Model):
+    ctid = models.IntegerField(primary_key=True)
+    uid = models.ForeignKey(User, on_delete= models.CASCADE)
+    name = models.CharField(max_length=40)
+    email = models.CharField(max_length=40)
+    message = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name

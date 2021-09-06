@@ -76,7 +76,7 @@
 											<div class="modal-body">
 												<form method="post" enctype="multipart/form-data" >
 													{% csrf_token %}
-													<input type="hidden" name="id" value={{showagency.id}} id="a_id">
+													<input type="hidden" name="a_id" value={{showagency.id}} id="a_id">
 													{% include 'layout/message.html' %}
 													<div class="form-group">
 														<input class="form-control bg-gray" type="text" value="{{showagency.a_name}}" name="a_name" required placeholder="Name">
@@ -89,7 +89,7 @@
 															<img class="form-control bg-gray" src="{{showagency.a_image.url}}">
 														</div>
 														<div class="form-group  col-lg-4 col-md-4 col-xl-6">
-															<input class="form-control bg-gray" type="file" name="a_image" value="{{showagency.a_iamge.url}}">
+															<input class="form-control bg-gray" type="file" name="a_image">
 														</div>
 													</div>
 												</form>
@@ -149,6 +149,6 @@
                 alert("success");
             }
         });
-	});
+	})
 </script>
 {% endblock %}

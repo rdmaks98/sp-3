@@ -1,0 +1,91 @@
+{% extends 'Property/base.html' %}
+{% block content %}
+{% load static %}
+<!-- Page Banner Start
+==================================================================-->
+<div class="page-banner overlay-black" style="padding: 150px 0">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-lg-12">
+                <h1 class="page-banner-title color-primary">Contact Us</h1>
+               
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb m-0 py-15 px-0 bg-transparent hover-white-primary">
+                        <li class="breadcrumb-item"><a href={% url 'index' %}>Home</a></li>
+                        <li class="breadcrumb-item active" aria-current={% url 'contact' %}>Contact</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div><br>
+<!-- Page Banner End
+==================================================================-->
+<!-- ======================================= contact start ================ -->
+<div class="container">
+    <div class="bg-white px-30 py-40 shadow w-75 mx-auto">
+        <form method="post">
+            {% csrf_token %}
+            {% include 'layout/message.html' %}
+            <h3 class="color-secondary line-bottom pb-15 mb-20 wow slideInDown animated">Contact Us</h3>
+            <div class="row">
+                {{form}}
+            </div>
+            <div class="col-lg-12 mt-5"><button type="submit" class="btn btn-secondary">Send</button></div>
+            </div>
+        </form>
+    </div>
+</div><br>
+<!-- ======================================= contact end ================ -->
+<!-- Experience Start
+
+==================================================================-->
+<section class="p-0 bg-light">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <div class="row">
+                    <div class="experience position-relative wow slideInUp animated" style="margin-top: 90px">
+                        <img src="{% static 'images/others/20.jpg' %}" alt="Image not found!">
+                        <div class="years text-center color-secondary">
+                            <h2><span class="display-1 d-table mx-auto color-secondary">39</span> Years of Experience
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <div class="row">
+                    <div class="best-help py-80 bg-primary px-30 color-white wow slideInRight animated">
+                        <h2 class="color-secondary mb-30">We Help You To Find The Best Property For The Future.</h2>
+                        <p>Magnis molestie taciti platea laoreet aenean, gravida commodo. Ullamcorper senectus Pulvinar
+                            Accumsan potenti dictumst. Nulla ante nostra augue lacus arcu morbi metusy nonummy rhoncus.
+                            Duis dui placerat lectus feugiat.</p>
+                        <p class="mt-15">Dictumst platea faucibus viverra luctus aliquam porttitor tortor massa interd
+                            Consequ facilisi vestibulum. Vel sit dapibus magna amet. Pharetra pulvinar pede lectus
+                            ornarey varius. Turpis suscipit faucibus nec facilisi. Quisque interdul sociosqu nullam
+                            placerat elementum ad ultricies habitasse vel viverra urna class tellus. Natoque aptent
+                            aliquam lacinia, penatibus facilisi rutrum mollis vel, sapien dui cras, adipiscing adipiscin
+                            Curae volutpat netus gravida fames cras, ligula tellus. Enim cras mauris facilisis
+                            scelerisque pharetra risus in rhoncus et duis ridiculus magnis et donec.</p>
+                        <div style="width: 250px; height: auto;">
+                            <img src="{% static 'images/others/signature.gif' %}" alt="Images not found!">
+                            <span>Robert Louise - Founder</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Experience End
+==================================================================-->
+{% endblock %}

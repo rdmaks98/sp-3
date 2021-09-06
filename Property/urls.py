@@ -30,6 +30,7 @@ urlpatterns = [
     path('broker',views.broker,name="broker"),
     path('addproperty',views.addProperty,name="addproperty"),
     path('about-us',views.about,name="about-us"),
+    path('contact',views.contact,name="contact"),
     path('services',views.services,name="services"),
     path('pricing',views.pricing,name="pricing"),
     path('faq',views.faq,name="faq"),

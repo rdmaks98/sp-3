@@ -1,7 +1,7 @@
 from django import forms
 
 # agency model import here
-from .models import Agency,UserProfile
+from .models import Agency,UserProfile,Contact
 
 # password change and resets
 from django.contrib.auth.forms import PasswordChangeForm
@@ -55,3 +55,18 @@ class AddAgency(forms.ModelForm):
         model = Agency
         fields = ["a_name","a_image","a_address"]
         # widgets = {'u_id':forms.HiddenInput()}
+
+
+class Contactform(forms.ModelForm):
+    name = forms.CharField(max_length=100,required = True,
+    widget=forms.TextInput(attrs={'class': 'form-control bg-gray', 'placeholder': 'enter your name'}),)
+    
+    email = forms.CharField(max_length=100,required = True,
+    widget=forms.TextInput(attrs={'class': 'form-control bg-gray', 'placeholder': 'enter your email'}),)
+
+    message = forms.CharField(max_length=100,required = True,
+    widget=forms.TextInput(attrs={'class': 'form-control bg-gray', 'placeholder': 'enter message/comment is here...'}),)
+
+    class Meta:
+        model = Contact
+        fields = ["name","email","message"]

@@ -14,10 +14,10 @@ from django.contrib import messages,auth
 from django.contrib.auth.models import User
 
 # import models 
-from .models import UserProfile,BrokerCategory,BrokerSubCategory,Agency,AddPropertyForm
+from .models import UserProfile,BrokerCategory,BrokerSubCategory,Agency,AddPropertyForm,Contact
 
 # import form
-from .forms import AddAgency
+from .forms import AddAgency,Contactform
 
 # Create your views here.
 # index page 
@@ -156,9 +156,7 @@ def addAgency(request):
     # add agency data in the database with form
     if request.method == 'POST':
         form = AddAgency(request.POST,request.FILES)
-        print(form)
         if form.is_valid():
-            print("if")
             # save the form data to model
             user = request.user.id
             a_name = form.cleaned_data['a_name']
@@ -167,7 +165,7 @@ def addAgency(request):
             agency = Agency(u_id_id=user, a_name=a_name, a_image=a_image, a_address=a_address)
             agency.save()
             messages.success(request, 'Your agency add successfully')
-            return render(request,"page/addAgency.html",{'cat':cat,'subcat':subcat,'form':form})
+            return render(request,"page/Agency.html",{'cat':cat,'subcat':subcat,'form':form})
         else:
             messages.error(request, 'Fill all detail and enter valid value')
             return redirect('addAgency') 
@@ -176,7 +174,7 @@ def addAgency(request):
         return render(request,"page/addAgency.html",{'cat':cat,'subcat':subcat,'form':form,'agency':agency})
 
     return render(request,"page/addAgency.html",{'cat':cat,'subcat':subcat,'agency':agency})
-
+    
 def Update(request):
     user = request.user.id
     agency = Agency.objects.all().filter(u_id_id=request.user.id)
@@ -217,10 +215,9 @@ def Update(request):
         #     return redirect('addAgency') 
     else:
         form = AddAgency()
-        return render(request,"page/addAgency.html",{'form':form,'agency':agency})
+    return render(request,"page/addAgency.html",{'form':form,'agency':agency})
         
-def addProperty(request):
-   
+def addProperty(request): 
     if request.method == 'POST':
         addProperty = AddPropertyForm()
 
@@ -246,8 +243,6 @@ def addProperty(request):
         # addProperty.print(propertyTitle,price)
     return render(request,'page/addproperty.html')
 
-
-
 def features(request):
     propertyData = AddPropertyForm.objects.all()
     return render(request,'layout/features.html',{'propertyData':propertyData})
@@ -257,35 +252,42 @@ def broker(request):
     return render(request,"page/broker.html",{'brokers':brokers})
 
 def about(request):
-    cat = BrokerCategory.objects.all()
-    subcat = BrokerSubCategory.objects.all()
-    return render(request,"page/about-us.html",{'cat':cat,'subcat':subcat})
+    return render(request,"page/about-us.html")
 
 def services(request):
-    cat = BrokerCategory.objects.all()
-    subcat = BrokerSubCategory.objects.all()
-    return render(request,"page/services.html",{'cat':cat,'subcat':subcat})
+    return render(request,"page/services.html")
 
 def pricing(request):
-    cat = BrokerCategory.objects.all()
-    subcat = BrokerSubCategory.objects.all()
-    return render(request,"page/pricing.html",{'cat':cat,'subcat':subcat})
+    return render(request,"page/pricing.html")
 
 def faq(request):
-    cat = BrokerCategory.objects.all()
-    subcat = BrokerSubCategory.objects.all()
-    return render(request,"page/faq.html",{'cat':cat,'subcat':subcat})
+    return render(request,"page/faq.html")
 
-def invoice(request):
-    cat = BrokerCategory.objects.all()
-    subcat = BrokerSubCategory.objects.all()
-    return render(request,"page/invoice.html",{'cat':cat,'subcat':subcat})
+def invoice(request):  
+    return render(request,"page/invoice.html")
 
 def error404(request):
-    cat = BrokerCategory.objects.all()
-    subcat = BrokerSubCategory.objects.all()
-    return render(request,"page/error404.html",{'cat':cat,'subcat':subcat})
+    return render(request,"page/error404.html")
 
+def contact(request):  
+    if request.method == "POST":
+        form = Contactform(request.POST)
+        user = request.user.id
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            contactadd = Contact(uid_id=user,name=name,email=email,message=message)
+            contactadd.save()
+            messages.success(request,"your message send succesfully")
+            return redirect("index")
+        else:
+            messages.error(request,"enter valid details")
+    else:
+        form = Contactform()
+        return render(request,"page/contact.html",{'form':form})
+    
+    return render(request,"page/contact.html")
 
 # def categoryData(request):
     
