@@ -38,6 +38,7 @@ urlpatterns = [
     path('error404',views.error404,name="error404"),
     path('register',views.register,name="register"),
     path('features',views.features,name="features"),
+    path('favourite',views.favourite,name="favourite"),
   
 
     # path('logout', views.logoutUser, name='logout'),

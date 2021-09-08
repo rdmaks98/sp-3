@@ -14,10 +14,10 @@ from django.contrib import messages,auth
 from django.contrib.auth.models import User
 
 # import models 
-from .models import UserProfile,BrokerCategory,BrokerSubCategory,Agency,AddPropertyForm,Contact
+from .models import UserProfile,BrokerCategory,BrokerSubCategory,Agency,AddPropertyForm,Contact,Rating,Favourite
 
 # import form
-from .forms import AddAgency,Contactform
+from .forms import AddAgency,Contactform,Rating_reviewform
 
 # Create your views here.
 # index page 
@@ -135,11 +135,23 @@ def p_lists(request,id):
     return render(request,"page/p_lists.html",{'cat':cat,'subcat':subcat,'property':property})
 
 def p_single(request,id):
-    cat = BrokerCategory.objects.all()
-    subcat = BrokerSubCategory.objects.all()
     property_single = AddPropertyForm.objects.get(id=id)
-    property = AddPropertyForm.objects.all().order_by('id')[0:4]
-    return render(request,"page/p_single.html",{'cat':cat,'subcat':subcat,'property_single':property_single,'property':property})
+    rating = Rating.objects.all().order_by('Rid')[0:4]
+    if request.method == "POST":
+        add = Rating()
+        add.uid_id = request.user.id
+        add.pid_id = property_single.id
+        add.name=request.POST.get('name')
+        add.rate=request.POST.get('rate')
+        add.review=request.POST.get('review')
+        add.save()
+        messages.success(request,"your Rating and review is submitted")
+        return redirect("index")
+    else:
+        messages.error(request,"enter valid details")
+        return render(request,"page/p_single.html",{'property_single':property_single,'rating':rating})
+    
+    return render(request,"page/p_single.html",{'property_single':property_single,'rating':rating})
 
 def agency(request):
     # fetch cat,user and subcat data 
@@ -288,6 +300,13 @@ def contact(request):
         return render(request,"page/contact.html",{'form':form})
     
     return render(request,"page/contact.html")
+
+
+def favourite(request):
+    product_id = request.POST.get('pid_id')
+    user = request.user.id
+    Favourite(pid_id=product_id,uid_id=user).save()
+    return redirect("index",{"fp":fp})
 
 # def categoryData(request):
     

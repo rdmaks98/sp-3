@@ -24,12 +24,15 @@
                             
                             <ul class="hover-option position-absolute icon-white z-index-1 px-15">
                                 <li>
-                                    <a data-toggle="tooltip" data-placement="top" title="Wishlist" href="#"><i
-                                            class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i
-                                            class="fa fa-random" aria-hidden="true"></i></a>
+                                    {% comment %} <a data-toggle="tooltip" data-placement="top" title="Wishlist" href="#"><i
+                                            class="fa fa-heart-o" aria-hidden="true"></i></a> {% endcomment %}
+                                    <form action="/favourite" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="uid_id" class="user_id" value={{user.id}} />
+                                        <input type="hidden" name="pid_id" class="pid_id" value={{data.id}} />
+                                       
+                                        <button type="submit" data-toggle="tooltip" data-placement="top"    title="Wishlist" ><i class="fa fa-heart-o " aria-hidden="true"></i></button>
+                                    </form>
                                 </li>
                             </ul>
                             <div class="hover-content py-30 px-20 overlay-hover-gradient">

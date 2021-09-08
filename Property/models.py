@@ -106,3 +106,12 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Favourite(models.Model):
+    fid = models.IntegerField(primary_key=True)
+    uid = models.ForeignKey(User, on_delete= models.CASCADE)
+    pid = models.ForeignKey(AddPropertyForm, on_delete= models.CASCADE)
+    
+    def __str__(self):
+        return self.pid

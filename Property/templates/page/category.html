@@ -137,14 +137,13 @@
                                                 class="thum-category category-1 bg-secondary color-white z-index-1 px-15">For
                                                 Sale</span>
                                             <ul class="hover-option position-absolute icon-white z-index-1">
-                                                <li>
-                                                    <a data-toggle="tooltip" data-placement="top" title="Wishlist"
-                                                        href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a data-toggle="tooltip" data-placement="top" title="Compare"
-                                                        href="#"><i class="fa fa-random" aria-hidden="true"></i></a>
-                                                </li>
+                                                <form action="/favourite" method="post">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="uid_id" class="user_id" value={{user.id}} />
+                                                    <input type="hidden" name="pid_id" class="pid_id" value={{data.id}} />
+                                                
+                                                    <button type="submit" data-toggle="tooltip" data-placement="top"    title="Wishlist" ><i class="fa fa-heart-o " aria-hidden="true"></i></button>
+                                                </form>
                                             </ul>
                                             <div class="hover-content py-30 px-20 overlay-hover-gradient">
                                                 <div class="thumbnail-title z-index-1 position-relative">
@@ -190,14 +189,13 @@
                                         <div class="property-img position-relative overflow-hidden overlay-secondary-4">
                                             <img src="{{show.propertyimage.url}}" alt="image">
                                             <ul class="hover-option position-absolute icon-white z-index-1">
-                                                <li>
-                                                    <a data-toggle="tooltip" data-placement="top" title="Wishlist"
-                                                        href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a data-toggle="tooltip" data-placement="top" title="Compare"
-                                                        href="#"><i class="fa fa-random" aria-hidden="true"></i></a>
-                                                </li>
+                                                <form action="/favourite" method="post">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="uid_id" class="user_id" value={{user.id}} />
+                                                    <input type="hidden" name="pid_id" class="pid_id" value={{data.id}} />
+
+                                                    <button type="submit" data-toggle="tooltip" data-placement="top" title="Wishlist" ><i class="fa fa-heart-o " aria-hidden="true"></i></button>
+                                                </form>
                                             </ul>
                                             <div class="meta-property icon-primary color-white z-index-1">
                                                 <ul>

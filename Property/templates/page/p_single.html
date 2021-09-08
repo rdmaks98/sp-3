@@ -43,7 +43,7 @@
                         <div class="col-md-12 col-lg-8 wow slideInRight animated">
                             <div class="single-property position-relative">
                                 <span class="bg-secondary color-white z-index-1 px-15 py-5 mr-20">For Sale</span>
-                                <strong class="color-primary f-20">{{property_single.price}}</strong>
+                                <strong class="color-primary f-20">₹{{property_single.price}}</strong>
                                 <h3 class="color-secondary mt-15">{{property_single.PropertyTitle}}</h3>
                                 <span class="address icon-primary f-14 mt-5"><i class="fa fa-map-marker"></i>
                                 {{property_single.address}}</span>
@@ -72,51 +72,8 @@
                                                 aria-hidden="true"></i></a>
                                     </li>
                                 </ul>
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs border-0 float-right navbar-tab-view mt-15 sm-mt-0"
-                                    role="tablist" style="line-height: 20px;">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
-                                            role="tab" aria-controls="home" aria-selected="true"><i
-                                                class="fa fa-file-image-o" aria-hidden="true"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile"
-                                            role="tab" aria-controls="profile" aria-selected="false"><i
-                                                class="flaticon-location"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages"
-                                            role="tab" aria-controls="messages" aria-selected="false"><i
-                                                class="flaticon-street-view"></i></a>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid wow slideInUp animated">
-        <div class="row d-flow-root">
-            <div class="product-slider">
-                <div class="tab-content">
-                    <div class="tab-pane active position-relative" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="service-images owl-carousel slide-1 dot-on-slider">
-                            <img src="{% static 'images/property/33.jpg' %}" alt="image">
-                            <img src="images/property/34.jpg" alt="image">
-                            <img src="images/property/32.jpg" alt="image">
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div id="map" class="canvas" style="height: 600px"></div>
-                    </div>
-                    <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-                        <div class="mapimageview"><iframe
-                                src="https://www.google.com/maps/embed?pb=!4v1599036304356!6m8!1m7!1sqKj5Ao7cdLkLmIAAieQWgw!2m2!1d-37.78266616894371!2d145.0232453320753!3f99.89449149743196!4f-13.159907315623357!5f0.7820865974627469"
-                                height="600" style="border:0;" allowfullscreen="" aria-hidden="false"
-                                tabindex="0"></iframe></div>
                     </div>
                 </div>
             </div>
@@ -125,9 +82,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-lg-8">
-                <div class="text-area mt-50 wow slideInLeft animated">
+                <div class="text-area wow slideInLeft animated">
                     <h3 class="color-secondary line-bottom pb-15 mb-20">Description</h3>
-                    <p>Aliquam gravida hendrerit name enim phasellus molestie magnis vitae vivamus odio mattis lacinia.
+                    <p><strong>{{property_single.propertyDescription}}</strong>
                     </p>
                 </div>
                 <div class="border-top-1-gray py-30 wow slideInRight animated">
@@ -179,79 +136,95 @@
                         </div>
                     </div>
                 </div>
-              
                 <div class="border-top-1-gray py-30 wow slideInDown animated">
-
                     <h3 class="color-secondary line-bottom pb-15 mb-20">Give Your ratings & Review</h3>
                     <form action="#" method="post" class="form-rating">
                         <div class="row">
-                        
+                        {% csrf_token %}
                             <div class="form-group col-md-12 rating-animation">
                                 <div>Move Mouse for Rating</div>
-                                <div class="stars">
-                                    <form action=""> 
-                                        <input class="star star-5" id="star-5" type="radio" name="star" /> <label class="star star-5" for="star-5"></label>
-                                        <input class="star star-4" id="star-4" type="radio" name="star" /> <label class="star star-4" for="star-4"></label> 
-                                        <input class="star star-3" id="star-3" type="radio" name="star" /> <label class="star star-3" for="star-3"></label> 
-                                        <input class="star star-2" id="star-2" type="radio" name="star" /> <label class="star star-2" for="star-2"></label> 
-                                        <input class="star star-1" id="star-1" type="radio" name="star" /> <label class="star star-1" for="star-1"></label> 
-                                    </form>
+                                <div class="stars">  
+                                    <input class="star star-5" id="star-5" value="5" type="radio" name="rate" /> <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" value="4" type="radio" name="rate" /> <label class="star star-4" for="star-4"></label> 
+                                    <input class="star star-3" id="star-3" value="3" type="radio" name="rate" /> <label class="star star-3" for="star-3"></label> 
+                                    <input class="star star-2" id="star-2" value="2" type="radio" name="rate" /> <label class="star star-2" for="star-2"></label> 
+                                    <input class="star star-1" id="star-1" value="1" type="radio" name="rate" /> <label class="star star-1" for="star-1"></label> 
                                 </div>
                             </div>
                             <div class="form-group col-md-12 col-lg-6">
-                                <input type="text" class="form-control bg-gray" placeholder="Your Name*">
-                            </div>
-                            <div class="form-group col-md-12 col-lg-6">
-                                <input type="email" class="form-control bg-gray" placeholder="Email Address*">
+                                <input type="text" name="name" class="form-control bg-gray" placeholder="Your Name*">
                             </div>
                             <div class="form-group col-md-12 col-lg-12">
-                                <textarea class="form-control bg-gray" rows="7"
-                                    placeholder="Type Comments..."></textarea>
+                                <textarea name="review" class="form-control bg-gray" rows="7"
+                                    placeholder="enter your review/Comments..."></textarea>
                             </div>
-                            <div class="col-lg-12"><button type="submit" class="btn btn-secondary">Send</button></div>
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn btn-secondary">give rate & review</button>
+                            </div>
                         </div>
-                        
                     </form>
                 </div>
                 
-                </form>
                 <div class="border-top-1-gray pt-30 wow slideInUp animated">
+                 
                     <div class="comments-area">
                         <h3 class="color-secondary line-bottom pb-15 mb-20">User Reviews</h3>
+                        {% for review in rating %}
                         <div class="comment">
                             <div class="float-left text-center">
-                                <div class="user-image"><img src="{% static 'images/testimonial/1.jpg' %}"
-                                        class="rounded-circle" alt="images"></div>
-                                <a class="btn-link mt-15" href="#"><i>Replay</i></a>
+                            <h3>{{review.name}}
                             </div>
                             <div class="comment-content d-table">
                                 <div class="meta d-inline-block mb-15">
-                                    <h5 class="color-dark">Dwyane Clark</h5>
+                                    <h5 class="color-dark"></h5>
                                     <div class="user-rating">
                                         <ul>
+                                        {% if review.rate == 5  %}
+                                            <li class="active"></li>
+                                            <li class="active"></li>
+                                            <li class="active"></li>
+                                            <li class="active"></li>
+                                            <li class="active"></li>
+                                        {% elif review.rate == 4  %}
                                             <li class="active"></li>
                                             <li class="active"></li>
                                             <li class="active"></li>
                                             <li class="active"></li>
                                             <li class="deactive"></li>
+                                        {% elif review.rate == 3 %}
+                                            <li class="active"></li>
+                                            <li class="active"></li>
+                                            <li class="active"></li>
+                                            <li class="deactive"></li>
+                                            <li class="deactive"></li>
+                                        {% elif review.rate == 2 %}
+                                            <li class="active"></li>
+                                            <li class="active"></li>
+                                            <li class="deactive"></li>
+                                            <li class="deactive"></li>
+                                            <li class="deactive"></li>
+                                        {% else %}
+                                            <li class="active"></li>
+                                            <li class="deactive"></li>
+                                            <li class="deactive"></li>
+                                            <li class="deactive"></li>
+                                            <li class="deactive"></li>
+                                        {% endif %}
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="float-right f-14">Posted On 10th September, 2020</div>
-                                <p>Purus litora accumsan platea convallis consequat congue iaculis primis consectetse
-                                    rutrum nisl senectus molestie luctus. Facilisis varius arcu lacinia. Dignissim
-                                    cursus imperdie nostra dui semper commodo sociosq.</p>
+                                <p>{{review.review}}</p>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
             <div class="col-md-12 col-lg-4">
-                <div class="sidebar-widget bg-white mt-50 shadow py-40 px-30 wow slideInUp animated">
+                <div class="sidebar-widget bg-white shadow py-40 px-30 wow slideInUp animated">
                     <h3 class="color-secondary line-bottom pb-15 mb-20">Contact an Agent</h3>
                     <div class="d-flex">
-                        <div class="contact-agent-image mr-20 float-left"><img src="{% static 'images/team/1.jpg' %}"
-                                class="rounded-circle" alt="images"></div>
+                        <div class="contact-agent-image mr-20 float-left"><img src="{% static 'images/team/1.jpg' %}" class="rounded-circle" alt="images"></div>
                         <div class="align-self-center color-gray">
                             <h6 class="d-block mb-1 w-100 color-secondary">Andrew Gunservice</h6>
                             <p>realestate@info.com</p>
@@ -267,110 +240,14 @@
                                 <input type="email" class="form-control bg-gray" placeholder="Email Address">
                             </div>
                             <div class="form-group col-md-12">
-                                <input type="text" class="form-control bg-gray" placeholder="Phone">
+                                <input type="text" class="form-control bg-gray" placeholder="mobile">
                             </div>
-                            <div class="form-group col-md-12">
-                                <textarea class="form-control bg-gray" rows="4"
-                                    placeholder="Type Your Massage"></textarea>
-                            </div>
+                            <select class="select form-control" name="interst">
+                                <option name=="interst" value="Loan">Loan</option>
+                                <option name=="interst" value="invesment">Investment</option>
+                            </select>
                             <div class="col-lg-12"><button type="submit" class="btn btn-primary w-100">Send
                                     Message</button></div>
-                        </div>
-                    </form>
-                </div>
-                <div class="sidebar-widget bg-white mt-50 shadow py-40 px-30 wow slideInDown animated">
-                    <h3 class="color-secondary line-bottom pb-15 mb-20">Latest Properties</h3>
-                    <div class="owl-carousel slide-1 owl-dots-none">
-                    {% for allp in property %}
-                        <div class="property-item">
-                            <div class="property-img position-relative overflow-hidden overlay-secondary-4">
-                                <img src={{ allp.propertyimage.url }} class="property" alt="image">
-                                <span
-                                    class="thum-category category-1 bg-secondary color-white z-index-1 px-15">New</span>
-                                <ul class="hover-option position-absolute icon-white z-index-1">
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Wishlist" href="#"><i
-                                                class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tooltip" data-placement="top" title="Compare" href="#"><i
-                                                class="fa fa-random" aria-hidden="true"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="meta-property icon-primary color-white z-index-1">
-                                    <ul>
-                                        <li><i class="fa fa-calendar"></i> 06/27/2020</li>
-                                        <li><i class="fa fa-user"></i> James Bond</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="property-content bg-white pt-30 pb-50">
-                                <a class="color-secondary mb-5" href="single-property.html">
-                                    <h5>{{allp.PropertyTitle}}</h5>
-                                </a>
-                                <span class="address icon-primary f-14"><i class="fa fa-map-marker"></i>{{allp.address}}</span>
-                                <ul class="about-property list-half icon-primary d-table f-14 mb-30 mt-20">
-                                    <li><i class="flaticon-fit-screen"></i>plotSize:{{allp.areasize}}</li>
-                                </ul>
-                                <div class="property-cost color-white list-half w-100">
-                                    <ul>
-                                        <li>For Rent</li>
-                                        <li>̥₹ {{allp.price}}</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    </div>
-                </div>
-                <div class="sidebar-widget bg-white mt-50 shadow py-40 px-30 wow slideInUp animated">
-                    <h3 class="color-secondary line-bottom pb-15 mb-20">Mortgage Calculator</h3>
-                    <ul class="list-by-tag">
-                        <li>Total Amount <span>Your payment</span></li>
-                        <li><strong class="color-primary f-20">̥₹ {{property_single.price}}</strong> <span class="color-primary">$
-                                1,458</span></li>
-                    </ul>
-                    <ul class="list-by-tag mt-20">
-                        <li>Total cost of loan <span>$ 610,718</span></li>
-                        <li>Total interest paid <span>$ 80,718</span></li>
-                        <li>Payment <span>Monthly</span></li>
-                        <li>Mortgage payment <span>$ 1,458</span></li>
-                    </ul>
-                    <form action="#" method="post" class="mt-20 border-top-1-gray pt-20 adbanced-form-two">
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label>Total Amount </label>
-                                <input type="text" class="form-control bg-gray" value="$ 530,000">
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label>Down Payment </label>
-                                <input type="text" class="form-control bg-gray" value="$ 0">
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label>Interest Rate </label>
-                                <input type="text" class="form-control bg-gray" value="% 2.5">
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label>Loan Period</label>
-                                <div class="select-wrapper position-relative">
-                                    <select class="select form-control has-val">
-
-                                        <option>10 Years</option>
-
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label>Payment Preiod</label>
-                                <div class="select-wrapper position-relative">
-                                    <select class="select form-control has-val">
-                                        <option>Monthly</option>
-
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12"><button type="submit"
-                                    class="btn btn-primary w-100">Calculate</button></div>
                         </div>
                     </form>
                 </div>

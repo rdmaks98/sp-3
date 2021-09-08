@@ -1,7 +1,7 @@
 from django import forms
 
 # agency model import here
-from .models import Agency,UserProfile,Contact
+from .models import Agency,UserProfile,Contact,Rating
 
 # password change and resets
 from django.contrib.auth.forms import PasswordChangeForm
@@ -57,6 +57,7 @@ class AddAgency(forms.ModelForm):
         # widgets = {'u_id':forms.HiddenInput()}
 
 
+#contact
 class Contactform(forms.ModelForm):
     name = forms.CharField(max_length=100,required = True,
     widget=forms.TextInput(attrs={'class': 'form-control bg-gray', 'placeholder': 'enter your name'}),)
@@ -70,3 +71,26 @@ class Contactform(forms.ModelForm):
     class Meta:
         model = Contact
         fields = ["name","email","message"]
+
+# ratinf_review
+
+GEEKS_CHOICES =(
+    ("1", "1"),
+    ("2", "2"),
+    ("3", "3"),
+    ("4", "4"),
+    ("5", "5"),
+)
+
+class Rating_reviewform(forms.ModelForm):
+    rate = forms.ChoiceField(choices = GEEKS_CHOICES,widget=forms.Select(attrs={'class': 'stars', 'placeholder': 'enter your name'}),)
+    
+    name = forms.CharField(max_length=100,required = True,
+    widget=forms.TextInput(attrs={'class': 'form-control bg-gray', 'placeholder': 'enter your name'}),)
+
+    Review = forms.CharField(max_length=100,required = True,
+    widget=forms.TextInput(attrs={'class': 'form-control bg-gray', 'placeholder': 'enter Review/comment is here...'}),)
+
+    class Meta:
+        model = Rating
+        fields = ["rate","name","review"]

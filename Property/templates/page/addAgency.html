@@ -130,7 +130,7 @@
 	$("#editform").click(function(){
 		let id = $("#a_id").val();
 		alert(id);
-		var a_name = $('input[name="a_name"]').val().trim();
+		var a_name = $('input[name="a_name"]').val();
 		var a_address = $('input[name="a_address"]').val();
 		var a_image = $('input[name="a_image"]').val();
 		let csrf_token = '{{ csrf_token }}';
