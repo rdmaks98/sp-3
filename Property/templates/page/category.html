@@ -44,6 +44,7 @@
                         <div class="col-md-3 col-lg-6 col-xl-7">
                             <label>Category List</label>
                         </div>
+
                         <div class="col-md-9 col-lg-6 col-xl-5">
                             <div class="row">
                                 <div class="col-md-8 col-lg-7">
@@ -80,30 +81,32 @@
                 </div>
             </div>
             <div class="col-md-12 col-lg-4">
-                <form class="adbanced-form-two amenities-list bg-white py-40 px-30 mt-30">
+            
+            {% for c in catall %}
+               <a href="/category?category={{c.id}}">{{c.name}}</a>
+            {% endfor %}   
+                {% comment %} <form class="adbanced-form-two amenities-list bg-white py-40 px-30 mt-30"> {% endcomment %}
                     <div class="row">
                         <div class="form-group col-lg-12 pt-15 wow slideInUp animated">
-                            <label>Category</label>
+                            <label>Category</label>              
                             <div class="select-wrapper position-relative mt-5">
                                 <select class="select form-control">
                                     <option>Select Category</option>
                                     {% for c in catall %}
-                                    <option>{{c.name}}</option>
+                                  </option>
                                     {% endfor %}
-
                                 </select>
                             </div>
                         </div>
                         <div class="form-group col-lg-12 pt-15 wow slideInDown animated">
-                            <label>Country</label>
+                            <label>Subcategory</label>
                             <div class="select-wrapper position-relative">
                                 <select class="select form-control">
                                     <option>Select subcategory</option>
                                     {% for subcat in subcatall %}
-                                    <option>{{subcat.sub_name}}</option>
+                                    <option value={{subcate.subcat_id}}>{{subcat.sub_name}}</option>
                                     {% endfor %}
                                 </select>
-
                             </div>
                         </div>
                         <div class="form-group mb-50 pb-15 col-lg-12 wow slideInUp animated">
@@ -117,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                {% comment %} </form> {% endcomment %}
             </div>
            
             <div class="col-md-12 col-lg-8">
@@ -134,8 +137,7 @@
                                         <img src="{{show.propertyimage.url}}" alt="image">
                                         <div class="thumbnail-content z-index-1 color-white-a color-white">
                                             <span
-                                                class="thum-category category-1 bg-secondary color-white z-index-1 px-15">For
-                                                Sale</span>
+                                                class="thum-category category-1 bg-secondary color-white z-index-1 px-15">{{show.propertyType}}</span>
                                             <ul class="hover-option position-absolute icon-white z-index-1">
                                                 <form action="/favourite" method="post">
                                                     {% csrf_token %}
@@ -216,7 +218,7 @@
                                             <span class="tags color-gray mb-30 d-block">{{show.propertyType}}</span>
                                             <div class="property-cost color-white list-half w-100">
                                                 <ul>
-                                                    <li>For Rent</li>
+                                                    <li>{{show.propertyType}}</li>
                                                     <li>₹ {{show.price}}</li>
                                                 </ul>
                                             </div>

@@ -32,12 +32,6 @@
                                     </form>
                                 </li>
                             </ul>
-                            <div class="meta-property icon-primary color-white z-index-1">
-                                <ul>
-                                    <li><i class="fa fa-calendar"></i> 06/27/2020</li>
-                                    <li><i class="fa fa-user"></i> James Bond</li>
-                                </ul>
-                            </div>
                         </div>
                         <div class="property-content bg-white pt-30 pb-50 px-30">
                             <a class="color-secondary mb-5" href={% url 'p_single' data.id %}>
@@ -49,8 +43,8 @@
                             </ul>
                             <div class="property-cost color-white list-half w-100">
                                 <ul>
-                                    <li>For Rent</li>
-                                    <li>1.8k <sub>/Month</sub></li>
+                                    <li>{{data.propertyType}}</li>
+                                    <li></li>
                                 </ul>
                             </div>
                         </div>

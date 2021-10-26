@@ -1,6 +1,7 @@
 # render and redirect request path url
 from django.shortcuts import render,redirect,get_object_or_404
-
+from django.contrib.auth.decorators import login_required
+from django.db.models import Max,Min
 # return response that time using this
 from django.http import HttpResponse
 
@@ -28,13 +29,15 @@ def index(request):
     agency = Agency.objects.all().order_by('-id')[0:4]
     Propertyall = AddPropertyForm.objects.all().order_by('-id')[0:4]
     company = Agency.objects.count()
-    propertycount = AddPropertyForm.objects.count()
+    p_c_f_sale = AddPropertyForm.objects.filter(propertyType="for sale").count()
+    print(p_c_f_sale)
+    p_c_f_rent = AddPropertyForm.objects.filter(propertyType="for rent").count()
     brokers = UserProfile.objects.filter(user_type='broker').count()
     data = UserProfile.objects.filter(userid_id=request.user.id).count()
     if data > 0:
         profile = UserProfile.objects.get(userid_id=request.user.id)
-        return render(request,"Property/index.html",{'cat':cat,'subcat':subcat,'agency':agency,'profile':profile,'company':company,'brokers':brokers,'Propertyall':Propertyall,'propertycount':propertycount})
-    return render(request,"Property/index.html",{'cat':cat,'subcat':subcat,'agency':agency,'company':company,'brokers':brokers,'Propertyall':Propertyall,'propertycount':propertycount})
+        return render(request,"Property/index.html",{'cat':cat,'subcat':subcat,'agency':agency,'profile':profile,'company':company,'brokers':brokers,'Propertyall':Propertyall,'p_c_f_sale':p_c_f_sale,'p_c_f_rent':p_c_f_rent})
+    return render(request,"Property/index.html",{'cat':cat,'subcat':subcat,'agency':agency,'company':company,'brokers':brokers,'Propertyall':Propertyall,'p_c_f_sale':p_c_f_sale,'p_c_f_rent':p_c_f_rent})
 
 # common user register here
 def register(request):
@@ -123,10 +126,18 @@ def profile(request):
 def category(request,id):
     # show particular id wise property
     catdata = BrokerCategory.objects.get(id=id)
-    catall = BrokerCategory.objects.all()
     Property = AddPropertyForm.objects.all().filter(cate_id_id=id)
+    catall = BrokerCategory.objects.all()
     subcatall = BrokerSubCategory.objects.all()
     return render(request,"page/category.html",{'catdata':catdata,'catall':catall,'subcatall':subcatall,'Property':Property})
+
+def get_p_by_id(c_id,s_id):
+    if c_id:
+        return AddPropertyForm.objects.filter(cate_id_id = c_id)
+    elif s_id:
+        return AddPropertyForm.objects.filter(subcate_id_id=s_id)
+    else:
+        return AddPropertyForm.objects.all()
 
 def p_lists(request,id):
     subcat = get_object_or_404(BrokerSubCategory,id=id)
@@ -230,30 +241,33 @@ def Update(request):
     return render(request,"page/addAgency.html",{'form':form,'agency':agency})
         
 def addProperty(request): 
+    cate = BrokerCategory.objects.all()
+    subcate = BrokerSubCategory.objects.all()
+    agency = Agency.objects.all().filter(u_id_id=request.user.id)
     if request.method == 'POST':
         addProperty = AddPropertyForm()
-
+        addProperty.user_id_id = request.user.id
         addProperty.propertyTitle = request.POST['propertyTitle']
         addProperty.propertyType = request.POST['propertyType']#DropDown
         addProperty.price = request.POST['price']
+        addProperty.propertyDescription = request.POST['propertyDescription']
         addProperty.address = request.POST['address']
-        addProperty.state = request.POST['state']
         addProperty.city = request.POST['city']
         addProperty.zip = request.POST['zip']
-        addProperty.Country = request.POST['Country']
         addProperty.areasize = request.POST['areasize']
-        addProperty.sizeprefix = request.POST['sizeprefix']
-        addProperty.landarea = request.POST['landarea']
-        addProperty.landareapostfix = request.POST['landareapostfix']
-        addProperty.bedrooms = request.POST['bedrooms']
-        addProperty.bathrooms = request.POST['bathrooms']
         addProperty.builtyear = request.POST['builtyear']
-        addProperty.propertyimage = request.FILES['uploadpath']
-        print("hdajfh",addProperty.propertyimage)
+        addProperty.cate_id_id = request.POST['cate_id_id']
+        addProperty.subcate_id_id = request.POST['subcate_id_id']
+        addProperty.aid_id = request.POST['aid_id']
+        addProperty.propertyimage = request.FILES['propertyimage']
+        addProperty.propertybrochure = request.FILES['propertybrochure']
+        addProperty.propertyplanimage = request.FILES['propertyplanimage']
+        addProperty.propertyvideo = request.FILES['propertyvideo']
+        print(addProperty.propertyimage)
         addProperty.save()
         messages.success(request,"your property added successfully")
-        # addProperty.print(propertyTitle,price)
-    return render(request,'page/addproperty.html')
+        return redirect("index")
+    return render(request,'page/addproperty.html',{'cate':cate,'agency':agency,'subcate':subcate})
 
 def features(request):
     propertyData = AddPropertyForm.objects.all()
@@ -301,12 +315,21 @@ def contact(request):
     
     return render(request,"page/contact.html")
 
-
 def favourite(request):
-    product_id = request.POST.get('pid_id')
     user = request.user.id
-    Favourite(pid_id=product_id,uid_id=user).save()
-    return redirect("index",{"fp":fp})
-
-# def categoryData(request):
     
+    if request.method == "POST":
+        product_id = request.POST.get('pid_id')
+        if Favourite.objects.filter(pid_id=product_id,uid_id=user).exists():
+            messages.error(request,"you have already add in favourite")
+            return render(request,"page/favourite_property.html")
+        else:
+            Favourite(pid_id=product_id,uid_id=user).save()
+            return render(request,"page/favourite_property.html")
+    else:
+        fp = Favourite.objects.filter(uid_id=user).all()
+        # filter(uid_id=user).all()
+        return render(request,"page/favourite_property.html",{"fp":fp})
+    return render(request,"page/favourite_property.html")
+
+# def categoryData(request):    

@@ -19,13 +19,9 @@
                     <div class="property-img position-relative overflow-hidden overlay-secondary-4">
                         <img src="{{data.propertyimage.url}}" class="property" alt="image">
                         <div class="thumbnail-content z-index-1 color-white-a color-white">
-                            <span class="thum-category category-1 bg-secondary color-white z-index-1 px-15">For
-                                Sale</span>
-                            
+                            <span class="thum-category category-1 bg-secondary color-white z-index-1 px-15">{{data.propertyType}}</span>
                             <ul class="hover-option position-absolute icon-white z-index-1 px-15">
                                 <li>
-                                    {% comment %} <a data-toggle="tooltip" data-placement="top" title="Wishlist" href="#"><i
-                                            class="fa fa-heart-o" aria-hidden="true"></i></a> {% endcomment %}
                                     <form action="/favourite" method="post">
                                         {% csrf_token %}
                                         <input type="hidden" name="uid_id" class="user_id" value={{user.id}} />

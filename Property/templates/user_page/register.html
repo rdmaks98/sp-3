@@ -2,48 +2,13 @@
 <!-- Start register Form
 	====================================================-->
 <section class="booking-form bg-gray">
-    <div class="container">
+    <div class="container my-50">
         <div class="row">
             <div class="col-lg-12">
-                <div class="bg-white px-30 py-40 shadow w-75 mx-auto">
+                <div class="bg-white px-30 py-40 shadow w-75 mx-auto my-50">
                     <!-- alerts message -->
 
                     {% include 'layout/message.html' %}
-                    <!-- old design -->
-                    <!-- <form method="post" action="{% url 'register' %}" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="row">
-                            <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
-                                <input type="text" name="name" class="form-control bg-gray" placeholder="Name*">
-                            </div>
-                            <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
-                                <input type="email" name="email" class="form-control bg-gray"
-                                    placeholder="Email Address*">
-                            </div>
-                            <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
-                                <input type="text" name="mobile" class="form-control bg-gray"
-                                    placeholder="Phone Number*">
-                            </div>
-
-                            <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
-                                <input type="file" name="image" class="form-control bg-gray">
-                            </div>
-                            <div class="form-group col-md-12 col-lg-6 wow slideInLeft animated">
-                                <input type="radio" value="user" name="user_type" class="form-control bg-gray">User
-                                <input type="radio" value="broker" name="user_type" class="form-control bg-gray">Broker
-                            </div>
-                            <div class="form-group col-md-12 col-lg-6 wow slideInLeft animated">
-                                <input type="password" name="password" class="form-control bg-gray"
-                                    placeholder="password*">
-                            </div>
-                            <div class="form-group col-md-12 col-lg-6 wow slideInRight animated">
-                                <input type="password" name="c_password" class="form-control bg-gray"
-                                    placeholder="Confirm password">
-                            </div>
-                            <div class="col-lg-12"><button type="submit" class="btn btn-secondary">Register</button>
-                            </div>
-                        </div>
-                    </form> -->
                     <form action="{% url 'register' %}" method="POST">
                         {% csrf_token %}
                         <div class="form-group">

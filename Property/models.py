@@ -62,21 +62,20 @@ class AddPropertyForm(models.Model):
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     zip = models.CharField(max_length=255)
-    Neighborhood = models.CharField(max_length=255)
     
     #Property Features
     areasize = models.CharField(max_length=255)
-    sizeprefix = models.CharField(max_length=255)
-    landarea = models.CharField(max_length=255)
-    landAreaSize = models.CharField(max_length=255)
-    bedrooms = models.CharField(max_length=255)
-    bathrooms = models.CharField(max_length=255)
     builtyear = models.CharField(max_length=255)
-    propertyimage = models.ImageField(upload_to="Property/images/property",default="")
+    propertyimage = models.ImageField(upload_to="Property/images/property")
+    propertyplanimage = models.ImageField(upload_to="Property/images/plan",default="")
+    propertyvideo = models.ImageField(upload_to="Property/images/video",default="")
+    propertybrochure = models.ImageField(upload_to="Property/images/brochure",default="")
 
     # foreign key
-    cate_id = models.ForeignKey(BrokerCategory, on_delete= models.CASCADE,default="")
-    subcate_id = models.ForeignKey(BrokerSubCategory, on_delete= models.CASCADE,default="")
+    cate_id = models.ForeignKey(BrokerCategory, on_delete= models.CASCADE)
+    subcate_id = models.ForeignKey(BrokerSubCategory, on_delete= models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete= models.CASCADE,default="")
+    aid = models.ForeignKey(Agency,on_delete=models.CASCADE,default="")
 
     def __str__(self):
         return self.propertyTitle
@@ -95,7 +94,7 @@ class Rating(models.Model):
     review = models.CharField(max_length=255)
 
     def __str__(self):
-        return  self.name
+        return  str(self.rate) + ' ' + self.review
 
 class Contact(models.Model):
     ctid = models.IntegerField(primary_key=True)
@@ -114,4 +113,4 @@ class Favourite(models.Model):
     pid = models.ForeignKey(AddPropertyForm, on_delete= models.CASCADE)
     
     def __str__(self):
-        return self.pid
+        return str(self.pid)
